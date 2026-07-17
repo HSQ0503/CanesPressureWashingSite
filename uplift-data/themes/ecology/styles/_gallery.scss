@@ -1,0 +1,22 @@
+.gallery {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+	> a {
+		display: block;
+		transition: all .5s ease;
+		border-radius: $border-radius;
+		
+		> img {
+			border-radius: $border-radius;
+			min-width: 200px;
+		}
+		
+		&:hover {
+			filter: brightness(.8)
+		}
+	}
+}

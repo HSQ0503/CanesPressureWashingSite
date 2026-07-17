@@ -1,0 +1,306 @@
+.our-process {
+	background: $dark;
+	color: color-contrast($dark);
+	//text-align: center;
+	
+	&.interior {
+		background: $white;
+		color: color-contrast($white);	
+		
+		.container {
+			padding-top: 0;
+		    padding-bottom: 1.5rem;	
+		    
+		    .process-card-container {
+		    	margin-top: 0;	
+		    	
+		    	.process-card {
+		    		background: rgba($dark, .8);
+		    	}
+		    }
+		}
+	}
+	
+	.container {
+		padding-top: 5rem;
+	    padding-bottom: 5rem;
+	    
+	    .preheading {
+			text-transform: uppercase;
+			font-size: 1rem;
+			letter-spacing: 3px;
+			font-weight: 700;
+			display: block;
+		}
+		
+		h2 {
+			.highlight {
+				display: block;
+			}
+		}
+	    
+		.process-card-container {
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: repeat(3, 1fr);
+			text-align: start;
+			
+			.process-card {
+				position: relative;
+				height: 25rem;
+				overflow: hidden;
+				padding: 0;
+				border-radius: $border-radius;
+				z-index: 1;
+				
+				.card-background {
+					width: 100%;
+					height: 100%;
+					display: block;
+					object-fit: cover;
+					transition: all ease 0.4s;
+					filter: brightness(0.8);
+				}
+				
+				.card-content {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					height: 100%;
+					position: absolute;
+					width: 100%;
+					top: 0;
+					transition: all ease 0.4s;
+					transform: translate3d(0, 100%, 0);
+					color: $light;
+					
+					@include media-breakpoint-down(md) {
+						transition: none;
+						transform: translate3d(0, 0, 0);
+					}
+				
+					.card-title {
+						display: block;
+						padding: 1rem;
+						transform: translate3d(0, -100%, 0);
+						transition: all ease 0.4s;
+						
+						i {
+							font-size: 3rem;
+						}
+						
+						span {
+							display: block;
+							font-size: 1.5rem;
+							font-weight: 700;
+						}
+					}
+					
+					.card-text {
+						flex-grow: 1;
+						padding: 1rem;
+						opacity: 0;
+						transition: all ease 0.4s;
+						margin: 0;
+						font-size: 1rem;
+						@include media-breakpoint-down(lg) {
+							font-size: .8rem;
+						}
+					}
+				}
+				
+				&:hover {
+					.card-background {
+						filter: brightness(0.50);
+						transform: scale(1.1);
+					}
+				
+					.card-content {
+						transform: translate3d(0, 0, 0);
+						
+						.card-title {
+							transform: translate3d(0, 0, 0);
+						}
+						
+						.card-text {
+							opacity: 1;
+							@include media-breakpoint-down(lg) {
+								transform: translate3d(0, 0, 0);
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		@include media-breakpoint-down(lg) {
+			.process-card-container {
+				margin-top: 5rem;
+				grid-template-columns: repeat(2, 1fr);
+				
+				> :last-child {
+					grid-column: span 2;
+					height: 20rem;
+				}
+			}
+		}
+		
+		@include media-breakpoint-down(md) {
+			.process-card-container {
+				grid-template-columns: repeat(1, 1fr);
+				
+				.process-card {
+					height: 20rem;
+					grid-column: span 1;
+				}
+			}
+		}
+		
+		@include media-breakpoint-down(md) {
+			.process-card-container {			
+				.process-card {
+					height: 22.5rem;
+				}
+			}
+		}
+	
+	}
+}
+
+.service-areas-interior, .services-interior {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	//background: $secondary;
+	background: linear-gradient(0deg, rgba($dark, .85) 0%, rgba($dark, .85) 100%);
+	//color: color-contrast($secondary);
+	//background: $light;
+	color: color-contrast($light);
+	position: relative;
+	
+	.background-image {
+		object-fit: cover;
+		object-position: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+	
+	.preheading {
+		text-transform: uppercase;
+		font-size: 1rem;
+		letter-spacing: 3px;
+		font-weight: 700;
+		display: block;
+	}
+	
+	h2 {
+		.highlight {
+			display: block;
+		}
+	}
+	
+	.service-areas-content, .services-content {
+		background: rgba($secondary, .85);
+		padding: 2rem;
+		border-radius: 2rem;
+		display: flex;
+    	flex-direction: column;
+    	height: 100%;
+		
+		.service-areas-list, .services-list {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 8px;
+			
+			@include media-breakpoint-down(md) {
+				grid-template-columns: repeat(1, 1fr);	
+			}
+		}
+			
+	}
+	
+	.service-areas-content {
+		.buttons-container {
+			margin-top: 1.5rem;
+		}
+		
+	}
+	
+	.services-content {
+		.buttons-container {
+			margin-top: auto;
+		}	
+		@include media-breakpoint-down(lg) {
+			margin-bottom: 1.5rem;	
+		}
+	}
+	
+	
+	.form-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0;
+		
+		.form-header {
+			background: $primary;
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			padding: 1rem;
+			text-align: center;
+			color: color-contrast($primary);
+			
+			> h2 {
+				margin-bottom: 1rem;
+			}
+			
+			> p {
+				margin: 0;
+				font-size: 1.25rem;
+				font-weight: 700;
+			}
+		}
+		
+		.form-content {
+			background: $light;
+			color: color-contrast($light);
+			border-bottom-left-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
+			padding: 2rem;
+		}
+	}
+	
+	@include media-breakpoint-down(xl) {
+		.form-container {
+			margin: 0 1.5rem;
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		.form-container {
+			margin: 0;
+		}
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.form-container {
+			.form-content {
+				padding: 12px;
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.contact-buttons {
+			flex-direction: column;
+		}
+	}
+}
+
+.qualities-container {
+	background-color: $light;
+	padding-bottom: 5rem;		
+}

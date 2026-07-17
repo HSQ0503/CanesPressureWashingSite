@@ -1,0 +1,70 @@
+.fbm-rendered-form-container {
+	.form-components-container {
+		.form-component {
+			.form-row {
+				gap: 1rem;
+				
+				> div {
+					padding: 0;
+				}
+				
+				label {
+					margin-bottom: .5rem;
+					font-family: $font-family-base;
+				}
+				
+				input, textarea, select {
+					border-radius: $border-radius;
+				}
+			}
+		}
+	}
+	
+	.form-buttons-container {
+		.buttons {
+			.form-submit-button {
+				background: $secondary!important;
+				border-radius: $btn-border-radius!important;
+				color: color-contrast($secondary)!important;
+				text-transform: unset!important;
+				padding: $btn-padding-y $btn-padding-x!important;
+				transition: all .5s ease;
+				
+				> span {
+					font-family: $font-family-base!important;
+					font-size: $btn-font-size!important;
+					font-weight: $btn-font-weight!important;
+					line-height: 1.5rem!important;
+				}
+				
+				&:hover {
+					background: lighten($primary, 5%)!important;
+					color: color-contrast(lighten($primary, 5%))!important;
+				}
+			}
+		}
+	}
+}
+
+/* Form Submit button error contrast fix - update if needed *
+.fbm-crm-generated-form-container {
+		.fbm-rendered-form-container {
+			> form {
+				.form-components-container {
+					
+					/* Override form error label defaults (if needed for contrast)
+					.required-symbol {
+						color: color-contrast($primary);
+					}
+					*
+				}
+				
+				/* Override form error label defaults (if needed for contrast)
+				.form-component .form-field-container.invalid label {
+					color: color-contrast($primary);
+				}
+				*
+			}
+		}
+}
+*/

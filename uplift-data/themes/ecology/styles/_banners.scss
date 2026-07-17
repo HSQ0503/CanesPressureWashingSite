@@ -1,0 +1,269 @@
+/* HOME BANNER */
+.banner {
+	background: $dark;
+	color: color-contrast($dark);
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	
+	&.interior {
+		padding-top: 7rem;
+		padding-bottom: 3.5rem;	
+		
+		.banner-content {
+			&.interior {
+				gap: 1.5rem;	
+			}	
+		}
+	}
+	
+	.banner-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		
+		&.interior {
+			gap: 1.5rem;	
+			
+			@include media-breakpoint-down(md) {			
+				.banner-title {
+					font-size: 1.75rem;
+				}	
+			}
+		}
+		
+		.preheading {
+			text-transform: uppercase;
+			font-size: 1rem;
+			letter-spacing: 3px;
+			font-weight: 700;
+			display: block;
+		}
+	
+		.banner-title {
+			font-size: 3.75rem;
+			font-weight: 700;
+			font-family: $headings-font-family;
+			margin-bottom: 0;
+			line-height: 1.075;
+			
+			.highlight {
+				color: $secondary;
+			}
+		}
+		
+		.banner-text {
+			margin-top: 1.75rem;
+			margin-bottom: 1.75rem;
+			font-size: 1.125rem;
+			line-height: 1.5;
+		}
+	}
+	
+	.banner-image-container {
+		.banner-image {
+			border-radius: $border-radius;
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		.banner-content {
+			margin-bottom: 2rem;
+		}
+	}
+	
+	@include media-breakpoint-down(md) {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+			
+		.banner-content {
+			.banner-title {
+				font-size: 3rem;
+			}
+		}
+	}
+}
+
+/* INTERIOR BANNER */
+.interior-banner {
+	background: $dark;
+	background: linear-gradient(0deg, rgba($dark, .85) 0%, rgba($dark, .85) 100%);
+	color: color-contrast($dark);
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	position: relative;
+	
+	.banner-background {
+		position: absolute;
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		z-index: -1;
+	}
+	
+	.preheading {
+		text-transform: uppercase;
+		font-size: 1rem;
+		letter-spacing: 3px;
+		font-weight: 700;
+		display: block;
+	}
+
+	.banner-title {
+		font-size: 3.75rem;
+		font-weight: 700;
+		font-family: $headings-font-family;
+		margin-bottom: 0;
+		line-height: 1.075;
+		
+		.highlight {
+			color: $primary;
+		}
+	}
+	
+	.banner-image-container {
+		display: none;
+		
+		.banner-image {
+			border-radius: $border-radius;
+		}
+	}
+	
+	@include media-breakpoint-down(md) {
+		.banner-content {
+			.banner-title {
+				font-size: 3rem;
+			}
+		}
+	}
+}
+
+
+
+.banner-2 {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background: $dark;
+	background: linear-gradient(0deg, rgba($dark, .75) 0%, rgba($dark, .75) 100%);
+	color: color-contrast($dark);
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	min-height: 650px;
+	display: flex;
+	align-items: center;
+	
+	.background-image {
+		object-fit: cover;
+		object-position: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+	
+	.banner-content {
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		
+		.preheading {
+			text-transform: uppercase;
+			font-size: 1rem;
+			letter-spacing: 3px;
+			font-weight: 700;
+			display: block;
+			margin-bottom: .5rem;
+		}
+		
+		h2 {
+			font-size: 3.75rem;
+			font-weight: 800;
+			line-height: 1.075;
+			margin-bottom: 0;
+			color: color-contrast($dark);
+		}
+	}
+	
+	.form-container {
+		display: flex;
+		flex-direction: column;
+		margin: 0 5rem;
+		
+		.form-header {
+			background: #ffffff !important;
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			padding: 1rem;
+			text-align: center;
+			color: color-contrast($secondary);
+			
+			h3 {
+				margin-bottom: 0;
+			}
+		}
+		
+		.form-content {
+			background: $light;
+			color: color-contrast($light);
+			border-bottom-left-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
+			padding: 0;
+			overflow: hidden;
+		}
+		
+		.iframe-container {
+			height: 760px;
+		}
+		
+		iframe {
+			display: block;
+		}
+	}
+	
+	@include media-breakpoint-down(xl) {
+		.form-container {
+			margin: 0 1.5rem;
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		min-height: auto;
+		
+		.form-container {
+			margin: 0;
+		}
+	}
+	
+	@include media-breakpoint-down(md) {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+		
+		.banner-content {
+			h2 {
+				font-size: 3rem;
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(sm) {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		
+		.banner-content {
+			h2 {
+				font-size: 2.5rem;
+			}
+		}
+		
+		.form-container {
+			.iframe-container {
+				height: 600px;
+			}
+		}
+	}
+}

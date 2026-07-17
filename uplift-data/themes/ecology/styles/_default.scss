@@ -1,0 +1,106 @@
+img, iframe, video {
+    max-width: 100%;
+}
+
+.skip-main {
+    position: absolute;
+    top: auto;
+    left: -999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+	
+    &:focus, &:active {
+        background-color: #000000;
+        color: #FFFFFF;
+        top: auto;
+        left: auto;
+        width: 30%;
+        height: auto;
+        overflow: auto;
+        margin: 10px 35%;
+        padding: 5px;
+        border-radius: 15px;
+        border: 4px solid yellow;
+        text-align: center;
+        font-size: 1.2rem;
+        z-index: 999;
+    }
+}
+
+.btn-secondary {
+	&:hover {
+		background-color: lighten($secondary, 10%);
+		color: color-contrast(lighten($secondary, 10%));
+	}
+}
+
+.linkFix {
+	color: $dark !important;
+	&:hover {
+		color: lighten($dark, 20%) !important;	
+	}
+}
+
+.former {
+.jobber-work-request {
+	max-height: 23rem !important;
+}}
+
+.faq-body {
+	a {
+		color: $dark !important;
+		&:hover {
+			color: lighten($dark, 20%) !important;	
+		}	
+	}
+}
+
+#blog, #general {
+	.content-1-interior, .content-1 {
+		a {
+			color: $dark !important;
+			&:hover {
+				color: lighten($dark, 20%) !important;	
+			}	
+		}
+	}
+}
+
+#service {
+	.content-1-interior, .content-2 {
+		a {
+			color: $dark !important;
+			&:hover {
+				color: lighten($dark, 20%) !important;	
+			}	
+		}
+	}
+}
+
+#city {
+	.content-1-city, .content-2 {
+		a {
+			color: $dark !important;
+			&:hover {
+				color: lighten($dark, 20%) !important;	
+			}	
+		}
+	}
+}
+
+/* Container Z-Index */
+.container,
+.container-fluid {
+  position: relative;
+  z-index: 3;
+}
+
+/* iOS Phone Number Line Break Fix */
+.phone-number {
+  white-space: nowrap;
+  word-break: normal;
+  display: inline-block;
+}
+

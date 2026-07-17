@@ -1,0 +1,256 @@
+.project-card-container, .article-card-container, .service-card-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	
+	.link-card, {
+		display: flex;
+		background: $light;
+		color: color-contrast($light);
+		border-radius: $border-radius;
+		align-items: center;
+		text-decoration: none;
+		transition: all .5s ease;
+		
+		.card-content {
+			width: 60%;
+			padding: 1rem;
+			
+			> h2 {
+				font-size: 1.5rem;
+			}
+		}
+		
+		.card-image-container {
+			width: 40%;
+			position: relative;
+			height: 300px;
+			overflow: hidden;
+			border-top-right-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
+			
+			.card-image {
+				object-fit: cover;
+				object-position: center;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				transition: all .5s ease;
+			}
+		}
+		
+		&:hover {
+			background: $gray-200;
+			
+			.card-image-container {
+				.card-image {
+					filter: brightness(.75);
+				}
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(xl) {
+		.link-card{ 
+			.card-content {
+				width: 70%;
+			}
+			
+			.card-image-container {
+				width: 30%;
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		align-items: center;
+		
+		.link-card {
+			flex-direction: column;
+			max-width: 450px;
+			
+			.card-content {
+				width: 100%;
+				order: 2;
+			}
+			
+			.card-image-container {
+				width: 100%;
+				order: 1;
+				border-top-right-radius: $border-radius;
+				border-top-left-radius: $border-radius;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
+	}
+}
+
+/* CONTENT */
+#general {
+	.content-1 {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		background: $white;
+		color: color-contrast($white);
+		
+		.featured-image-container, .img-r-dynamic {
+			float: right;
+			padding-left: 1rem;
+			padding-bottom: 1rem;
+			margin-left: auto;
+			margin-right: auto;
+			display: inline;
+			max-width: 450px;
+			
+			.featured-image {
+				border-radius: $border-radius;
+			}
+		}
+		
+		@include media-breakpoint-down(lg) {
+			padding-top: 5rem;
+			
+			.featured-image-container, .img-r-dynamic {
+				display: block;
+				//float: unset;
+				padding-left: unset;
+			}
+		}
+	}
+	
+	.content-1-interior {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		background: $white;
+		color: color-contrast($white);
+		
+		.about-us {
+			display: flex;
+			
+			.about-image {
+				float: right;
+				margin-left: 1.5rem;
+				margin-bottom: 1.5rem;
+				
+				img {
+					border-radius: $border-radius;
+				}
+				
+				@include media-breakpoint-down(lg) {
+					float: none;
+					display: flex;
+					justify-content: center;
+					margin-left: auto;
+				}
+			}
+		}
+		
+		.contact-us {
+		  display: grid;
+		  grid-template-columns: repeat(3, 1fr);
+		  gap: 1.5rem;	
+		  
+			.form {
+			  grid-column: 1 / 3;
+			  grid-row: 1 / 4;
+			  
+			  &>.fbm-crm-generated-form-container {
+			  	background-color: $dark !important;
+			  	border-radius: $border-radius !important;
+			  	padding: 24px !important;
+			  	margin-bottom: 16px !important;
+			  	color: color-contrast($dark) !important;
+			  	
+			  	@include media-breakpoint-down(lg){
+			  		padding: 16px !important;
+			  	}
+			  }
+			}
+			.contact {
+			  grid-column: 3 / 4;
+			  grid-row: 1 / 2;
+			  
+			  .social-links {
+				display: flex;
+				gap: 8px;
+				margin-top: 0;
+				margin-top: 18.8px;
+				margin-bottom: 1.5rem;
+				justify-content: space-evenly;	
+				
+				&>a {
+				    background: #080;
+				    color: #fff;
+				    font-size: 1.5rem;
+				    border: 1px solid #080;
+				    height: 2.5rem;
+				    width: 2.5rem;
+				    text-decoration: none;
+				    transition: all ease .5s;
+				    text-align: center;
+				    border-radius: .375rem;
+				    position: relative;
+				}
+			  }
+			}
+			.about-us {
+			    grid-column: 3 / 4;
+			    grid-row: 2 / 3;
+			    aspect-ratio: 1 / 1;
+			    display: flex;
+			    background: $dark;
+			    color: color-contrast($dark);
+			    justify-content: space-evenly;
+			    flex-direction: column;
+			    padding: 2rem;
+			    border-radius: $border-radius;
+			    
+			    h2 {
+			    	text-align: center;	
+			    }
+			}
+			.map {
+			  grid-column: 3 / 4;
+			  grid-row: 3 / 4;
+			}
+			
+			@include media-breakpoint-down(xl){
+				.form {
+				  grid-column: 1 / 4;
+				  grid-row: 1;
+				}
+				.contact {
+				  grid-column: 1 / 4;
+				  grid-row: 2 ;
+				}
+				.map {
+				  grid-column: 1 / 4;
+				  grid-row: 4;
+				}
+				.about-us {
+				  grid-column: 1 / 4;
+				  grid-row: 3;
+				  aspect-ratio: auto;
+				}
+			}
+		}
+					
+		@include media-breakpoint-down(lg) {		
+			.featured-image-container {
+				display: block;
+				float: unset;
+				padding-left: unset;
+			}
+		}
+	}
+}
+
+/*.service-areas {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(5, 1fr);
+	margin-bottom: 1rem;
+}*/

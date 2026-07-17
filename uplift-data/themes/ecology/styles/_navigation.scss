@@ -1,0 +1,347 @@
+.main-navigation {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	
+	.navigation-topbar {
+		background-color: $secondary;
+		width: 100%;
+		
+		.company-links {
+			display: flex;
+			align-items: center;
+		
+			i {
+				color: $primary;
+				margin-right: .5rem;
+			}
+			
+			a {
+				color: $light;
+				color: color-contrast($secondary);
+				text-decoration: none;
+				transition: all ease 0.4s;
+				
+				&:hover {
+					color: $primary;
+				}
+			}
+		}
+		
+		.social-links {
+			display: flex;
+			gap: .5rem;
+			margin: .25rem 0;
+		
+			a {
+				background: $primary;
+				color: color-contrast($primary);
+				font-size: $font-size-base;
+				border: 1px solid $primary;
+				height: 2rem;
+				width: 2rem;
+				text-decoration: none;
+				transition: all ease 0.4s;
+				border-radius: $border-radius;
+				position: relative;
+				
+				i {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+				
+				&:hover {
+					background: color-contrast($primary);
+					color: $primary;
+				}
+			}
+		}
+	}
+
+	
+	.navigation-bottom {
+		background-color: $dark;
+		border-bottom: 1px solid $secondary;
+		
+		.navigation-container {
+			display: flex;
+			padding: .5rem 0;
+			gap: 5rem;
+			
+			.navigation-logo-container {
+				width: 12rem;
+				position: relative;
+				
+				.navigation-logo {
+					width: 100%;
+					position: absolute;
+					top: 0;
+				}
+			}
+			
+			.interior {
+				width: 9rem !important;	
+			}
+			
+			.navigation-items {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				position: relative;
+				
+				.menu-top {
+					display: none;	
+				}
+	
+				.navigation-link-1 {
+					height: 100%;
+					width: 100%;
+					position: relative;
+					
+					> a {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						height: 100%;
+						padding: .5rem 1rem;
+						font-size: 1rem;
+						font-weight: 700;
+						color: color-contrast($dark);
+						text-decoration: none;
+						transition: all .5s ease;
+						
+						i {
+							padding-left: .25rem;
+						}
+					}
+					
+					.dropdown-content-1 {
+						display: none;
+						position: absolute;
+						min-width: 15rem;
+						background: $info;
+						
+						.navigation-link-2 {
+							position: relative;
+							
+							> a {
+								display: flex;
+								padding: .5rem 1rem;
+								font-size: 1rem;
+								font-weight: 700;
+								color: color-contrast($info);
+								text-decoration: none;
+								transition: all .5s ease;
+								
+								i {
+									padding-left: 4px;
+								}
+							}
+							
+							.dropdown-content-2 {
+								display: none;
+								position: absolute;
+								min-width: 15rem;
+								background: $info;
+								top: 0;
+								
+								&.dropdown-left {
+									right: 100%;
+								}
+								
+								&.dropdown-right {
+									left: 100%;
+								}
+							}
+							&:hover, &:focus-within {
+							background: rgba($light, .2);
+								.dropdown-content-2 {
+									display:block;
+								}
+							}
+						}
+					}
+					&:hover, &:focus-within {
+					background: rgba($light, .2);
+						.dropdown-content-1 {
+							display:block;
+						}
+					}
+				}
+			}
+			
+			.menu-button-container {
+				display: flex;
+				flex-grow:1;
+				align-items: center;
+				justify-content: end;
+				
+				.menu-open-button {
+					padding: 0;
+					margin: 0;
+					border: unset;
+					background: unset;
+					font-size: 1rem;
+					color: color-contrast($dark);
+					display: none;
+					align-items: center;
+					
+					i {
+						font-size: 2.25rem;
+						margin-left: .5rem;
+					}
+				}
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		.navigation-bottom {
+			.navigation-container {
+				gap: 2rem;
+				justify-content: space-between;
+				
+				.navigation-logo-container {
+					width: 10rem;
+					
+					.navigation-logo {
+						position: static;
+					}
+				}
+				
+				.navigation-items {
+					display: none;
+					flex-direction: column;
+					align-items: unset;
+					justify-content: unset;
+					position: fixed;
+					top: 0;
+					right: 0;
+					width: 18rem;
+					background: $secondary;
+					height: 100%;
+					z-index: 99;
+					padding: 1rem;
+					overflow: auto;
+					
+					.menu-top {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						border-bottom: 1px solid $white;
+						margin-bottom: 1rem;
+						
+						.menu-title {
+							display: block;
+							font-weight: 700;
+							font-size: 2rem;
+							color: color-contrast($secondary);
+						}
+						
+						.menu-close-button {
+							background: unset;
+							border: unset;
+							font-size: 2rem;
+							color: color-contrast($secondary);
+							transition: all .5s ease;
+							
+							&:hover {
+								color: $light;
+							}
+						}
+					}
+					
+					.navigation-link-1 {
+						height: unset;
+						
+						> a {
+							height: unset;
+							justify-content: start;
+							border-bottom: 1px solid rgba($white, .2);
+							transition: all .5s ease;
+							color: color-contrast($secondary);
+							
+							&:hover {
+								background: $light;
+							}
+						}
+						
+						.dropdown-content-1 {
+							position: static;
+							margin-left: 1rem;
+							background: unset;
+							
+							.navigation-link-2 {
+								> a {
+									justify-content: start;
+									border-bottom: 1px solid rgba($white, .2);
+									transition: all .5s ease;
+									
+									&:hover {
+										background: $light;
+									}
+								}
+								
+								.dropdown-content-2 {
+									position: static;
+									margin-left: 1rem;
+									background: unset;
+									min-width: unset;
+								}
+							}
+						}
+					}
+				}
+				
+				.menu-button-container {
+					display: flex;
+					flex-grow:0;
+					align-items: center;
+					.menu-open-button {
+						display:flex !important;
+					}
+					&:focus-within {
+						.navigation-items {
+							display:block;
+						}	
+					}
+				}
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.navigation-bottom {
+			.navigation-container {
+				.navigation-logo-container {
+					width: 8rem;
+				}
+			}
+		}
+	}
+	
+	@media (any-hover: none) {
+		// There is no hover-device on this browser
+		& > a {
+		pointer-events: none;
+		}
+	}	
+}
+
+.mobile-nav-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 98;
+	display: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+
+	&.active {
+		display: block;
+		opacity: 1;
+	}
+}

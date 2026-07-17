@@ -1,0 +1,83 @@
+// Settings
+$enable-negative-margins:				true;
+
+// Colors
+$white:    								#fff !default;
+$gray-100:    							#f8f9fa !default;
+$gray-200:    							#e9ecef !default;
+$gray-300:    							#dee2e6 !default;
+$gray-400:    							#ced4da !default;
+$gray-500:    							#adb5bd !default;
+$gray-600:    							#6c757d !default;
+$gray-700:    							#495057 !default;
+$gray-800:    							#343a40 !default;
+$gray-900:    							#212529 !default;
+$black:    								#000 !default;
+
+$primary:								#fcf1b9; //#F2CB05
+$secondary:								#f58307;
+$dark:									$black;
+$light:         						#FFFDE6;
+$body-color:                			$gray-700;
+$info:									#EFA315;
+
+$color-contrast-dark:      				$dark;
+$color-contrast-light:     				$light;
+
+// Fonts
+$font-size-base:						1.1rem;
+$font-family-base:						"Manrope", sans-serif;
+
+$h1-font-size:							$font-size-base * 3;
+$h2-font-size:							$font-size-base * 2.25;
+$h3-font-size:							$font-size-base * 1.75;
+$h4-font-size:							$font-size-base * 1.5;
+$h5-font-size:							$font-size-base * 1.25;
+$h6-font-size:							$font-size-base;
+
+$headings-font-weight:					800;
+$headings-margin-bottom:				1.5rem;
+$headings-line-height:					1.175;
+$headings-font-family:					"Manrope", sans-serif;
+
+$paragraph-margin-bottom:				1.5rem;
+
+// Border Radius
+$border-radius:							1rem;
+$border-radius-sm:						0.5rem;
+$border-radius-lg:						1.25rem;
+
+// Buttons
+$btn-padding-x:							2rem;
+$btn-padding-y:							1rem;
+$btn-padding-x-sm:						.75rem;
+$btn-padding-y-sm:						.25rem;
+$btn-line-height:						1.5rem;
+$btn-font-weight:						600;
+
+// Spacers
+$spacer:								1rem !default;
+
+$spacers: (
+	0: 0,
+	1: $spacer * .25,
+	2: $spacer * .5,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+	6: $spacer * 4,
+	7: $spacer * 5,
+	8: $spacer * 6,
+	9: $spacer * 7,
+	10: $spacer * 8,
+	11: $spacer * 9,
+	12: $spacer * 10,
+	13: $spacer * 11,
+	14: $spacer * 12,
+	15: $spacer * 13,
+	16: $spacer * 14,
+	17: $spacer * 15,
+	18: $spacer * 16,
+	19: $spacer * 17,
+	20: $spacer * 18,
+);

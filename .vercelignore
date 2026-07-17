@@ -1,0 +1,5 @@
+# Theme source files from the original Uplift builder — kept in the repo for
+# reference, but excluded from the deployment so raw PHP source is never
+# served as plain text.
+**/*.php
+README.md

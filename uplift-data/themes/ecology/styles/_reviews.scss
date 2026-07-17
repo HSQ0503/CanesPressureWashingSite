@@ -1,0 +1,176 @@
+.review {
+	margin: 0 calc($grid-gutter-width * 0.5);
+
+	.review-content {
+		padding: 1.75rem;
+		border: 1px solid $gray-300;
+		position: relative;
+		border-radius: $border-radius;
+		background-color: $white;
+		
+		> p {
+			margin: 0;
+			color: $gray-800;
+		}
+		
+		&:after {
+			content: "";
+			width: 30px;
+			height: 30px;
+			background: $white;
+			border-bottom: 1px solid $gray-300;
+			border-left: 1px solid $gray-300;
+			position: absolute;
+			bottom: -16px;
+			left: 50px;
+			transform: skewY(-45deg);
+			transition: 0.4s;
+		}
+	}
+	
+	.review-details {
+		display: flex;
+		align-items: center;
+		padding-top: 2.5rem;
+		
+		.review-icon {
+			background-color: $dark;
+			margin-right: 1rem;
+			border-radius: 50%;
+			height: 3rem;
+			width: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			.review-initials {
+				font-size: 1.3rem;
+				font-weight: bold;
+				color: color-contrast($dark);
+			}
+		}
+		
+		.review-stars {
+			color: $secondary;
+			
+			> i {
+				margin-right: .25rem;
+				font-size: 1.25rem;
+			}
+		}
+		
+		.review-name {
+			display: block;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+		
+		.review-location {
+			display: block;
+			color: color-contrast($info);
+			font-size: 1.1rem;
+		}
+	}
+}
+
+.review-slider {
+	padding: 0;
+	
+	.splide__arrows {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		.splide__arrow {
+			background: rgba($light, 75%);
+			border: 0;
+			border-radius: 50%;
+			padding: .5rem;
+			transition: all ease 0.4s;
+			
+			svg {
+				fill: $dark;
+			}
+			
+			&:hover {
+				background: $light;
+			}
+			
+			&:disabled {
+				background: rgba($light, 50%);
+			}
+		}
+	}
+	
+	.splide__track {
+		margin: 0 4rem;
+	
+		.splide__slide {
+			padding-bottom: 1.5rem;
+		}
+	}
+	
+	.splide__pagination {
+		position: relative;
+		padding: 0;
+		z-index: 2;
+	
+		.splide__pagination__page {
+			background: darken($dark, 20%);
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			border: unset;
+			margin: 0 .25rem;
+			transition: all ease 0.4s;
+			
+			&:hover {
+				background: darken($dark, 30%);
+			}
+			
+			&.is-active {
+				background: $dark;
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		.splide__arrows {
+			.splide__arrow--prev {
+				transform: scale(0.65);
+			}
+			
+			.splide__arrow--next {			
+				transform: scale(0.65);
+			}
+		}
+		
+		.splide__track {
+			margin: 0;
+		}
+	}
+}
+
+.reviews {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background: $primary;
+	color: color-contrast($primary);
+	
+	.preheading {
+		text-transform: uppercase;
+		font-size: 1rem;
+		letter-spacing: 3px;
+		font-weight: 700;
+		display: block;
+	}
+	
+	h2 {
+		.highlight {
+			display: block;
+		}
+	}
+}

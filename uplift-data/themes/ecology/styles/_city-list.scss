@@ -1,0 +1,13 @@
+.city-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: .5rem;
+	
+	@include media-breakpoint-down(xxl) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	
+	@include media-breakpoint-down(lg) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

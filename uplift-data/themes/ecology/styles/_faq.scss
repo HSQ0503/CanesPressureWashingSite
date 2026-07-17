@@ -1,0 +1,220 @@
+.faq-container {
+	display: grid;
+	gap: 16px 4rem;
+	align-items: start;
+	
+	.faq-item {
+		background: $gray-200;
+		border-radius: $border-radius;
+		padding: 20px 24px;
+		cursor: pointer;
+		transition: all .5s ease;
+		
+		.faq-title {
+			font-size: 1.125rem;
+			font-weight: 800;
+			margin-bottom: 0;
+			color: color-contrast($gray-200);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			
+			&:after {
+				content: '+';
+				background: $secondary;
+				color: color-contrast($secondary);
+				height: 32px;
+				width: 32px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 2rem;
+				transition: all .5s ease;
+				margin-left: .5rem;
+			}
+		}
+		
+		.faq-body {
+			p {
+				padding-top: 16px;
+				margin-bottom: 0;
+				color: color-contrast($gray-200);
+			}
+		}
+		
+		&:hover {
+			background: $primary;
+			
+			.faq-title {
+				color: color-contrast($primary);
+				
+				&:after {
+					background: $black;
+					color: $secondary;
+				}
+			}
+			
+			.faq-body {
+				p {
+					color: color-contrast($primary);
+				}
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		grid-template-columns: unset;
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.faq-item {
+			&:after {
+				font-size: 1.25rem;
+				height: 1.5rem;
+				width: 1.5rem;
+			}
+		}
+	}
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 5rem;
+
+	.form-header {
+		background: $secondary;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		padding: 32px;
+		text-align: center;
+		color: color-contrast($secondary);
+		
+		& > h2 {
+			margin-bottom: 16px;
+		}
+		
+		& > p {
+			margin: 0;
+			font-size: 1.25rem;
+			font-weight: 700;
+		}
+	}
+	
+	.form-content {
+		background: $light;
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+		padding: 32px;
+	}
+	
+	@include media-breakpoint-down(xl) {
+		margin: 0 16px;
+	}
+	
+	@include media-breakpoint-down(lg) {
+		margin: 0;
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.form-content {
+			padding: .5rem;
+		}
+	}
+}
+
+
+.faq {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background: $dark;
+	background: linear-gradient(0deg, rgba($dark, .75) 0%, rgba($dark, .75) 100%);
+	color: color-contrast($dark);
+	position: relative;
+	
+	.background-image {
+		object-fit: cover;
+		object-position: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+	
+	.preheading {
+		text-transform: uppercase;
+		font-size: 1rem;
+		letter-spacing: 3px;
+		font-weight: 700;
+		display: block;
+	}
+	
+	h2 {
+		.highlight {
+			display: block;
+			color:$primary;
+		}
+	}
+	
+	.form-container {
+		display: flex;
+		flex-direction: column;
+		margin: 0 5rem;
+		
+		.form-header {
+			background: $secondary;
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			padding: 1rem;
+			text-align: center;
+			color: color-contrast($secondary);
+			
+			> h2 {
+				margin-bottom: 1rem;
+			}
+			
+			> p {
+				margin: 0;
+				font-size: 1.25rem;
+				font-weight: 700;
+			}
+		}
+		
+		.form-content {
+			background: $light;
+			color: color-contrast($light);
+			border-bottom-left-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
+			padding: 2rem;
+			
+		}
+		
+		.fbm-rendered-form-container .form-buttons-container .buttons .form-submit-button {
+			background-color: $secondary !important;
+			color: color-contrast($secondary) !important;
+		} 
+	}
+	
+	@include media-breakpoint-down(xl) {
+		.form-container {
+			margin: 0 1.5rem;
+		}
+	}
+	
+	@include media-breakpoint-down(lg) {
+		.form-container {
+			margin: 0;
+		}
+	}
+	
+	@include media-breakpoint-down(sm) {
+		.form-container {
+			.form-content {
+				padding: .75rem;
+			}
+		}
+	}
+}

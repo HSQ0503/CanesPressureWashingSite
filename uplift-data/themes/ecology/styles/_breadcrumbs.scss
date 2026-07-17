@@ -1,0 +1,50 @@
+#breadcrumbs-slantbox {
+	padding-inline-start: 0px;
+	overflow: hidden;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+#breadcrumbs-slantbox li {
+	list-style-type: none;
+	float: left;
+	margin: 0 .25em 0 0;
+}
+
+#breadcrumbs-slantbox a {
+	background: map-get($theme-colors, info);
+	padding: .7em 1em;
+	float: left;
+	text-decoration: none;
+	color: black !important;
+	position: relative;
+    border-radius: $border-radius;
+}
+
+/*--------------- breadcrumb - hover ---------------*/
+#breadcrumbs-slantbox a:hover {
+	color: $dark !important;
+	background: map-get($theme-colors, secondary);
+	text-shadow: none;
+}
+
+/*--------------- last breadcrumb ---------------*/
+#breadcrumbs-slantbox li:last-child a {
+	font-weight: bold;
+	text-shadow: none;
+	background: map-get($theme-colors, secondary);
+	color: $dark !important;
+}
+
+/*--------------- last breadcrumb - hover ---------------*/
+#breadcrumbs-slantbox li:last-child a:hover {
+	font-weight: bold;
+	background: map-get($theme-colors, info);
+	color: black !important;
+}
+
+@media (max-width:map-get($grid-breakpoints, lg) - 1){
+	#breadcrumbs-slantbox {
+		display:none;
+	}
+}
