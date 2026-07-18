@@ -1,0 +1,20 @@
+/* Native estimate-request form (replaces the old GoHighLevel embed).
+   Self-contained so it can sit on any page of the theme. */
+.cn-quote-card{background:#fff;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.18);padding:1.75rem 1.5rem;text-align:left}
+.banner .cn-quote-card{box-shadow:0 10px 40px rgba(0,0,0,.35)}
+@media (max-width:991.98px){.banner .cn-quote-card{margin-top:1.5rem}}
+.cn-quote-title{font-size:1.35rem;font-weight:800;color:#212529;margin:0 0 .25rem}
+.cn-quote-sub{font-size:.9rem;color:#6c757d;margin:0 0 1rem}
+.cn-quote-form .cn-field{display:block;margin-bottom:.85rem}
+.cn-quote-form .cn-field>span{display:block;font-size:.8rem;font-weight:700;color:#495057;margin-bottom:.3rem}
+.cn-quote-form .cn-field>span em{font-style:normal;font-weight:500;color:#adb5bd}
+.cn-quote-form input[type=text],.cn-quote-form input[type=tel],.cn-quote-form input[type=email],.cn-quote-form select,.cn-quote-form textarea{width:100%;font:inherit;font-size:.95rem;color:#212529;background:#fff;border:1px solid #dee2e6;border-radius:8px;padding:.6rem .75rem;outline:none;transition:border-color .15s,box-shadow .15s}
+.cn-quote-form textarea{resize:vertical}
+.cn-quote-form input:focus,.cn-quote-form select:focus,.cn-quote-form textarea:focus{border-color:#f58307;box-shadow:0 0 0 3px rgba(245,131,7,.15)}
+.cn-hp{position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden}
+.cn-consent{display:flex;gap:.6rem;align-items:flex-start;cursor:pointer;margin:.35rem 0 .9rem}
+.cn-consent input{margin-top:.2rem;width:1rem;height:1rem;flex:0 0 auto;accent-color:#f58307}
+.cn-consent span{font-size:.75rem;line-height:1.45;color:#6c757d}
+.cn-consent a{color:#b35f02;font-weight:600}
+.cn-quote-error{font-size:.85rem;color:#dc3545;margin:0 0 .75rem}
+.cn-quote-submit{width:100%}
