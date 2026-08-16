@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-12 banner-content interior">
 				<div class="banner-title">
-					<span class="preheading">Reliable & Professional Services in <?= $companyCity ?></span>
+					<span class="preheading">Reliable &amp; Professional Services in <?= $companyCity ?></span>
 					<p class="banner-title"><?= $this->pageName ?></p>
 				</div>
 				<?= $breadcrumbs ?>

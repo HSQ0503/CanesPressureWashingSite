@@ -23,9 +23,7 @@
 <html lang="en">
 	<head>
 		<?php include(__DIR__  . "/../includes/meta.php"); ?>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">	
 		<?= $headContents; ?>		
-		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<?php include(__DIR__ . "/../includes/navigation.php"); ?>		

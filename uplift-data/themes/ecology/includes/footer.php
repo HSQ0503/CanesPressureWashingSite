@@ -58,11 +58,8 @@
 							</a>
 						</div>
 						<div class="social-links">
-							<a href="https://www.facebook.com/share/14Sx37RNTzr/?mibextid=wwXIfr" aria-label="facebook" target="_blank" rel="noopener">
+							<a href="https://www.facebook.com/profile.php?id=61577063917879" aria-label="facebook" target="_blank" rel="noopener">
 								<i class="bi bi-facebook"></i>
-							</a>
-							<a href="https://nextdoor.com/pages/root2roof-exteriors-windermere-fl/" aria-label="nextdoor" target="_blank" rel="noopener">
-								<i class="bi bi-house-fill"></i>
 							</a>
 						</div>
 					</div>
@@ -89,25 +86,13 @@
 					<div>
 						<span class="title">Service Areas</span>
 						<ul class="city-links">
-							<li>
-								<a href="/near-me/windermere-fl-pressure-washing">Windermere, FL</a>
-							</li>
-							<li>
-								<a href="/near-me/winter-garden-fl-pressure-washing">Winter Garden, FL</a>
-							</li>
-							<li>
-								<a href="/near-me/horizon-west-fl-pressure-washing">Horizon West, FL</a>
-							</li>
-							<li>
-								<a href="/near-me/ocoee-fl-pressure-washing">Ocoee, FL</a>
-							</li>
-							<li>
-								<a href="/near-me/dr-phillips-fl-pressure-washing">Dr. Phillips, FL</a>
-							</li>
-							<li>
-								<a href="/near-me">View All</a>
-							</li>
-						</ul>
+<li><a href="/near-me/west-palm-beach-fl-pressure-washing">West Palm Beach, FL</a></li>
+<li><a href="/near-me/palm-beach-gardens-fl-pressure-washing">Palm Beach Gardens, FL</a></li>
+<li><a href="/near-me/jupiter-fl-pressure-washing">Jupiter, FL</a></li>
+<li><a href="/near-me/north-palm-beach-fl-pressure-washing">North Palm Beach, FL</a></li>
+<li><a href="/near-me/wellington-fl-pressure-washing">Wellington, FL</a></li>
+<li><a href="/near-me">View All</a></li>
+</ul>
 					</div>
 					<div class="float-md-start">
 						<span class="title">Reviews</span>
@@ -142,7 +127,7 @@
 					</div>
 					<div class="extra-links">
 						<a href="/privacy">Privacy Policy</a>
-						<a href="/terms">Terms & Conditions</a>
+						<a href="/terms">Terms &amp; Conditions</a>
 						<a href="/sitemap">Sitemap</a>
 					</div>
 				</div>

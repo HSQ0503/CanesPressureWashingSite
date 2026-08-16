@@ -20,11 +20,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							</a>
 						</div>
 						<div class="social-links col-auto">
-							<a href="https://www.facebook.com/share/14Sx37RNTzr/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="facebook">
+							<a href="https://www.facebook.com/profile.php?id=61577063917879" target="_blank" rel="noopener" aria-label="facebook">
 								<i class="bi bi-facebook"></i>
-							</a>
-							<a href="https://nextdoor.com/pages/root2roof-exteriors-windermere-fl/" target="_blank" rel="noopener" aria-label="Nextdoor">
-								<i class="bi bi-house-fill"></i>
 							</a>
 						</div>
 					</div>
@@ -53,7 +50,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</a>
 							</div>
 							<div class="navigation-link-1" tabindex="0">
-								<a>
+								<a href="/services">
 									Services&nbsp;+
 								</a>
 								<div class="dropdown-content-1">
@@ -98,7 +95,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 										</a>
 									</div>
 									<div class="navigation-link-2" tabindex="0">
-										<a>
+										<a href="/services/commercial-pressure-washing">
 											Commercial Pressure Washing&nbsp;+
 										</a>
 										<div class="dropdown-content-2 dropdown-right">
@@ -142,7 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 							</div>
 							<div class="navigation-link-1"  tabindex="0">
-								<a>
+								<a href="/about-us">
 									About&nbsp;+
 								</a>
 								<div class="dropdown-content-1">
@@ -187,5 +184,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </nav>

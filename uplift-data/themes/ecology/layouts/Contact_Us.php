@@ -43,7 +43,7 @@
 										</h4>
 									</div>
 									<div class="ratio ratio-1x1 ">
-										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101004.4529441004!2d-84.29504199999998!3d37.710542450000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8842fd9358d6a67f%3A0xc8b6b847c0a32479!2sRichmond%2C%20KY!5e0!3m2!1sen!2sus!4v1755608854626!5m2!1sen!2sus" style="border:0; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+										<iframe title="Canes Pressure Washing service area map" src="https://www.google.com/maps?cid=18057157042656019781&amp;output=embed" style="border:0; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 									</div>
 								</div>
 							</div>

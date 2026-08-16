@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://canespressurewashing.com/sitemap.xml
+Sitemap: https://www.canespressurewashing.com/sitemap.xml
