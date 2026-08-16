@@ -89,6 +89,145 @@
 }
 
 /* CONTENT */
+.pelican-quote-concierge {
+	padding: 2.5rem 0;
+	background: $light;
+	border-top: 1px solid rgba($dark, .1);
+
+	&__card {
+		display: grid;
+		grid-template-columns: 10.25rem minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 2rem;
+		min-height: 12rem;
+		padding: 1.5rem 2rem 1.5rem 1rem;
+		background: $dark;
+		border-top: .35rem solid $secondary;
+		border-radius: $border-radius-lg;
+		box-shadow: 0 1rem 2.5rem rgba($dark, .16);
+		color: $white;
+		overflow: hidden;
+	}
+
+	&__mascot {
+		align-self: end;
+		display: flex;
+		justify-content: center;
+		margin-bottom: -1.5rem;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			max-height: 12rem;
+			object-fit: contain;
+			object-position: center bottom;
+		}
+	}
+
+	&__copy {
+		max-width: 42rem;
+
+		h2 {
+			margin-bottom: .65rem;
+			color: $white;
+			font-size: clamp(1.55rem, 3vw, 2.25rem);
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+			color: rgba($white, .82);
+			font-size: 1rem;
+			line-height: 1.6;
+		}
+	}
+
+	&__eyebrow {
+		margin-bottom: .4rem;
+		color: $secondary;
+		font-size: .8rem;
+		font-weight: 800;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+	}
+
+	&__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: .6rem;
+		min-height: 2.75rem;
+		padding: .8rem 1.15rem;
+		background: $secondary;
+		border: 2px solid $secondary;
+		border-radius: $border-radius-sm;
+		color: $dark;
+		font-weight: 800;
+		line-height: 1.2;
+		text-align: center;
+		text-decoration: none;
+		white-space: nowrap;
+		transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+		&:hover {
+			background: $white;
+			border-color: $white;
+			color: $dark;
+		}
+
+		&:focus-visible {
+			outline: 3px solid $white;
+			outline-offset: 3px;
+		}
+	}
+
+	@include media-breakpoint-down(lg) {
+		&__card {
+			grid-template-columns: 8rem minmax(0, 1fr);
+			gap: 1.25rem 1.5rem;
+		}
+
+		&__button {
+			grid-column: 2;
+			justify-self: start;
+		}
+
+		&__mascot {
+			grid-row: 1 / 3;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding: 1.5rem 0;
+
+		&__card {
+			grid-template-columns: 6.5rem minmax(0, 1fr);
+			gap: 1rem;
+			min-height: unset;
+			padding: 1.25rem 1rem 1.25rem .5rem;
+		}
+
+		&__mascot {
+			grid-row: 1;
+			align-self: end;
+			margin-bottom: -1.25rem;
+		}
+
+		&__copy h2 {
+			font-size: 1.45rem;
+		}
+
+		&__copy p:last-child {
+			display: none;
+		}
+
+		&__button {
+			grid-column: 1 / -1;
+			width: 100%;
+		}
+	}
+}
+
 #general {
 	.content-1 {
 		padding-top: 5rem;
