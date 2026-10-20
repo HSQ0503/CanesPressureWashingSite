@@ -87,6 +87,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
 <link href="/uplift-data/canes-header.css" rel="stylesheet" type="text/css" />
+<link href="/uplift-data/canes-theme.css" rel="stylesheet" type="text/css" />
+	<link href="/uplift-data/canes-ba-slider.css" rel="stylesheet" type="text/css" />
+	<link href="/uplift-data/canes-customizer.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		
@@ -271,11 +274,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h1>Trusted Choice for Thorough, High-Quality Window Cleaning Solutions</h1>
 <h2>Cleaning Properties in Palm Beach County</h2>
 <p>For fast, streak-free window cleaning, trust Canes Pressure Washing. If glare, pollen, and water spots are dulling your view, our local team can help. We clean interior and exterior glass with care, protect your home, and leave every pane sparkling. Call now for a friendly quote at <a href="tel:561-537-5674">561-537-5674</a>. Choose our <a href="/near-me/west-palm-beach-fl-pressure-washing">West Palm Beach</a>-based team for service in <a href="/near-me/palm-beach-fl-pressure-washing">Palm Beach</a>, <a href="/near-me/palm-beach-gardens-fl-pressure-washing">Palm Beach Gardens</a>, and beyond!</p>							</div>
-							<div class="col-12 col-lg-5 order-1 order-lg-2 text-center text-xl-start">
+							<div class="col-12 col-lg-5 order-1 order-lg-2 text-center text-xl-start">
 								<div class="service-image">
-									<picture>
-										<img src="/uplift-data/images/sections/quality3.jpg" alt="Window Cleaning" class="" />
-									</picture>
+									<figure class="canes-ba">
+										<div class="canes-ba__frame">
+											<img class="canes-ba__img" src="/uplift-data/images/mainGallery/window_2_after.jpg" alt="Window Cleaning after cleaning by Canes Pressure Washing" loading="lazy" decoding="async" />
+											<div class="canes-ba__before"><img src="/uplift-data/images/mainGallery/window_2_before.jpg" alt="Window Cleaning before cleaning" loading="lazy" decoding="async" /></div>
+											<span class="canes-ba__label canes-ba__label--before">Before</span>
+											<span class="canes-ba__label canes-ba__label--after">After</span>
+											<div class="canes-ba__divider" aria-hidden="true"><span class="canes-ba__handle"><i class="bi bi-arrow-left-right"></i></span></div>
+											<input type="range" class="canes-ba__range" min="0" max="100" value="50" aria-label="Compare window cleaning before and after" />
+										</div>
+										<figcaption><span>Window Cleaning</span></figcaption>
+									</figure>
 								</div>
 							</div>
 						</div>
@@ -336,6 +347,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 				</section>
 				
+				<section class="canes-custom" id="customize" aria-labelledby="custom-title">
+					<div class="container">
+						<div class="canes-custom__head">
+							<div>
+								<span class="canes-custom__kicker">Customize your window cleaning</span>
+								<h2 id="custom-title">Tell us about <span>your windows.</span></h2>
+								<p class="canes-custom__intro">Tell us a little about the job. Not sure? Canes can take a look virtually and recommend the right approach. We&#x27;re always open to custom requests.</p>
+							</div>
+							<div class="canes-custom__price"><small>Only</small><strong>$8–10</strong><span>per window</span></div>
+						</div>
+						<div class="canes-compare">
+							<div class="canes-compare__card canes-compare__card--them"><span class="canes-compare__name">Most window cleaners</span><span class="canes-compare__price"><strong>$10</strong> per window</span><ul><li class="is-yes"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Glass<span class="visually-hidden"> included</span></li><li class="is-no"><i class="bi bi-x-circle" aria-hidden="true"></i> Frames<span class="visually-hidden"> not included</span></li><li class="is-no"><i class="bi bi-x-circle" aria-hidden="true"></i> Sills<span class="visually-hidden"> not included</span></li><li class="is-no"><i class="bi bi-x-circle" aria-hidden="true"></i> Tracks<span class="visually-hidden"> not included</span></li></ul></div>
+							<span class="canes-compare__vs" aria-hidden="true">vs</span>
+							<div class="canes-compare__card canes-compare__card--us"><span class="canes-compare__name">Canes Pressure Washing</span><span class="canes-compare__price"><strong>$8–10</strong> per window</span><ul><li class="is-yes"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Glass<span class="visually-hidden"> included</span></li><li class="is-yes"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Frames<span class="visually-hidden"> included</span></li><li class="is-yes"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Sills<span class="visually-hidden"> included</span></li><li class="is-yes"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Tracks<span class="visually-hidden"> included</span></li></ul></div>
+						</div>
+						<div class="canes-custom__steps">
+							<fieldset>
+								<legend><span class="canes-custom__step-num">1</span> About how many windows?</legend>
+								<div class="canes-custom__options">
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-1" value="Not sure?" data-chip="Canes will take a look" checked /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-camera-video"></i></span><span class="canes-option__text"><strong>Not sure?</strong><span>Have Canes take a look virtually</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-1" value="Up to 15" data-chip="Up to 15" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-window"></i></span><span class="canes-option__text"><strong>Up to 15</strong><span>Smaller home or condo</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-1" value="16 to 30" data-chip="16 to 30" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-window-split"></i></span><span class="canes-option__text"><strong>16 to 30</strong><span>Typical family home</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-1" value="30+" data-chip="30+" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-grid-3x3-gap"></i></span><span class="canes-option__text"><strong>30+</strong><span>Large home or lots of glass</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend><span class="canes-custom__step-num">2</span> How tall is your home?</legend>
+								<div class="canes-custom__options">
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-2" value="Not sure?" data-chip="Canes will take a look" checked /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-camera-video"></i></span><span class="canes-option__text"><strong>Not sure?</strong><span>Have Canes take a look virtually</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-2" value="1 story" data-chip="1 story" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-1-circle"></i></span><span class="canes-option__text"><strong>1 story</strong><span>Single-level home</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-2" value="2 stories" data-chip="2 stories" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-2-circle"></i></span><span class="canes-option__text"><strong>2 stories</strong><span>Two-level home</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="window-cleaning-step-2" value="3+ stories" data-chip="3+ stories" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-3-circle"></i></span><span class="canes-option__text"><strong>3+ stories</strong><span>Taller or hard-to-reach</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+								</div>
+							</fieldset>
+							<fieldset class="canes-custom__addons">
+								<legend><span class="canes-custom__step-num"><i class="bi bi-plus-lg"></i></span> Add-ons</legend>
+								<div class="canes-custom__options">
+									<label class="canes-option"><input type="checkbox" name="window-cleaning-addon-1" value="Add screen cleaning" data-chip="+ Screen cleaning ($5/screen)" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-grid-3x3"></i></span><span class="canes-option__text"><strong>Add screen cleaning</strong><span>+$5 per screen</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+								</div>
+							</fieldset>
+						</div>
+						<div class="canes-custom__summary">
+							<div><span class="canes-custom__summary-label">Your picks</span><div class="canes-custom__chips" aria-live="polite"></div></div>
+							<a href="#get-quote" class="canes-custom__cta">Get my quote <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</section>
 				<section class="content-2">
 					<div class="container">
 						<div class="service-content">
@@ -468,7 +526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</section>
 	
 				
-				<section class="faq">
+				<section class="faq" id="get-quote">
 					<picture>
 						<img src="/uplift-data/images/banners/bg.jpg" class="background-image" alt="FAQ Background" />
 					</picture>
@@ -854,5 +912,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 	</div>
 </footer>		<script src="/uplift-data/canes-quote-form.js" defer></script>
+	<script src="/uplift-data/canes-ba-slider.js" defer></script>
+	<script src="/uplift-data/canes-customizer.js" defer></script>
 </body>
 </html>

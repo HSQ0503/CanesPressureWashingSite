@@ -1,0 +1,604 @@
+/* Service pages: "customize your service" picker. Options are radio buttons styled as cards. */
+.canes-custom {
+  --pc-orange: #f25a0a;
+  --pc-orange-light: #ff8a3d;
+  --pc-ink: #111;
+  --pc-card: #1b1b1b;
+  --pc-line: rgba(255, 255, 255, .12);
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(242, 90, 10, .28), transparent 34rem),
+    radial-gradient(circle at 95% 100%, rgba(242, 90, 10, .18), transparent 30rem),
+    #101010;
+  color: #fff;
+}
+
+.canes-custom__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.canes-custom__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  color: var(--pc-orange-light);
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.canes-custom__kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  background: var(--pc-orange);
+}
+
+.canes-custom h2 {
+  max-width: 760px;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.9rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: .98;
+  text-transform: uppercase;
+}
+
+.canes-custom h2 span {
+  color: var(--pc-orange-light);
+}
+
+.canes-custom__intro {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(255, 255, 255, .8);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.canes-custom__price {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.1rem 1.5rem;
+  border-radius: 1.1rem;
+  background: var(--pc-orange);
+  color: var(--pc-ink);
+  box-shadow: 0 18px 40px rgba(242, 90, 10, .35);
+  transform: rotate(-2deg);
+}
+
+.canes-custom__price small {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.canes-custom__price strong {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: .95;
+}
+
+.canes-custom__price span {
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.canes-custom__steps {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.25rem;
+}
+
+.canes-custom fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--pc-line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, .04);
+}
+
+.canes-custom legend {
+  display: flex;
+  float: left;
+  width: 100%;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1.1rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.canes-custom legend + * {
+  clear: both;
+}
+
+.canes-custom__step-num {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--pc-orange);
+  color: var(--pc-ink);
+  font-size: .95rem;
+}
+
+.canes-custom__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.canes-custom__options--finish {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Each option is a real radio button styled as a card. */
+.canes-option {
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+}
+
+.canes-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.canes-option__card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: .85rem;
+  padding: .85rem;
+  border: 2px solid var(--pc-line);
+  border-radius: .9rem;
+  background: var(--pc-card);
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.canes-option:hover .canes-option__card {
+  border-color: rgba(255, 138, 61, .6);
+  transform: translateY(-2px);
+}
+
+.canes-option input:checked + .canes-option__card {
+  border-color: var(--pc-orange);
+  background: rgba(242, 90, 10, .14);
+  box-shadow: 0 0 0 4px rgba(242, 90, 10, .18);
+}
+
+.canes-option input:focus-visible + .canes-option__card {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.canes-option__text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .15rem;
+}
+
+.canes-option__text strong {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.canes-option__text span {
+  color: rgba(255, 255, 255, .65);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.canes-option__check {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  color: transparent;
+  font-size: .8rem;
+}
+
+.canes-option input:checked + .canes-option__card .canes-option__check {
+  border-color: var(--pc-orange);
+  background: var(--pc-orange);
+  color: var(--pc-ink);
+}
+
+/* Sand swatches: base color plus two layers of fine grain so they read like silica sand. */
+.canes-sand-swatch {
+  --grain-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -0.7'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -0.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 50%;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, .25);
+}
+
+.canes-sand-swatch--recommend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--pc-orange);
+  background: rgba(242, 90, 10, .16);
+  color: var(--pc-orange-light);
+  font-size: 1.3rem;
+}
+
+.canes-sand-swatch--black {
+  background: var(--grain-light), var(--grain-dark), #1e1e1e;
+}
+
+.canes-sand-swatch--river-rock {
+  background:
+    var(--grain-light),
+    var(--grain-dark),
+    radial-gradient(circle at 25% 30%, #a08c72 0 18%, transparent 19%),
+    radial-gradient(circle at 70% 25%, #5a4d40 0 14%, transparent 15%),
+    radial-gradient(circle at 60% 70%, #c9b597 0 16%, transparent 17%),
+    radial-gradient(circle at 25% 75%, #6e6256 0 15%, transparent 16%),
+    #85745f;
+}
+
+.canes-sand-swatch--white {
+  background: var(--grain-dark), #f3efe6;
+  background-blend-mode: soft-light, normal;
+}
+
+.canes-sand-swatch--beige {
+  background: var(--grain-light), var(--grain-dark), #d6bd92;
+}
+
+/* Finish previews: the same paver pattern with more shine as the finish gets glossier. */
+.canes-finish-preview {
+  width: 4.25rem;
+  height: 3rem;
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: .55rem;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 15px, rgba(0, 0, 0, .35) 15px 17px),
+    repeating-linear-gradient(0deg, transparent 0 10px, rgba(0, 0, 0, .35) 10px 12px),
+    #8f6b52;
+}
+
+.canes-finish-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.canes-finish-preview--natural {
+  filter: saturate(.85);
+}
+
+.canes-finish-preview--semi {
+  filter: saturate(1.2) contrast(1.05);
+}
+
+.canes-finish-preview--semi::after {
+  background: linear-gradient(125deg, transparent 30%, rgba(255, 255, 255, .28) 45%, transparent 60%);
+}
+
+.canes-finish-preview--high {
+  filter: saturate(1.45) contrast(1.12) brightness(.92);
+}
+
+.canes-finish-preview--high::after {
+  background:
+    linear-gradient(125deg, transparent 22%, rgba(255, 255, 255, .55) 40%, rgba(255, 255, 255, .1) 50%, transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, .18), transparent 55%);
+}
+
+.canes-finish-preview--recommend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--pc-orange);
+  background: rgba(242, 90, 10, .16);
+  color: var(--pc-orange-light);
+  font-size: 1.3rem;
+}
+
+/* Summary bar */
+.canes-custom__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  color: var(--pc-ink);
+}
+
+.canes-custom__summary-label {
+  display: block;
+  margin-bottom: .35rem;
+  color: #6b665d;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.canes-custom__chips {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.canes-custom__chips span {
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  background: #f5f2eb;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.canes-custom__chips span::before {
+  content: "\2713  ";
+  color: var(--pc-orange);
+}
+
+.canes-custom__cta {
+  display: inline-flex;
+  min-height: 3.4rem;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem 1.6rem;
+  border-radius: .7rem;
+  background: var(--pc-orange);
+  color: var(--pc-ink);
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px rgba(242, 90, 10, .35);
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.canes-custom__cta:hover {
+  background: #d84800;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.canes-custom__note {
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, .6);
+  font-size: .85rem;
+}
+
+@media (max-width: 991.98px) {
+  .canes-custom__steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-custom__options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .canes-custom__price {
+    transform: none;
+  }
+
+  .canes-custom__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canes-option__card,
+  .canes-custom__cta {
+    transition: none;
+  }
+}
+
+/* Leave room for the sticky header when "Get my quote" jumps to the quote section. */
+#get-quote {
+  scroll-margin-top: 6rem;
+}
+
+/* Icon tile for options without a swatch or finish preview. */
+.canes-option-icon {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, .16);
+  border-radius: .75rem;
+  background: rgba(255, 255, 255, .06);
+  color: var(--pc-orange-light);
+  font-size: 1.35rem;
+}
+
+.canes-option input:checked + .canes-option__card .canes-option-icon {
+  border-color: var(--pc-orange);
+  background: var(--pc-orange);
+  color: var(--pc-ink);
+}
+
+/* A single step spans the full width and shows its options in more columns. */
+.canes-custom__steps--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.canes-custom__steps--single .canes-custom__options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 991.98px) {
+  .canes-custom__steps--single .canes-custom__options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-custom__steps--single .canes-custom__options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Add-ons (checkboxes) span the full width under the steps. */
+.canes-custom__addons {
+  grid-column: 1 / -1;
+}
+
+.canes-custom__addons .canes-custom__step-num i {
+  font-size: .9rem;
+}
+
+/* "Them vs Canes" price comparison. */
+.canes-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.canes-compare__card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1.4rem 1.5rem;
+  border-radius: 1.25rem;
+}
+
+.canes-compare__card--them {
+  border: 1px solid var(--pc-line);
+  background: rgba(255, 255, 255, .04);
+  color: rgba(255, 255, 255, .7);
+}
+
+.canes-compare__card--us {
+  border: 2px solid var(--pc-orange);
+  background: linear-gradient(145deg, rgba(242, 90, 10, .28), rgba(242, 90, 10, .08));
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(242, 90, 10, .25);
+}
+
+.canes-compare__name {
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.canes-compare__card--us .canes-compare__name {
+  color: var(--pc-orange-light);
+}
+
+.canes-compare__price {
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.canes-compare__price strong {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.canes-compare__card--them .canes-compare__price strong {
+  color: rgba(255, 255, 255, .75);
+}
+
+.canes-compare__card ul {
+  display: flex;
+  gap: .4rem 1rem;
+  flex-wrap: wrap;
+  margin: .25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.canes-compare__card li {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.canes-compare__card li.is-yes i {
+  color: var(--pc-orange-light);
+}
+
+.canes-compare__card li.is-no {
+  color: rgba(255, 255, 255, .4);
+  text-decoration: line-through;
+}
+
+.canes-compare__vs {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pc-ink);
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+  .canes-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .canes-compare__vs {
+    margin: -.5rem auto;
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -86,6 +86,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Canes Pressure Washing restores roofs, homes, pavers, windows, and outdoor spaces across Palm Beach County. Request a free quote today.">
 <meta name="twitter:image" content="https://www.canespressurewashing.com/uplift-data/images/sections/IMG_1985.jpg">
 	<link href="/uplift-data/canes-header.css" rel="stylesheet" type="text/css" />
+<link href="/uplift-data/canes-theme.css" rel="stylesheet" type="text/css" />
+	<link href="/uplift-data/canes-ba-slider.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body class="home-page">
 		
@@ -278,11 +280,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 						<a href="/services" class="home-arrow-link">View all services <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 					</div>
-					<div class="home-service-grid">
-						<a href="/services/roof-cleaning" class="home-service-card">
-							<img src="/uplift-data/images/services-home/New/roof-cleaning.jpg" alt="Roof cleaning result" width="450" height="450" loading="lazy" decoding="async" />
-							<div><span class="home-service-card__number">01</span><h3>Roof Cleaning</h3><p>Remove dark streaks with a surface-appropriate soft-wash approach.</p><span class="home-service-card__link">Explore roof cleaning <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
-						</a>
+					<div class="home-service-grid">
+						<div class="home-service-card home-service-card--ba" data-href="/services/roof-cleaning">
+							<figure class="canes-ba canes-ba--card">
+								<div class="canes-ba__frame">
+									<img class="canes-ba__img" src="/uplift-data/images/mainGallery/roof_after.jpg" alt="Roof Cleaning after cleaning by Canes Pressure Washing" loading="lazy" decoding="async" />
+									<div class="canes-ba__before"><img src="/uplift-data/images/mainGallery/roof_before.jpg" alt="Roof Cleaning before cleaning" loading="lazy" decoding="async" /></div>
+									<span class="canes-ba__label canes-ba__label--before">Before</span>
+									<span class="canes-ba__label canes-ba__label--after">After</span>
+									<div class="canes-ba__divider" aria-hidden="true"><span class="canes-ba__handle"><i class="bi bi-arrow-left-right"></i></span></div>
+									<input type="range" class="canes-ba__range" min="0" max="100" value="50" aria-label="Compare roof cleaning before and after" />
+								</div>
+							</figure>
+							<div><span class="home-service-card__number">01</span><h3>Roof Cleaning</h3><p>Remove dark streaks with a surface-appropriate soft-wash approach.</p><a href="/services/roof-cleaning" class="home-service-card__link home-service-card__stretch">Explore roof cleaning <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+						</div>
 						<a href="/services/house-washing" class="home-service-card">
 							<img src="/uplift-data/images/services-home/New/house-washing.jpg" alt="Canes technician washing a home exterior" width="450" height="450" loading="lazy" decoding="async" />
 							<div><span class="home-service-card__number">02</span><h3>House Washing</h3><p>Clear algae and buildup while treating siding, trim, and landscaping with care.</p><span class="home-service-card__link">Explore house washing <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
@@ -290,15 +301,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<a href="/services/driveway-cleaning" class="home-service-card">
 							<img src="/uplift-data/images/services-home/New/driveway-cleaning.jpg" alt="Freshly cleaned driveway" width="450" height="450" loading="lazy" decoding="async" />
 							<div><span class="home-service-card__number">03</span><h3>Driveways &amp; Patios</h3><p>Lift grime from high-traffic concrete and outdoor living areas.</p><span class="home-service-card__link">Explore surface cleaning <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
-						</a>
-						<a href="/services/paver-sealing" class="home-service-card">
-							<img src="/uplift-data/images/services-home/paver-sealing.jpg" alt="Paver cleaning and sealing result" width="450" height="450" loading="lazy" decoding="async" />
-							<div><span class="home-service-card__number">04</span><h3>Paver Care</h3><p>Clean and seal pavers to revive color and help protect the finished surface.</p><span class="home-service-card__link">Explore paver care <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
-						</a>
-						<a href="/services/window-cleaning" class="home-service-card">
-							<img src="/uplift-data/images/services-home/window-cleaning.jpg" alt="Window cleaning before and after" width="450" height="450" loading="lazy" decoding="async" />
-							<div><span class="home-service-card__number">05</span><h3>Window Cleaning</h3><p>Brighten the view with careful cleaning for glass, frames, and exterior buildup.</p><span class="home-service-card__link">Explore window cleaning <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
-						</a>
+						</a>
+						<div class="home-service-card home-service-card--ba" data-href="/services/paver-sealing">
+							<figure class="canes-ba canes-ba--card">
+								<div class="canes-ba__frame">
+									<img class="canes-ba__img" src="/uplift-data/images/before-after/paver-sealing-after.jpg" alt="Paver Sealing after cleaning by Canes Pressure Washing" loading="lazy" decoding="async" />
+									<div class="canes-ba__before"><img src="/uplift-data/images/before-after/paver-sealing-before.jpg" alt="Paver Sealing before cleaning" loading="lazy" decoding="async" /></div>
+									<span class="canes-ba__label canes-ba__label--before">Before</span>
+									<span class="canes-ba__label canes-ba__label--after">After</span>
+									<div class="canes-ba__divider" aria-hidden="true"><span class="canes-ba__handle"><i class="bi bi-arrow-left-right"></i></span></div>
+									<input type="range" class="canes-ba__range" min="0" max="100" value="50" aria-label="Compare paver sealing before and after" />
+								</div>
+							</figure>
+							<div><span class="home-service-card__number">04</span><h3>Paver Sealing</h3><p>We deep-clean your pavers, refill the joints with fresh sand, then seal them to lock in color and protection.</p><a href="/services/paver-sealing" class="home-service-card__link home-service-card__stretch">Explore paver sealing <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+						</div>
+						<div class="home-service-card home-service-card--ba" data-href="/services/window-cleaning">
+							<figure class="canes-ba canes-ba--card">
+								<div class="canes-ba__frame">
+									<img class="canes-ba__img" src="/uplift-data/images/mainGallery/window_2_after.jpg" alt="Window Cleaning after cleaning by Canes Pressure Washing" loading="lazy" decoding="async" />
+									<div class="canes-ba__before"><img src="/uplift-data/images/mainGallery/window_2_before.jpg" alt="Window Cleaning before cleaning" loading="lazy" decoding="async" /></div>
+									<span class="canes-ba__label canes-ba__label--before">Before</span>
+									<span class="canes-ba__label canes-ba__label--after">After</span>
+									<div class="canes-ba__divider" aria-hidden="true"><span class="canes-ba__handle"><i class="bi bi-arrow-left-right"></i></span></div>
+									<input type="range" class="canes-ba__range" min="0" max="100" value="50" aria-label="Compare window cleaning before and after" />
+								</div>
+							</figure>
+							<div><span class="home-service-card__number">05</span><h3>Window Cleaning</h3><p>Brighten the view with careful cleaning for glass, frames, and exterior buildup.</p><a href="/services/window-cleaning" class="home-service-card__link home-service-card__stretch">Explore window cleaning <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+						</div>
 						<a href="/services/commercial-pressure-washing" class="home-service-card">
 							<img src="/uplift-data/images/services-home/New/commercial-pressure-washing.jpg" alt="Canes commercial exterior cleaning crew" width="500" height="300" loading="lazy" decoding="async" />
 							<div><span class="home-service-card__number">06</span><h3>Commercial Cleaning</h3><p>Keep storefronts, buildings, and shared spaces ready for customers.</p><span class="home-service-card__link">Explore commercial service <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
@@ -584,5 +613,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </footer>	
 		<script src="/uplift-data/canes-quote-form.js" defer></script>
+	<script src="/uplift-data/canes-ba-slider.js" defer></script>
 </body>
 </html>

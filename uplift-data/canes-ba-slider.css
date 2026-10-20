@@ -1,0 +1,189 @@
+/* Before/after comparison slider: drag the divider (or use arrow keys) to reveal the before photo. */
+.canes-ba {
+  margin: 0;
+  text-align: left;
+}
+
+.canes-ba__frame {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 1.1rem;
+  background: #1b1b1b;
+  box-shadow: 0 18px 40px rgba(20, 20, 20, .2);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.canes-ba__img,
+.canes-ba__before img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.canes-ba__before {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.canes-ba__label {
+  position: absolute;
+  z-index: 2;
+  top: .9rem;
+  padding: .3rem .65rem;
+  border-radius: .35rem;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.canes-ba__label--before {
+  left: .9rem;
+  background: rgba(17, 17, 17, .88);
+  color: #fff;
+}
+
+.canes-ba__label--after {
+  right: .9rem;
+  background: #f25a0a;
+  color: #111;
+}
+
+.canes-ba__divider {
+  width: 3px;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .35);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.canes-ba__handle {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #f25a0a;
+  color: #111;
+  font-size: 1.35rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+  transform: translate(-50%, -50%);
+}
+
+/* Keyboard and screen-reader control; the frame handles mouse and touch dragging. */
+.canes-ba__range {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.canes-ba__frame:has(.canes-ba__range:focus-visible) {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 4px;
+}
+
+.canes-ba figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: .75rem;
+  color: #151515;
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+.canes-ba figcaption span + span {
+  color: #6b665d;
+  font-weight: 600;
+}
+
+/* Home page service cards: wide photo that fills the top of the card. */
+.canes-ba--card .canes-ba__frame {
+  aspect-ratio: 16 / 10;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.canes-ba--card .canes-ba__label {
+  top: .7rem;
+  font-size: .82rem;
+}
+
+.canes-ba--card .canes-ba__label--before {
+  left: .7rem;
+}
+
+.canes-ba--card .canes-ba__label--after {
+  right: .7rem;
+}
+
+.canes-ba--card .canes-ba__handle {
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.15rem;
+}
+
+/* The card's text area stays one big link to the service page; the slider above it does not navigate. */
+.home-service-card__stretch {
+  text-decoration: none;
+}
+
+.home-service-card__stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.home-service-card--ba:has(.home-service-card__stretch:focus-visible) {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 4px;
+}
+
+.home-service-card__stretch:focus-visible {
+  outline: none;
+}
+
+/* Service pages: the theme floats .service-image, which would shrink the slider to nothing. */
+.service-image:has(.canes-ba) {
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+.service-image .canes-ba {
+  width: 100%;
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.service-image .canes-ba img {
+  border-radius: 0;
+}

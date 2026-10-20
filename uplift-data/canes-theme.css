@@ -1,0 +1,80 @@
+/*
+ * Site-wide Canes look: bold condensed uppercase headings with orange accents, and the
+ * "15% first-time customer" banner as solid bright orange. Body text keeps the theme font.
+ */
+:root {
+  --canes-orange: #f25a0a;
+  --canes-orange-light: #ff8a3d;
+  --canes-ink: #111;
+}
+
+/* Page titles and section headings. !important overrides per-section theme fonts and tracking. */
+body :is(h1, h2),
+.banner-title {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: .005em !important;
+  text-transform: uppercase !important;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+  line-height: 1;
+}
+
+/* Interior page banners: big title, orange label above it. */
+.banner .banner-title {
+  font-size: clamp(2.6rem, 6vw, 4.6rem) !important;
+  line-height: .95;
+}
+
+.banner .preheading {
+  color: var(--canes-orange-light) !important;
+}
+
+/* Words the theme already highlights inside headings turn orange. */
+:is(h1, h2) .highlight {
+  color: var(--canes-orange);
+}
+
+/* "Don't miss your 15%" banner: solid bright orange, no background photo. */
+.cta-1 {
+  background: var(--canes-orange) !important;
+  color: var(--canes-ink) !important;
+  isolation: isolate;
+}
+
+.cta-1 picture,
+.cta-1 .background-image {
+  display: none !important;
+}
+
+.cta-1 h2,
+.cta-1 .preheading {
+  color: var(--canes-ink) !important;
+}
+
+.cta-1 h2 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.cta-1 .preheading {
+  opacity: .8;
+}
+
+.cta-1 .btn-primary {
+  border-color: #fff;
+  background: #fff;
+  color: var(--canes-ink);
+}
+
+.cta-1 .btn-primary:hover {
+  border-color: var(--canes-ink);
+  background: var(--canes-ink);
+  color: #fff;
+}

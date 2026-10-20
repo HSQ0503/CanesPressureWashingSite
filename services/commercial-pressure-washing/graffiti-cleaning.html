@@ -87,6 +87,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
 <link href="/uplift-data/canes-header.css" rel="stylesheet" type="text/css" />
+<link href="/uplift-data/canes-theme.css" rel="stylesheet" type="text/css" />
+	<link href="/uplift-data/canes-customizer.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		
@@ -317,6 +319,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 				</section>
 				
+				<section class="canes-custom" id="customize" aria-labelledby="custom-title">
+					<div class="container">
+						<div class="canes-custom__head">
+							<div>
+								<span class="canes-custom__kicker">Customize your graffiti removal</span>
+								<h2 id="custom-title">Tell us about <span>the graffiti.</span></h2>
+								<p class="canes-custom__intro">Tell us a little about the job. Not sure? Canes can take a look virtually and recommend the right approach. We&#x27;re always open to custom requests.</p>
+							</div>
+							<div class="canes-custom__price"><small>Every job starts with a</small><strong>Free</strong><span>quote</span></div>
+						</div>
+						<div class="canes-custom__steps">
+							<fieldset>
+								<legend><span class="canes-custom__step-num">1</span> What surface is it on?</legend>
+								<div class="canes-custom__options">
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Not sure?" data-chip="Canes will take a look" checked /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-camera-video"></i></span><span class="canes-option__text"><strong>Not sure?</strong><span>Have Canes take a look virtually</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Brick" data-chip="Brick" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-bricks"></i></span><span class="canes-option__text"><strong>Brick</strong><span>Porous masonry</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Concrete or block" data-chip="Concrete or block" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-square"></i></span><span class="canes-option__text"><strong>Concrete or block</strong><span>Walls and barriers</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Stucco" data-chip="Stucco" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-building"></i></span><span class="canes-option__text"><strong>Stucco</strong><span>Textured exterior</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Metal" data-chip="Metal" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-layers"></i></span><span class="canes-option__text"><strong>Metal</strong><span>Doors, boxes, and signs</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-1" value="Painted surface" data-chip="Painted surface" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-paint-bucket"></i></span><span class="canes-option__text"><strong>Painted surface</strong><span>Needs a gentle approach</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend><span class="canes-custom__step-num">2</span> How much is there?</legend>
+								<div class="canes-custom__options">
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-2" value="Not sure?" data-chip="Canes will take a look" checked /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-camera-video"></i></span><span class="canes-option__text"><strong>Not sure?</strong><span>Have Canes take a look virtually</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-2" value="Small tag" data-chip="Small tag" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-pencil"></i></span><span class="canes-option__text"><strong>Small tag</strong><span>One small area</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+									<label class="canes-option"><input type="radio" name="graffiti-cleaning-step-2" value="Large or multiple" data-chip="Large or multiple" /><span class="canes-option__card"><span class="canes-option-icon" aria-hidden="true"><i class="bi bi-easel"></i></span><span class="canes-option__text"><strong>Large or multiple</strong><span>Murals or several spots</span></span><span class="canes-option__check" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></label>
+								</div>
+							</fieldset>
+						</div>
+						<div class="canes-custom__summary">
+							<div><span class="canes-custom__summary-label">Your picks</span><div class="canes-custom__chips" aria-live="polite"></div></div>
+							<a href="#get-quote" class="canes-custom__cta">Get my quote <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</section>
 				<section class="content-2">
 					<div class="container">
 						<div class="service-content">
@@ -488,7 +527,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</section>
 	
 				
-				<section class="faq">
+				<section class="faq" id="get-quote">
 					<picture>
 						<img src="/uplift-data/images/banners/bg.jpg" class="background-image" alt="FAQ Background" />
 					</picture>
@@ -874,5 +913,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 	</div>
 </footer>		<script src="/uplift-data/canes-quote-form.js" defer></script>
+	<script src="/uplift-data/canes-customizer.js" defer></script>
 </body>
 </html>
