@@ -1,6 +1,6 @@
 export class Navigation {
 	constructor() {
-		this.mobileWidth = 1199;
+		this.mobileWidth = 1024;
 		this.menuOpen = false;
 		this.labelPrimaryNavigation();
 		this.initHeaderQuoteButton();

@@ -89,6 +89,22 @@
   color: #151515;
 }
 
+.canes-reviews-pill > * {
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .canes-reviews-pill {
+    flex-wrap: wrap;
+    row-gap: .2rem;
+    border-radius: 1.1rem;
+  }
+
+  .canes-reviews-pill__google {
+    display: none;
+  }
+}
+
 .canes-reviews-pill > span:not(.canes-reviews-pill__stars) {
   color: #6b665d;
 }

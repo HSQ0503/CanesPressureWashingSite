@@ -1,0 +1,600 @@
+/*
+ * Site header: dark info top bar that scrolls away, a sticky dark main bar, a slide-out drawer
+ * below 1025px, and a fixed Call / Quote bar on phones. Breakpoints match Navigation.js (1024).
+ */
+.canes-header {
+  --canes-header-orange: #f25a0a;
+  --canes-header-orange-light: #ff8a3d;
+  --canes-header-bar: #161616;
+  --canes-header-top: #0d0d0d;
+  --canes-header-line: rgba(255, 255, 255, .1);
+  --canes-topbar-h: 3.25rem;
+
+  /* Only the main bar stays pinned; the top bar scrolls off. */
+  top: calc(-1 * var(--canes-topbar-h));
+}
+
+/* ---------- Top bar ---------- */
+.canes-header .navigation-topbar {
+  height: var(--canes-topbar-h);
+  overflow: hidden;
+  background: var(--canes-header-top);
+}
+
+.canes-topbar {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.canes-topbar__info {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, .88);
+  font-size: .92rem;
+  font-weight: 600;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.canes-topbar__info li {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.canes-topbar__info i {
+  color: var(--canes-header-orange);
+}
+
+.canes-header .navigation-topbar .social-links {
+  flex: 0 0 auto;
+}
+
+.canes-header .navigation-topbar .social-links a {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-color: var(--canes-header-orange);
+  border-radius: .55rem;
+  background: var(--canes-header-orange);
+  color: #111;
+  font-size: 1.1rem;
+}
+
+.canes-header .navigation-topbar .social-links a:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #111;
+}
+
+/* ---------- Main bar ---------- */
+.canes-header .navigation-bottom {
+  border-top: 1px solid var(--canes-header-line);
+  border-bottom: 1px solid var(--canes-header-line);
+  background: var(--canes-header-bar);
+  box-shadow: 0 .6rem 1.75rem rgba(0, 0, 0, .28);
+}
+
+.canes-header .navigation-bottom .navigation-container {
+  padding: .7rem 0;
+}
+
+.canes-header .navigation-bottom .navigation-container .navigation-logo-container,
+.canes-header .navigation-bottom .navigation-container .navigation-logo-container.interior {
+  width: 10rem !important;
+}
+
+.canes-header__call {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.canes-header__call-icon {
+  display: none;
+}
+
+.canes-header__call-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.canes-header__call small {
+  margin-bottom: .3rem;
+  color: rgba(255, 255, 255, .7);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.canes-header__call strong {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  transition: color .2s ease;
+}
+
+.canes-header__call:hover {
+  color: #fff;
+}
+
+.canes-header__call:hover strong {
+  color: var(--canes-header-orange-light);
+}
+
+.canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button {
+  min-height: 3.4rem;
+  padding: .8rem 1.6rem;
+  border-color: var(--canes-header-orange);
+  border-radius: .55rem;
+  background: var(--canes-header-orange);
+  color: #111;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(242, 90, 10, .3);
+}
+
+.canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #111;
+}
+
+.canes-header .navigation-bottom .navigation-container .menu-button-container .menu-open-button {
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: .55rem;
+  color: #fff;
+}
+
+.canes-header .navigation-bottom .navigation-container .menu-button-container .menu-open-button i {
+  font-size: 1.8rem;
+}
+
+.canes-drawer-logo {
+  display: none;
+}
+
+/* ---------- Desktop menu (1025px and up) ---------- */
+@media (min-width: 1025px) {
+  /* Undo the theme's slide-out styles, which otherwise apply up to 1199px. */
+  .canes-header .navigation-bottom .navigation-container {
+    justify-content: flex-start;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items {
+    display: flex;
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: auto;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .1rem;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .menu-top {
+    display: none;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 {
+    width: auto;
+    height: 100%;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:hover,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:focus-within {
+    background: transparent;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a {
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    gap: .35rem;
+    padding: .65rem .85rem;
+    border-bottom: 0;
+    color: #fff;
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a:hover {
+    background: transparent;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a::after {
+    content: "";
+    height: 3px;
+    position: absolute;
+    right: .85rem;
+    bottom: 0;
+    left: .85rem;
+    border-radius: 3px;
+    background: var(--canes-header-orange);
+    transform: scaleX(0);
+    transition: transform .2s ease;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:hover > a,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:focus-within > a,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1.is-current > a {
+    color: var(--canes-header-orange-light);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:hover > a::after,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:focus-within > a::after,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1.is-current > a::after {
+    transform: scaleX(1);
+  }
+
+  .canes-header .navigation-link-1 > a .bi-caret-down-fill {
+    padding: 0;
+    font-size: .7rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 15rem;
+    margin: 0;
+    padding: .4rem;
+    border: 1px solid var(--canes-header-line);
+    border-radius: .7rem;
+    background: #1d1d1d;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:hover > .dropdown-content-1,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1:focus-within > .dropdown-content-1 {
+    display: block;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2 {
+    border-radius: .45rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2 > a {
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .55rem .8rem;
+    border-bottom: 0;
+    color: rgba(255, 255, 255, .9);
+    font-size: .98rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2:hover,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2:focus-within {
+    background: rgba(242, 90, 10, .16);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2 > a:hover {
+    background: transparent;
+    color: #fff;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container {
+    flex-grow: 1;
+    gap: 1.25rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container .menu-open-button {
+    display: none !important;
+  }
+
+  .canes-header__call {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--canes-header-line);
+  }
+}
+
+/* Tighter desktop sizes so the full menu fits between 1025px and 1279px, like Swift's. */
+@media (min-width: 1025px) and (max-width: 1279.98px) {
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container,
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container.interior {
+    width: 8.25rem !important;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a {
+    padding: .6rem .55rem;
+    font-size: .95rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a::after {
+    right: .55rem;
+    left: .55rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container {
+    gap: .9rem;
+  }
+
+  .canes-header__call {
+    padding-left: .9rem;
+  }
+
+  .canes-header__call strong {
+    font-size: 1.45rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button {
+    padding: .7rem 1.1rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1149.98px) {
+  .canes-header .navigation-bottom .navigation-container {
+    gap: .9rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container,
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container.interior {
+    width: 7.5rem !important;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a {
+    padding-inline: .45rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container {
+    gap: .75rem;
+  }
+
+  .canes-header__call {
+    padding-left: .75rem;
+  }
+
+  .canes-header__call strong {
+    font-size: 1.3rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button {
+    padding-inline: .9rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------- Drawer, tablet and phone (1024px and below) ---------- */
+@media (max-width: 1024.98px) {
+  .canes-header .navigation-bottom .navigation-container {
+    justify-content: space-between;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  /* Free Quote sits centered between the logo and the menu button. */
+  .canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button {
+    min-height: 3rem;
+    margin-inline: auto;
+    padding: .65rem 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .canes-header__call {
+    display: none;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items {
+    width: min(22rem, 88vw);
+    padding: 1rem 1.25rem 2rem;
+    border-left: 1px solid var(--canes-header-line);
+    background: var(--canes-header-bar);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .menu-top {
+    margin-bottom: .5rem;
+    padding-bottom: 1rem;
+    border-bottom: 0;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .menu-top .menu-title {
+    display: none;
+  }
+
+  .canes-drawer-logo {
+    display: block;
+    width: 8.5rem;
+    height: auto;
+    border-radius: .8rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .menu-top .menu-close-button {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-color: var(--canes-header-line);
+    border-radius: .55rem;
+    background: rgba(255, 255, 255, .05);
+    font-size: 1.1rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a {
+    min-height: 3.5rem;
+    padding: .5rem .25rem;
+    border-bottom: 1px solid var(--canes-header-line);
+    color: #fff;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 > a:hover,
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1.is-current > a {
+    background: transparent;
+    color: var(--canes-header-orange-light);
+  }
+
+  /* Swift-style + / − toggles instead of carets. */
+  .canes-header .navigation-link-1 > a .bi-caret-down-fill {
+    display: none;
+  }
+
+  .canes-header .navigation-link-1 > a[aria-haspopup]::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--canes-header-orange);
+    font-family: "Manrope", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .canes-header .navigation-link-1 > a[aria-expanded="true"]::after {
+    content: "\2212";
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 {
+    margin: 0;
+    padding: .35rem 0 .6rem;
+    border-bottom: 1px solid var(--canes-header-line);
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2 > a {
+    padding: .6rem .75rem;
+    border-bottom: 0;
+    color: rgba(255, 255, 255, .78);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-items .navigation-link-1 .dropdown-content-1 .navigation-link-2 > a:hover {
+    background: transparent;
+    color: var(--canes-header-orange-light);
+  }
+}
+
+/* Tablet: shorter top bar text so all three items still fit. */
+@media (max-width: 991.98px) {
+  .canes-topbar__info {
+    gap: 1rem;
+    font-size: .84rem;
+  }
+}
+
+/* ---------- Phone (767px and below) ---------- */
+@media (max-width: 767.98px) {
+  .canes-header {
+    --canes-topbar-h: 2.6rem;
+  }
+
+  /* Like Swift: only the service area in the top bar, no social buttons. */
+  .canes-topbar__licensed,
+  .canes-topbar__hours,
+  .canes-header .navigation-topbar .social-links {
+    display: none !important;
+  }
+
+  .canes-topbar__info {
+    font-size: .85rem;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container {
+    justify-content: flex-end;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .menu-button-container .navigation-quote-button {
+    display: none;
+  }
+
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container,
+  .canes-header .navigation-bottom .navigation-container .navigation-logo-container.interior {
+    width: 8.5rem !important;
+  }
+}
+
+/* ---------- Fixed Call / Quote bar on phones ---------- */
+.canes-mobile-bar {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .canes-mobile-bar {
+    display: grid;
+    position: fixed;
+    z-index: 1050;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+    padding: .6rem max(.75rem, env(safe-area-inset-right)) calc(.6rem + env(safe-area-inset-bottom)) max(.75rem, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    background: rgba(13, 13, 13, .96);
+    box-shadow: 0 -12px 30px rgba(0, 0, 0, .3);
+    backdrop-filter: blur(10px);
+  }
+
+  .canes-mobile-bar a {
+    display: flex;
+    min-height: 3.1rem;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    border: 2px solid transparent;
+    border-radius: .55rem;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .canes-mobile-bar__call {
+    border-color: rgba(255, 255, 255, .7) !important;
+    color: #fff;
+  }
+
+  .canes-mobile-bar__quote {
+    background: #f25a0a;
+    color: #111;
+  }
+
+  body {
+    padding-bottom: calc(4.4rem + env(safe-area-inset-bottom));
+  }
+
+  body.navigation-open .canes-mobile-bar {
+    display: none;
+  }
+}
+
+/* The site-wide bar replaces the home page's own quick-contact bar. */
+.home-mobile-actions {
+  display: none !important;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .home-page {
+    padding-bottom: 0;
+  }
+}
