@@ -1,0 +1,225 @@
+/* Reviews page: rating header followed by a grid of verbatim customer review cards. */
+.canes-reviews-hero {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2.5rem, 5vw, 3.75rem);
+  border-bottom: 1px solid #e4dccd;
+  background: #efe8db;
+  color: #151515;
+}
+
+.canes-reviews-crumbs {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  font-size: .82rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.canes-reviews-crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.canes-reviews-crumbs li + li::before {
+  content: "\203A";
+  color: #8a8478;
+}
+
+.canes-reviews-crumbs a,
+.canes-reviews-crumbs span {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .75rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #4b4b4b;
+  text-decoration: none;
+}
+
+.canes-reviews-crumbs span {
+  color: #151515;
+}
+
+.canes-reviews-crumbs a:hover {
+  color: #b84405;
+}
+
+.canes-reviews-hero h1 {
+  max-width: 900px;
+  margin-bottom: 1.25rem;
+  color: #151515;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+
+.canes-reviews-hero__lead {
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+  color: #4b4b4b;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.65;
+}
+
+.canes-reviews-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.canes-reviews-pill {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: .65rem;
+  padding: .45rem 1rem;
+  border: 1px solid #e4dccd;
+  border-radius: 999px;
+  background: #fff;
+  font-size: .88rem;
+  box-shadow: 0 6px 18px rgba(27, 23, 17, .06);
+}
+
+.canes-reviews-pill strong {
+  color: #151515;
+}
+
+.canes-reviews-pill > span:not(.canes-reviews-pill__stars) {
+  color: #6b665d;
+}
+
+.canes-reviews-pill__google {
+  color: #4285f4;
+}
+
+.canes-reviews-pill__stars,
+.canes-review-card__stars {
+  display: inline-flex;
+  gap: .15rem;
+  color: #f2a007;
+}
+
+.canes-reviews-hero__link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: .5rem;
+  color: #b84405;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.canes-reviews-hero__link:hover {
+  color: #151515;
+}
+
+.canes-reviews {
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem);
+  background: #fff;
+}
+
+.canes-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.canes-review-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1.6rem 1.6rem 1.4rem;
+  border: 1px solid #e8e2d6;
+  border-radius: 1.1rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(27, 23, 17, .06);
+}
+
+.canes-review-card__stars {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.canes-review-card blockquote {
+  flex: 1;
+  margin: 0 0 1.1rem;
+}
+
+.canes-review-card blockquote p {
+  margin: 0;
+  color: #2b2b2b;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.canes-review-card figcaption {
+  color: #151515;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.canes-review-card figcaption span {
+  color: #6b665d;
+  font-weight: 600;
+}
+
+.canes-reviews__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 1.1rem;
+  background: #151515;
+  color: #fff;
+}
+
+.canes-reviews__cta p {
+  margin: 0;
+  color: rgba(255, 255, 255, .88);
+}
+
+.canes-reviews__cta strong {
+  color: #fff;
+}
+
+.canes-reviews__cta-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.4rem;
+  border-radius: .7rem;
+  background: #f25a0a;
+  color: #151515;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.canes-reviews__cta-btn:hover {
+  background: #d84800;
+  color: #000;
+}
+
+@media (max-width: 767.98px) {
+  .canes-reviews__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .canes-reviews__cta {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .canes-reviews__cta-btn {
+    justify-content: center;
+  }
+}
