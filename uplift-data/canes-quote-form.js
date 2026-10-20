@@ -10,19 +10,7 @@
     ["Window Cleaning", "bi-stars"],
     ["Gutter Cleaning", "bi-water"],
     ["Commercial Cleaning", "bi-buildings"],
-    ["Christmas Lights", "bi-lightbulb"],
     ["Not Sure / Other", "bi-question-circle"],
-  ];
-
-  var christmasAliases = [
-    "christmas-lights",
-    "christmas-lighting",
-    "christmas-light-installation",
-    "christmaslights",
-    "christmas",
-    "xmas-lights",
-    "holiday-lights",
-    "holiday-lighting",
   ];
 
   var pageServiceMap = {
@@ -42,21 +30,7 @@
     "concrete-cleaning": "Commercial Cleaning",
   };
 
-  function normalize(value) {
-    return (value || "")
-      .trim()
-      .toLowerCase()
-      .replace(/[_\s]+/g, "-");
-  }
-
   function getInitialServices() {
-    var requestedService = normalize(
-      new URLSearchParams(window.location.search).get("service"),
-    );
-    if (christmasAliases.indexOf(requestedService) !== -1) {
-      return ["Christmas Lights"];
-    }
-
     var slug = window.location.pathname.split("/").filter(Boolean).pop() || "";
     return pageServiceMap[slug] ? [pageServiceMap[slug]] : [];
   }
@@ -67,11 +41,8 @@
         var value = option[0];
         var icon = option[1];
         var checked = selectedServices.indexOf(value) !== -1;
-        var seasonalClass = value === "Christmas Lights" ? " cn-service-option--seasonal" : "";
         return (
-          '<label class="cn-service-option' +
-          seasonalClass +
-          '">' +
+          '<label class="cn-service-option">' +
           '<input type="checkbox" value="' +
           value +
           '"' +
