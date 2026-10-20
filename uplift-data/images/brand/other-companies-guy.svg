@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Scruffy cartoon worker">
+  <defs>
+    <clipPath id="c"><circle cx="60" cy="60" r="60"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="120" height="120" fill="#3b3b3b"/>
+    <!-- Slouched shoulders and dingy tank top with stains -->
+    <path d="M12 120 Q16 92 40 86 L80 86 Q104 92 108 120 Z" fill="#c99f7c"/>
+    <path d="M33 120 L36 91 Q44 99 60 99 Q76 99 84 91 L87 120 Z" fill="#cfc8b4"/>
+    <path d="M36 91 Q44 99 60 99 Q76 99 84 91" fill="none" stroke="#b3ab95" stroke-width="2"/>
+    <ellipse cx="71" cy="108" rx="7" ry="5" fill="#9c8452" opacity=".75"/>
+    <ellipse cx="49" cy="113" rx="3.5" ry="2.5" fill="#9c8452" opacity=".6"/>
+    <!-- Neck -->
+    <rect x="52" y="72" width="16" height="17" rx="4" fill="#bf9472"/>
+    <!-- Ears -->
+    <circle cx="38" cy="58" r="5" fill="#c99f7c"/>
+    <circle cx="82" cy="58" r="5" fill="#c99f7c"/>
+    <!-- Head -->
+    <ellipse cx="60" cy="57" rx="22" ry="24" fill="#d8ad88"/>
+    <!-- Five o'clock shadow -->
+    <path d="M40 62 Q42 80 60 81 Q78 80 80 62 Q74 72 60 72 Q46 72 40 62 Z" fill="#6e5a4a" opacity=".35"/>
+    <!-- Messy hair poking out -->
+    <path d="M38 47 l-6 -3 l5 6 l-7 1 l8 3" fill="none" stroke="#4a3b30" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M81 49 l7 -1 l-5 4 l6 3" fill="none" stroke="#4a3b30" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Grubby cap worn sideways -->
+    <path d="M37 47 Q38 27 60 27 Q82 27 83 47 Q60 41 37 47 Z" fill="#7d7d7d"/>
+    <path d="M80 45 Q95 42 101 48 Q96 52 81 49 Z" fill="#666"/>
+    <ellipse cx="52" cy="35" rx="4" ry="2.5" fill="#5f5a4e" opacity=".7"/>
+    <!-- Uneven eyebrows -->
+    <path d="M45 48 L55 50" stroke="#4a3b30" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M66 49 Q71 45 76 48" fill="none" stroke="#4a3b30" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Droopy, half-closed eyes -->
+    <ellipse cx="50" cy="56" rx="4" ry="3" fill="#fff"/>
+    <ellipse cx="70" cy="56" rx="4" ry="3" fill="#fff"/>
+    <circle cx="50.5" cy="57" r="1.8" fill="#2b2b2b"/>
+    <circle cx="70.5" cy="57" r="1.8" fill="#2b2b2b"/>
+    <path d="M45.5 55.5 Q50 52 54.5 55.5 L54.5 53 Q50 51 45.5 53 Z" fill="#b98f6d"/>
+    <path d="M65.5 55.5 Q70 52 74.5 55.5 L74.5 53 Q70 51 65.5 53 Z" fill="#b98f6d"/>
+    <!-- Nose -->
+    <path d="M60 58 Q63 64 59 65" fill="none" stroke="#a67c5d" stroke-width="2" stroke-linecap="round"/>
+    <!-- Wavy frown -->
+    <path d="M52 74 Q60 68.5 68 73.5" fill="none" stroke="#5a3d2e" stroke-width="2" stroke-linecap="round"/>
+    <!-- Stubble dots -->
+    <g fill="#5a4a3d" opacity=".55">
+      <circle cx="47" cy="70" r=".9"/><circle cx="50" cy="75" r=".9"/><circle cx="55" cy="77" r=".9"/>
+      <circle cx="63" cy="77" r=".9"/><circle cx="68" cy="75" r=".9"/><circle cx="72" cy="70" r=".9"/>
+      <circle cx="58" cy="74" r=".9"/><circle cx="65" cy="74" r=".9"/>
+    </g>
+  </g>
+</svg>

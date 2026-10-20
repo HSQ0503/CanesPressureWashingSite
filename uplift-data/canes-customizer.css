@@ -602,3 +602,128 @@
     z-index: 1;
   }
 }
+
+/* Text comparisons (no price): a short method label and stacked points. */
+.canes-compare__headline {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canes-compare__card--them .canes-compare__headline {
+  color: rgba(255, 255, 255, .75);
+}
+
+.canes-compare__card ul.canes-compare__list {
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.canes-compare__list li {
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.canes-compare__list li i {
+  margin-top: .15rem;
+}
+
+.canes-compare__card li.is-warn {
+  color: rgba(255, 255, 255, .72);
+}
+
+.canes-compare__card li.is-warn i {
+  color: #ff6b5e;
+}
+
+/* Residential <-> commercial switch link under the summary. */
+.canes-custom__switch {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-top: .85rem;
+  padding: 1rem 1.25rem;
+  border: 1px dashed rgba(255, 138, 61, .55);
+  border-radius: 1rem;
+  background: rgba(242, 90, 10, .08);
+  color: rgba(255, 255, 255, .85);
+  font-size: .95rem;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.canes-custom__switch > i:first-child {
+  flex: 0 0 auto;
+  color: var(--pc-orange-light);
+  font-size: 1.5rem;
+}
+
+.canes-custom__switch > i:last-child {
+  margin-left: auto;
+  color: var(--pc-orange-light);
+  transition: transform .2s ease;
+}
+
+.canes-custom__switch strong {
+  display: block;
+  color: #fff;
+}
+
+.canes-custom__switch:hover {
+  border-color: var(--pc-orange);
+  background: rgba(242, 90, 10, .16);
+  color: #fff;
+}
+
+.canes-custom__switch:hover > i:last-child {
+  transform: translateX(4px);
+}
+
+/* Mascots on the comparison cards: scruffy guy for other companies, the Canes pelican for us. */
+.canes-compare__top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .35rem;
+}
+
+.canes-compare__top > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.canes-compare__avatar {
+  display: block;
+  width: 4.75rem;
+  height: 4.75rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.canes-compare__avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canes-compare__avatar--them {
+  border: 3px solid rgba(255, 255, 255, .15);
+  filter: saturate(.6);
+}
+
+.canes-compare__avatar--us {
+  border: 3px solid #fff;
+  background: radial-gradient(circle at 50% 35%, #ff8a3d, var(--pc-orange) 70%);
+  box-shadow: 0 8px 22px rgba(242, 90, 10, .45);
+}
+
+.canes-compare__avatar--us img {
+  object-fit: cover;
+  object-position: center 8%;
+  transform: scale(1.15) translateY(6%);
+}
