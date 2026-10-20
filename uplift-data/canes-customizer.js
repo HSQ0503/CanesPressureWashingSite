@@ -17,7 +17,18 @@
       });
     }
 
-    section.addEventListener("change", render);
+    section.addEventListener("change", function (event) {
+      // Pop the picked card and give phones a tiny buzz.
+      var card = event.target.closest(".canes-option") && event.target.closest(".canes-option").querySelector(".canes-option__card");
+      if (card && event.target.checked) {
+        card.classList.remove("is-popping");
+        void card.offsetWidth;
+        card.classList.add("is-popping");
+        var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (navigator.vibrate && !calm) navigator.vibrate(10);
+      }
+      render();
+    });
     render();
   }
 

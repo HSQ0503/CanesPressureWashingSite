@@ -791,3 +791,40 @@
     font-size: .8rem;
   }
 }
+
+/* Bigger tap targets and a satisfying pop when an option is picked. */
+.canes-option__card {
+  min-height: 4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.canes-option:active .canes-option__card {
+  transform: scale(.97);
+}
+
+.canes-option__card.is-popping {
+  animation: canes-option-pop .42s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.canes-option__card.is-popping .canes-option__check {
+  animation: canes-check-in .35s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+@keyframes canes-option-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.05); }
+  70% { transform: scale(.985); }
+  100% { transform: scale(1); }
+}
+
+@keyframes canes-check-in {
+  from { transform: scale(0) rotate(-90deg); }
+  to { transform: scale(1) rotate(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canes-option__card.is-popping,
+  .canes-option__card.is-popping .canes-option__check {
+    animation: none;
+  }
+}

@@ -374,3 +374,272 @@
     transition: none;
   }
 }
+
+/* ---------- Bigger, more satisfying picks ---------- */
+.canes-bundle__card {
+  min-height: 3.75rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.canes-bundle__item:active .canes-bundle__card {
+  transform: scale(.97);
+}
+
+.canes-bundle__item input:checked + .canes-bundle__card {
+  box-shadow: 0 0 0 4px rgba(242, 90, 10, .2), 0 10px 22px rgba(242, 90, 10, .2);
+}
+
+.canes-bundle__card.is-popping {
+  animation: canes-pop .42s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.canes-bundle__card.is-popping .canes-bundle__plus {
+  animation: canes-spin-in .42s ease-out;
+}
+
+@keyframes canes-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.07); }
+  70% { transform: scale(.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes canes-spin-in {
+  from { transform: rotate(-180deg) scale(.4); }
+  to { transform: rotate(45deg) scale(1); }
+}
+
+/* Tier unlocked: badge bounces and confetti flies out of it. */
+.canes-bundle__tier {
+  position: relative;
+}
+
+.canes-bundle__tier.is-unlocked {
+  animation: canes-tier-bounce .6s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+@keyframes canes-tier-bounce {
+  0% { transform: scale(.9) rotate(0); }
+  50% { transform: scale(1.15) rotate(-3deg); }
+  100% { transform: translateY(-4px) rotate(-1.5deg); }
+}
+
+.canes-confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.canes-confetti i {
+  width: 8px;
+  height: 12px;
+  position: absolute;
+  border-radius: 2px;
+  animation: canes-confetti 1s cubic-bezier(.15, .7, .4, 1) forwards;
+}
+
+@keyframes canes-confetti {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  100% { opacity: 0; transform: translate(var(--dx), calc(var(--dy) + 60px)) rotate(var(--rot)); }
+}
+
+.canes-bundle__meter.is-celebrating {
+  animation: canes-glow .9s ease-out;
+}
+
+@keyframes canes-glow {
+  0% { box-shadow: 0 0 0 0 rgba(255, 138, 61, .9); }
+  100% { box-shadow: 0 0 0 18px rgba(255, 138, 61, 0); }
+}
+
+/* ---------- Recurring plans (window cleaning) ---------- */
+.canes-bundle__plans {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+
+.canes-plan {
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+}
+
+.canes-plan input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.canes-plan__card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: .4rem;
+  padding: 1.1rem 1rem 1rem;
+  border: 2px solid #e8e2d6;
+  border-radius: 1rem;
+  background: #faf8f4;
+  color: var(--bd-ink);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.canes-plan__name {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canes-plan__visits {
+  color: #6b665d;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.canes-plan__save {
+  align-self: flex-start;
+  padding: .2rem .55rem;
+  border-radius: 999px;
+  background: #fff1e8;
+  color: #b84405;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.canes-plan__perks {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin: .3rem 0 0;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.canes-plan__perks li {
+  display: flex;
+  gap: .35rem;
+  align-items: flex-start;
+}
+
+.canes-plan__perks i {
+  color: var(--bd-orange);
+}
+
+.canes-plan:hover .canes-plan__card {
+  border-color: var(--bd-orange);
+  transform: translateY(-2px);
+}
+
+.canes-plan:active .canes-plan__card {
+  transform: scale(.97);
+}
+
+.canes-plan input:checked + .canes-plan__card {
+  border-color: var(--bd-orange);
+  background: #fff1e8;
+  box-shadow: 0 0 0 4px rgba(242, 90, 10, .2), 0 12px 26px rgba(242, 90, 10, .22);
+}
+
+.canes-plan input:focus-visible + .canes-plan__card {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 3px;
+}
+
+.canes-plan__card.is-popping {
+  animation: canes-pop .42s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+/* Featured plan: dark, glowing, with a ribbon. */
+.canes-plan--featured .canes-plan__card {
+  padding-top: 1.9rem;
+  border-color: var(--bd-ink);
+  background: var(--bd-ink);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28);
+}
+
+.canes-plan--featured .canes-plan__name {
+  color: #ff8a3d;
+  font-size: 1.9rem;
+}
+
+.canes-plan--featured .canes-plan__visits {
+  color: rgba(255, 255, 255, .75);
+}
+
+.canes-plan--featured .canes-plan__save {
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+}
+
+.canes-plan--featured input:checked + .canes-plan__card {
+  border-color: #ff8a3d;
+  background: var(--bd-ink);
+  box-shadow: 0 0 0 4px rgba(255, 138, 61, .45), 0 16px 34px rgba(0, 0, 0, .3);
+}
+
+.canes-plan__ribbon {
+  position: absolute;
+  z-index: 1;
+  top: -.75rem;
+  left: 50%;
+  padding: .3rem .8rem;
+  border-radius: 999px;
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(242, 90, 10, .4);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 991.98px) {
+  .canes-bundle__plans {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .canes-plan--featured {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canes-bundle__card.is-popping,
+  .canes-bundle__card.is-popping .canes-bundle__plus,
+  .canes-bundle__tier.is-unlocked,
+  .canes-bundle__meter.is-celebrating,
+  .canes-plan__card.is-popping {
+    animation: none;
+  }
+}
+
+.canes-plan__save {
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .canes-plan__card {
+    padding-inline: .8rem;
+  }
+
+  .canes-plan__save {
+    font-size: .64rem;
+    letter-spacing: .04em;
+  }
+
+  .canes-plan__name {
+    font-size: 1.35rem;
+  }
+}

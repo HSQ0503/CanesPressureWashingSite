@@ -5,7 +5,7 @@
   var STORE_KEY = "canes-bundle";
   var TIERS = [
     { count: 3, percent: 20 },
-    { count: 2, percent: 7 },
+    { count: 2, percent: 10 },
   ];
 
   function load() {
@@ -44,16 +44,23 @@
     boxes.forEach(function (box) {
       box.checked = (stored.picks || []).indexOf(box.value) !== -1;
     });
-    freq.forEach(function (radio) {
-      radio.checked = radio.value === (stored.frequency || "One-time");
-    });
+    // Restore the visitor's one-time / recurring / plan choice if this page offers it.
+    if (freq.some(function (radio) { return radio.value === stored.frequency; })) {
+      freq.forEach(function (radio) {
+        radio.checked = radio.value === stored.frequency;
+      });
+    }
 
     function picks() {
       return boxes.filter(function (box) { return box.checked; }).map(function (box) { return box.value; });
     }
 
+    function checkedFrequency() {
+      return freq.filter(function (radio) { return radio.checked; })[0];
+    }
+
     function frequency() {
-      var checked = freq.filter(function (radio) { return radio.checked; })[0];
+      var checked = checkedFrequency();
       return checked ? checked.value : "One-time";
     }
 
@@ -61,19 +68,23 @@
       return picks().length + (current ? 1 : 0);
     }
 
+    var lastPercent = null;
+
     function render() {
       var n = count();
       var percent = discountFor(n);
+      if (lastPercent !== null && percent > lastPercent) celebrate(percent);
+      lastPercent = percent;
       var label;
       var detail;
       if (n >= 3) {
-        label = "You're saving 20%!";
+        label = "20% unlocked!";
         detail = n + " services bundled";
       } else if (n === 2) {
-        label = "You're saving 7%";
+        label = "10% unlocked!";
         detail = "Add 1 more service to save 20%";
       } else {
-        label = "Add a service to save 7%";
+        label = "Add a service to save 10%";
         detail = "Bundle 3 or more to save 20%";
       }
       meterText.innerHTML = "";
@@ -100,7 +111,41 @@
       save(all);
     }
 
-    section.addEventListener("change", render);
+    // Little rewards: cards pop when picked, phones get a tiny buzz, and unlocking a tier
+    // throws confetti from that tier's badge.
+    function celebrate(percent) {
+      var tier = section.querySelector('.canes-bundle__tier[data-percent="' + percent + '"]');
+      var meter = section.querySelector(".canes-bundle__meter");
+      restartAnimation(meter, "is-celebrating");
+      if (!tier) return;
+      restartAnimation(tier, "is-unlocked");
+      if (reduceMotion()) return;
+      var burst = document.createElement("span");
+      burst.className = "canes-confetti";
+      burst.setAttribute("aria-hidden", "true");
+      var colors = ["#111", "#fff", "#ffd23f", "#ff8a3d", "#f25a0a"];
+      for (var i = 0; i < 26; i++) {
+        var piece = document.createElement("i");
+        var angle = (Math.PI * 2 * i) / 26 + Math.random() * 0.4;
+        var distance = 70 + Math.random() * 70;
+        piece.style.setProperty("--dx", Math.cos(angle) * distance + "px");
+        piece.style.setProperty("--dy", Math.sin(angle) * distance - 40 + "px");
+        piece.style.setProperty("--rot", Math.random() * 720 - 360 + "deg");
+        piece.style.background = colors[i % colors.length];
+        burst.appendChild(piece);
+      }
+      tier.appendChild(burst);
+      setTimeout(function () { burst.remove(); }, 1100);
+    }
+
+    section.addEventListener("change", function (event) {
+      var card = event.target.closest("label") && event.target.closest("label").querySelector(".canes-bundle__card, .canes-plan__card");
+      if (card && event.target.checked) {
+        restartAnimation(card, "is-popping");
+        buzz();
+      }
+      render();
+    });
     render();
 
     function prefillForm() {
@@ -132,8 +177,9 @@
       if (names.length > 1) {
         parts.push("Bundle: " + names.join(" + ") + " (" + discountFor(count()) + "% bundle discount).");
       }
-      if (frequency() !== "One-time") parts.push("Interested in recurring service.");
-      var rest = notes.value.replace(/^Bundle:.*(\n|$)|^Interested in recurring service\.(\n|$)/gm, "").replace(/^\s+/, "");
+      var plan = checkedFrequency();
+      if (plan && plan.value !== "One-time") parts.push(plan.dataset.note || "Interested in recurring service.");
+      var rest = notes.value.replace(/^(Bundle:|Interested in).*(\n|$)/gm, "").replace(/^\s+/, "");
       notes.value = parts.join(" ") + (parts.length && rest ? "\n" : "") + rest;
     }
 
@@ -141,6 +187,21 @@
     document.querySelectorAll('a[href="#get-quote"]').forEach(function (link) {
       link.addEventListener("click", prefillForm);
     });
+  }
+
+  function reduceMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function restartAnimation(el, cls) {
+    if (!el) return;
+    el.classList.remove(cls);
+    void el.offsetWidth; // reflow so the animation plays again
+    el.classList.add(cls);
+  }
+
+  function buzz() {
+    if (navigator.vibrate && !reduceMotion()) navigator.vibrate(12);
   }
 
   function initAll() {

@@ -1,0 +1,264 @@
+/* Commercial pages: a straightforward property inquiry with featured projects instead of option pickers. */
+.canes-commercial {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(242, 90, 10, .22), transparent 32rem),
+    #101010;
+  color: #fff;
+}
+
+.canes-commercial__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  color: #ff8a3d;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.canes-commercial__kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  background: #f25a0a;
+}
+
+.canes-commercial h2 {
+  max-width: 760px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.canes-commercial h2 span {
+  color: #ff8a3d;
+}
+
+.canes-commercial__intro {
+  max-width: 640px;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, .8);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* Property types we serve (informational, not a picker). */
+.canes-commercial__types {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  padding: 0;
+  list-style: none;
+}
+
+.canes-commercial__types li {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .95rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .05);
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.canes-commercial__types i {
+  color: #ff8a3d;
+}
+
+.canes-commercial__label {
+  display: block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, .6);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* Featured projects */
+.canes-commercial__projects {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.canes-project {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, .04);
+}
+
+.canes-project--featured {
+  border: 2px solid #f25a0a;
+  background: linear-gradient(150deg, rgba(242, 90, 10, .22), rgba(242, 90, 10, .04) 60%);
+  box-shadow: 0 20px 44px rgba(242, 90, 10, .18);
+}
+
+.canes-project__type {
+  color: #ff8a3d;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.canes-project h3 {
+  margin: 0;
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canes-project__stats {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.canes-project__stat {
+  display: flex;
+  flex-direction: column;
+  padding: .6rem .9rem;
+  border-radius: .8rem;
+  background: rgba(0, 0, 0, .35);
+}
+
+.canes-project__stat strong {
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.canes-project__stat span {
+  color: rgba(255, 255, 255, .65);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.canes-project ul {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.canes-project li {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  color: rgba(255, 255, 255, .88);
+  font-size: .98rem;
+  line-height: 1.45;
+}
+
+.canes-project li i {
+  margin-top: .15rem;
+  color: #ff8a3d;
+}
+
+/* Inquiry call to action */
+.canes-commercial__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1.25rem;
+  background: #f25a0a;
+  color: #111;
+}
+
+.canes-commercial__cta h3 {
+  margin: 0 0 .25rem;
+  color: #111;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canes-commercial__cta p {
+  max-width: 520px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.canes-commercial__btn {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem 1.6rem;
+  border-radius: .7rem;
+  background: #111;
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+.canes-commercial__btn:hover {
+  background: #fff;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+.canes-commercial__switch {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, .75);
+  font-size: .95rem;
+  text-decoration: none;
+}
+
+.canes-commercial__switch strong {
+  color: #fff;
+}
+
+.canes-commercial__switch:hover {
+  color: #ff8a3d;
+}
+
+@media (max-width: 991.98px) {
+  .canes-commercial__projects {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-commercial__types li {
+    font-size: .85rem;
+  }
+
+  .canes-commercial__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
