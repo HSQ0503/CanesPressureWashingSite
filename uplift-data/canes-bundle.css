@@ -1,0 +1,376 @@
+/* Service pages: "Bundle & save" picker with a savings meter and a recurring-service option. */
+.canes-bundle {
+  --bd-ink: #111;
+  --bd-orange: #f25a0a;
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, .22), transparent 30rem),
+    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, .18), transparent 30rem),
+    var(--bd-orange);
+  color: var(--bd-ink);
+}
+
+.canes-bundle__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.canes-bundle__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.canes-bundle__kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  background: var(--bd-ink);
+}
+
+.canes-bundle h2 {
+  max-width: 720px;
+  margin-bottom: .75rem;
+  color: var(--bd-ink);
+}
+
+.canes-bundle h2 span {
+  color: #fff;
+}
+
+.canes-bundle__intro {
+  max-width: 560px;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* Discount tiers light up as the visitor adds services. */
+.canes-bundle__tiers {
+  display: flex;
+  gap: .75rem;
+}
+
+.canes-bundle__tier {
+  display: flex;
+  min-width: 8.5rem;
+  flex-direction: column;
+  align-items: center;
+  padding: .9rem 1.1rem;
+  border: 2px dashed rgba(17, 17, 17, .35);
+  border-radius: 1rem;
+  text-align: center;
+  transition: background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.canes-bundle__tier strong {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.canes-bundle__tier span {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.canes-bundle__tier.is-active {
+  border: 2px solid var(--bd-ink);
+  background: var(--bd-ink);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .3);
+  transform: translateY(-4px) rotate(-1.5deg);
+}
+
+.canes-bundle__tier.is-active strong {
+  color: #ff8a3d;
+}
+
+.canes-bundle__panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(90, 30, 0, .25);
+}
+
+.canes-bundle__label {
+  display: block;
+  margin-bottom: .85rem;
+  color: #6b665d;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.canes-bundle__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .65rem;
+  margin-bottom: 1.5rem;
+}
+
+.canes-bundle__item {
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+}
+
+.canes-bundle__item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.canes-bundle__card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: .65rem;
+  padding: .8rem .85rem;
+  border: 2px solid #e8e2d6;
+  border-radius: .9rem;
+  background: #faf8f4;
+  color: var(--bd-ink);
+  font-size: .92rem;
+  font-weight: 800;
+  line-height: 1.2;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.canes-bundle__card > i {
+  display: flex;
+  width: 2.3rem;
+  height: 2.3rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: .6rem;
+  background: #fff;
+  color: var(--bd-orange);
+  font-size: 1.1rem;
+}
+
+.canes-bundle__card .canes-bundle__plus {
+  margin-left: auto;
+  color: #b3ab9b;
+  font-size: 1.1rem;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.canes-bundle__item:hover .canes-bundle__card {
+  border-color: var(--bd-orange);
+  transform: translateY(-2px);
+}
+
+.canes-bundle__item input:checked + .canes-bundle__card {
+  border-color: var(--bd-orange);
+  background: #fff1e8;
+}
+
+.canes-bundle__item input:checked + .canes-bundle__card > i {
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+}
+
+.canes-bundle__item input:checked + .canes-bundle__card .canes-bundle__plus {
+  color: var(--bd-orange);
+  transform: rotate(45deg);
+}
+
+.canes-bundle__item input:focus-visible + .canes-bundle__card {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 3px;
+}
+
+/* The service the visitor is already looking at: always included. */
+.canes-bundle__item--current {
+  cursor: default;
+}
+
+.canes-bundle__item--current .canes-bundle__card {
+  border-color: var(--bd-ink);
+  background: var(--bd-ink);
+  color: #fff;
+}
+
+.canes-bundle__item--current .canes-bundle__card > i {
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+}
+
+.canes-bundle__item--current .canes-bundle__card small {
+  display: block;
+  color: #ff8a3d;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Savings meter */
+.canes-bundle__meter {
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--bd-ink);
+  color: #fff;
+}
+
+.canes-bundle__meter-text {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: .75rem;
+  font-weight: 700;
+}
+
+.canes-bundle__meter-text strong {
+  color: #ff8a3d;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canes-bundle__bar {
+  height: .65rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .15);
+}
+
+.canes-bundle__bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff8a3d, var(--bd-orange));
+  transition: width .35s ease;
+}
+
+/* One-time vs recurring */
+.canes-bundle__freq {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+  margin-bottom: 1.5rem;
+}
+
+.canes-bundle__freq .canes-bundle__card {
+  flex-wrap: wrap;
+}
+
+.canes-bundle__freq .canes-bundle__card em {
+  display: inline-block;
+  margin-left: .2rem;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+  font-size: .7rem;
+  font-style: normal;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.canes-bundle__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.canes-bundle__footer p {
+  margin: 0;
+  color: #6b665d;
+  font-size: .9rem;
+}
+
+.canes-bundle__cta {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem 1.6rem;
+  border-radius: .7rem;
+  background: var(--bd-ink);
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+.canes-bundle__cta:hover {
+  background: var(--bd-orange);
+  color: var(--bd-ink);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 991.98px) {
+  .canes-bundle__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-bundle__tiers {
+    width: 100%;
+  }
+
+  .canes-bundle__tier {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .canes-bundle__grid {
+    gap: .5rem;
+  }
+
+  .canes-bundle__card {
+    padding: .7rem;
+    font-size: .85rem;
+  }
+
+  .canes-bundle__freq {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .canes-bundle__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canes-bundle__tier,
+  .canes-bundle__card,
+  .canes-bundle__bar span,
+  .canes-bundle__cta {
+    transition: none;
+  }
+}

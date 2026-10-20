@@ -90,6 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="/uplift-data/canes-theme.css" rel="stylesheet" type="text/css" />
 	<link href="/uplift-data/canes-customizer.css" rel="stylesheet" type="text/css" />
 	<link href="/uplift-data/canes-process.css" rel="stylesheet" type="text/css" />
+	<link href="/uplift-data/canes-bundle.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		
@@ -326,6 +327,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<a href="#get-quote" class="canes-custom__cta">Get my quote <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 						</div>
 						<a class="canes-custom__switch" href="/services"><i class="bi bi-house-heart" aria-hidden="true"></i><span><strong>Is this for your own home?</strong> Go to residential quotes</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+					</div>
+				</section>
+				<section class="canes-bundle" id="bundle" aria-labelledby="bundle-title" data-current="Dumpster Pad Cleaning" data-current-value="Dumpster Pad Cleaning" data-form-service="Commercial Cleaning" data-property-type="Commercial">
+					<div class="container">
+						<div class="canes-bundle__head">
+							<div>
+								<span class="canes-bundle__kicker">Bundle &amp; save</span>
+								<h2 id="bundle-title">Add a commercial service, <span>save up to 20%.</span></h2>
+								<p class="canes-bundle__intro">Bundle 2 services and save 7%. Bundle 3 or more and save 20%. Tap what else your property needs.</p>
+							</div>
+							<div class="canes-bundle__tiers">
+								<div class="canes-bundle__tier" data-percent="7"><strong>7%</strong><span>2 services</span></div>
+								<div class="canes-bundle__tier" data-percent="20"><strong>20%</strong><span>3+ services</span></div>
+							</div>
+						</div>
+						<div class="canes-bundle__panel">
+							<span class="canes-bundle__label">Your bundle</span>
+							<div class="canes-bundle__grid">
+								<div class="canes-bundle__item canes-bundle__item--current"><span class="canes-bundle__card"><i class="bi bi-trash3" aria-hidden="true"></i><span>Dumpster Pad Cleaning<small>Included</small></span><span class="canes-bundle__plus" aria-hidden="true"><i class="bi bi-check-lg"></i></span></span></div>
+								<label class="canes-bundle__item"><input type="checkbox" value="Building Washing" data-label="Building Washing" data-form-service="Commercial Cleaning" /><span class="canes-bundle__card"><i class="bi bi-building" aria-hidden="true"></i><span>Building Washing</span><span class="canes-bundle__plus" aria-hidden="true"><i class="bi bi-plus-lg"></i></span></span></label>
+								<label class="canes-bundle__item"><input type="checkbox" value="Storefront Washing" data-label="Storefront Washing" data-form-service="Commercial Cleaning" /><span class="canes-bundle__card"><i class="bi bi-shop" aria-hidden="true"></i><span>Storefront Washing</span><span class="canes-bundle__plus" aria-hidden="true"><i class="bi bi-plus-lg"></i></span></span></label>
+								<label class="canes-bundle__item"><input type="checkbox" value="Concrete Cleaning" data-label="Concrete Cleaning" data-form-service="Commercial Cleaning" /><span class="canes-bundle__card"><i class="bi bi-p-square" aria-hidden="true"></i><span>Concrete Cleaning</span><span class="canes-bundle__plus" aria-hidden="true"><i class="bi bi-plus-lg"></i></span></span></label>
+								<label class="canes-bundle__item"><input type="checkbox" value="Graffiti Removal" data-label="Graffiti Removal" data-form-service="Commercial Cleaning" /><span class="canes-bundle__card"><i class="bi bi-paint-bucket" aria-hidden="true"></i><span>Graffiti Removal</span><span class="canes-bundle__plus" aria-hidden="true"><i class="bi bi-plus-lg"></i></span></span></label>
+							</div>
+							<div class="canes-bundle__meter" aria-live="polite">
+								<div class="canes-bundle__meter-text"><strong>Add a service to save 7%</strong><span>Bundle 3 or more to save 20%</span></div>
+								<div class="canes-bundle__bar"><span></span></div>
+							</div>
+							<span class="canes-bundle__label">How often?</span>
+							<div class="canes-bundle__freq">
+								<label class="canes-bundle__item"><input type="radio" name="bundle-frequency" value="One-time" checked /><span class="canes-bundle__card"><i class="bi bi-calendar-check" aria-hidden="true"></i><span>One-time service</span></span></label>
+								<label class="canes-bundle__item"><input type="radio" name="bundle-frequency" value="Recurring" /><span class="canes-bundle__card"><i class="bi bi-arrow-repeat" aria-hidden="true"></i><span>Recurring service <em>Save more</em></span></span></label>
+							</div>
+							<div class="canes-bundle__footer">
+								<p>Your bundle savings are applied to your free quote.</p>
+								<a href="#get-quote" class="canes-bundle__cta">Get my bundle quote <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
 					</div>
 				</section>
 				<section class="canes-process" aria-labelledby="process-title">
@@ -941,5 +980,6 @@ Ready for a cleaner, safer, better-smelling dumpster area? <strong>Choose Canes 
 	</div>
 </footer>		<script src="/uplift-data/canes-quote-form.js" defer></script>
 	<script src="/uplift-data/canes-customizer.js" defer></script>
+	<script src="/uplift-data/canes-bundle.js" defer></script>
 </body>
 </html>
