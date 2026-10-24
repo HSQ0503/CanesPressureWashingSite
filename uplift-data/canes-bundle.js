@@ -158,9 +158,20 @@
         if (box.checked) services.push(box.dataset.formService || box.value);
       });
       services.forEach(function (name) {
-        var input = form.querySelector('.cn-service-option input[value="' + name.replace(/"/g, '\\"') + '"]');
+        // The form renamed some services; its lookup also accepts the older names used on these pages.
+        var input = window.canesFindServiceInput
+          ? window.canesFindServiceInput(form, name)
+          : form.querySelector('.cn-service-option input[value="' + name.replace(/"/g, '\\"') + '"]');
         if (input && !input.checked) input.click();
       });
+
+      // A plan picked on the window page carries into the form's window plan question.
+      var picked = checkedFrequency();
+      var windowsBox = window.canesFindServiceInput && window.canesFindServiceInput(form, "Window Cleaning");
+      if (picked && windowsBox && windowsBox.checked) {
+        var planRadio = form.querySelector('input[name="windowPlan"][value="' + picked.value + '"]');
+        if (planRadio && !planRadio.checked) planRadio.click();
+      }
 
       if (section.dataset.propertyType) {
         var type = form.querySelector('input[name="propertyType"][value="' + section.dataset.propertyType + '"]');

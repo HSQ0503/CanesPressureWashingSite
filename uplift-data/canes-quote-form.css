@@ -474,3 +474,440 @@
     transform: none;
   }
 }
+
+/* ---------- Bundle & save: savings meter, card perks, and the pelican ---------- */
+.cn-form-section--services {
+  position: relative;
+  padding-top: clamp(1.6rem, 3vw, 2rem);
+}
+
+.cn-bundle-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #f25a0a;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(201, 70, 0, 0.25);
+}
+
+/* Pelican waving from the top corner of the services box. */
+.cn-peek-pelican {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  width: 3.6rem;
+  height: auto;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+/* Hide it where the page already has a pelican peeking over the form header. */
+.form-container .cn-peek-pelican {
+  display: none;
+}
+
+.cn-service-option > span {
+  position: relative;
+}
+
+/* Cards stack name, starting price and notes. */
+.cn-service-option > span {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  padding: 0.85rem 0.6rem 0.75rem;
+}
+
+.cn-service-option strong {
+  max-width: none;
+}
+
+.cn-service-price {
+  color: #c24a0c;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.cn-service-detail {
+  color: #4d4943;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cn-service-bundle {
+  margin-top: auto;
+  padding-top: 0.2rem;
+  color: #8a847b;
+  font-size: 0.62rem;
+  font-style: italic;
+}
+
+.cn-price-note {
+  margin: 0.75rem 0 0;
+  color: #716c64;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+/* Recurring window plan: appears once windows are picked. */
+.cn-window-plan {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  border: 2px solid #111;
+  border-radius: 1rem;
+  background: #fff;
+  animation: cn-perk-in 0.3s ease-out;
+}
+
+.cn-window-plan[hidden] {
+  display: none;
+}
+
+.cn-window-plan legend {
+  float: left;
+  width: 100%;
+  margin: 0 0 0.4rem;
+  color: #171717;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.cn-window-plan legend i {
+  color: #f25a0a;
+}
+
+.cn-window-plan__pitch {
+  clear: both;
+  margin: 0 0 0.8rem;
+  color: #4d4943;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.cn-window-plan__pitch strong {
+  color: #c24a0c;
+}
+
+.cn-plan-choice > span {
+  position: relative;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding-top: 0.7rem;
+  line-height: 1.25;
+}
+
+.cn-plan-choice small {
+  color: #716c64;
+  font-size: 0.64rem;
+  font-weight: 600;
+}
+
+.cn-plan-choice input:checked + span small {
+  color: inherit;
+}
+
+.cn-plan-ribbon {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: #f25a0a;
+  color: #fff;
+  font-size: 0.6rem;
+  font-style: normal;
+  font-weight: 900;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+/* Odd number of services: the last card spans the full row. */
+.cn-service-option:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.cn-service-perk {
+  position: absolute;
+  top: -0.55rem;
+  right: -0.35rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: #111;
+  color: #ffd23f;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  animation: cn-perk-in 0.3s ease-out;
+}
+
+.cn-service-perk:empty {
+  display: none;
+}
+
+.cn-service-perk::before {
+  content: "+ ";
+}
+
+.cn-service-option.is-popping > span {
+  animation: cn-pop 0.42s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.cn-savings {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 2px dashed #f25a0a;
+  border-radius: 1rem;
+  background: #fff5ec;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.cn-savings[data-tier="2"],
+.cn-savings[data-tier="3"] {
+  border-style: solid;
+}
+
+.cn-savings[data-tier="3"] {
+  background: #f25a0a;
+  color: #fff;
+}
+
+.cn-savings__mascot {
+  position: relative;
+  flex: 0 0 4.4rem;
+}
+
+.cn-savings__pelican {
+  display: block;
+  width: 4.4rem;
+  height: auto;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.15));
+  transform-origin: 50% 100%;
+}
+
+.cn-savings.is-celebrating .cn-savings__pelican {
+  animation: cn-pelican-hop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.cn-savings__body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Speech bubble pointing at the pelican. */
+.cn-savings__bubble {
+  position: relative;
+  margin: 0 0 0.6rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #1c1b19;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cn-savings__bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.45rem;
+  border-width: 0.45rem 0.5rem 0.45rem 0;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+  transform: translateY(-50%);
+}
+
+.cn-savings__bubble strong {
+  display: block;
+  color: #c24a0c;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.cn-savings.is-celebrating .cn-savings__bubble {
+  animation: cn-pop 0.42s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.cn-savings__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin: 0 0 0.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cn-savings__steps li {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.3rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.06);
+  color: #6c6861;
+  font-size: 0.7rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cn-savings__steps b {
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.cn-savings__steps li.is-reached {
+  background: #111;
+  color: #ffd23f;
+}
+
+.cn-savings__bar {
+  height: 0.45rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cn-savings__bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff8a3d, #f25a0a);
+  transition: width 0.35s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+
+.cn-savings[data-tier="3"] .cn-savings__bar {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.cn-savings[data-tier="3"] .cn-savings__bar span {
+  background: #ffd23f;
+}
+
+/* Pelican cheering beside the submit button. */
+.cn-submit-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.cn-submit-pelican {
+  flex: 0 0 3.4rem;
+  width: 3.4rem;
+  height: auto;
+  margin-bottom: 0.1rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.cn-submit-row .cn-quote-submit {
+  flex: 1;
+}
+
+.cn-confetti {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.cn-confetti i {
+  position: absolute;
+  width: 0.45rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  animation: cn-confetti 1s cubic-bezier(0.15, 0.7, 0.4, 1) forwards;
+}
+
+@keyframes cn-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cn-perk-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes cn-pelican-hop {
+  0% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-14px) rotate(-8deg); }
+  65% { transform: translateY(0) rotate(5deg); }
+  100% { transform: none; }
+}
+
+@keyframes cn-confetti {
+  from { opacity: 1; transform: translate(0, 0) rotate(0); }
+  to { opacity: 0; transform: translate(var(--dx), calc(var(--dy) + 60px)) rotate(var(--rot)); }
+}
+
+@media (max-width: 575.98px) {
+  .cn-peek-pelican {
+    width: 2.9rem;
+  }
+
+  .cn-savings {
+    gap: 0.6rem;
+    padding: 0.75rem;
+  }
+
+  .cn-savings__mascot,
+  .cn-savings__pelican {
+    flex-basis: 3.2rem;
+    width: 3.2rem;
+  }
+
+  .cn-savings__steps li {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .cn-submit-pelican {
+    flex-basis: 2.8rem;
+    width: 2.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-service-option.is-popping > span,
+  .cn-savings.is-celebrating .cn-savings__pelican,
+  .cn-savings.is-celebrating .cn-savings__bubble,
+  .cn-service-perk {
+    animation: none;
+  }
+
+  .cn-savings__bar span {
+    transition: none;
+  }
+}
+
+/* Narrow placements (sidebars, small phones): one card per row so prices and notes stay readable. */
+.cn-quote-form--enhanced {
+  container-type: inline-size;
+}
+
+@container (max-width: 360px) {
+  .cn-service-grid,
+  .cn-window-plan .cn-choice-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .cn-service-option > span {
+    min-height: 0;
+  }
+}

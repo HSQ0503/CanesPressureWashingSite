@@ -1,11 +1,9 @@
-// Commercial inquiry button: ticks "Commercial Cleaning" and the Commercial property type in the existing
-// quote form (the same clicks a visitor would make), then the link scrolls to the form.
+// Commercial inquiry button: ticks the Commercial property type in the existing quote form (the same
+// click a visitor would make), then the link scrolls to the form.
 (function () {
   function prefill() {
     var form = document.querySelector("form.cn-quote-form");
     if (!form) return;
-    var service = form.querySelector('.cn-service-option input[value="Commercial Cleaning"]');
-    if (service && !service.checked) service.click();
     var type = form.querySelector('input[name="propertyType"][value="Commercial"]');
     if (type && !type.checked) type.click();
   }

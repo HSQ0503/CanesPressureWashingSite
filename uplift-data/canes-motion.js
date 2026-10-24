@@ -20,11 +20,11 @@
   var TICKER = [
     "Roof Soft Washing",
     "House Washing",
+    "Driveway Cleaning",
+    "Back Patios & Pool Decks",
+    "Exterior Window Washing",
     "Gutter Cleaning",
     "Paver Sealing",
-    "Window Washing",
-    "Driveways & Sidewalks",
-    "Patios & Screen Enclosures",
   ];
 
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
