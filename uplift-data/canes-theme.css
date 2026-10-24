@@ -14,7 +14,7 @@ body :is(h1, h2),
   font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: .005em !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
 }
 
 h1 {
@@ -77,4 +77,576 @@ h2 {
   border-color: var(--canes-ink);
   background: var(--canes-ink);
   color: #fff;
+}
+
+/* Bottom "contact our specialists" banner is orange now: its highlighted words go white. */
+.cta-2 :is(h1, h2) .highlight,
+.cta-1 :is(h1, h2) .highlight {
+  color: #fff;
+}
+
+/* Outline buttons that sit on dark sections. */
+.bg-dark .btn-outline-dark,
+.projects .btn-outline-dark {
+  border-color: #fff;
+  color: #fff;
+}
+
+.bg-dark .btn-outline-dark:hover,
+.projects .btn-outline-dark:hover {
+  border-color: var(--canes-orange);
+  background: var(--canes-orange);
+  color: var(--canes-ink);
+}
+
+/* ---------- Alive: scroll reveal ---------- */
+.canes-motion .canes-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.canes-motion .canes-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Alive: hover lift on cards ---------- */
+.home-service-card,
+.canes-process__step,
+.canes-review-card,
+.canes-project,
+.home-review-card,
+.card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.canes-process__step:hover,
+.canes-review-card:hover,
+.canes-project:hover,
+.home-review-card:hover,
+.card:hover {
+  border-color: var(--canes-orange);
+  box-shadow: 0 18px 40px rgba(242, 90, 10, .18);
+  transform: translateY(-4px);
+}
+
+/* ---------- Alive: light sweep across orange buttons ---------- */
+.btn-primary,
+.btn-secondary,
+.navigation-quote-button,
+.canes-hero__btn--primary,
+.canes-custom__cta,
+.canes-bundle__cta,
+.canes-commercial__btn,
+.canes-reviews__cta-btn,
+.canes-mobile-bar__quote {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.btn-secondary::after,
+.navigation-quote-button::after,
+.canes-hero__btn--primary::after,
+.canes-custom__cta::after,
+.canes-bundle__cta::after,
+.canes-commercial__btn::after,
+.canes-reviews__cta-btn::after,
+.canes-mobile-bar__quote::after {
+  content: "";
+  width: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-secondary:hover::after,
+.navigation-quote-button:hover::after,
+.canes-hero__btn--primary:hover::after,
+.canes-custom__cta:hover::after,
+.canes-bundle__cta:hover::after,
+.canes-commercial__btn:hover::after,
+.canes-reviews__cta-btn:hover::after {
+  animation: canes-sweep .7s ease;
+}
+
+/* The phone Free Quote bar shimmers every few seconds to draw the eye. */
+.canes-mobile-bar__quote::after {
+  animation: canes-sweep 1s ease 2s infinite;
+  animation-duration: 4s;
+}
+
+@keyframes canes-sweep {
+  0% { left: -60%; }
+  25% { left: 130%; }
+  100% { left: 130%; }
+}
+
+/* ---------- Alive: orange services ticker ---------- */
+.canes-ticker {
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  border-top: 2px solid #111;
+  border-bottom: 2px solid #111;
+  background: var(--canes-orange);
+  color: var(--canes-ink);
+}
+
+.canes-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: canes-ticker 70s linear infinite;
+}
+
+.canes-ticker__track span {
+  display: inline-flex;
+  align-items: center;
+  padding: .7rem 0;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.canes-ticker__track span::after {
+  content: "\2605";
+  margin: 0 1.4rem;
+  color: #fff;
+  font-size: .9em;
+}
+
+@keyframes canes-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canes-ticker__track,
+  .canes-mobile-bar__quote::after {
+    animation: none !important;
+  }
+
+  .canes-motion .canes-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .canes-process__step:hover,
+  .canes-review-card:hover,
+  .canes-project:hover,
+  .home-review-card:hover,
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* The home trust strip used to tuck under the hero; with the ticker in between, give it room. */
+.canes-ticker + .home-trust {
+  margin-top: 0;
+  padding-top: 1.75rem;
+}
+
+/* Orange panels (service areas, services list, city "about" box): white chips and buttons on orange. */
+:is(.service-areas-content, .services-content, .about-content) .btn:not(.btn-dark) {
+  border-color: #fff;
+  background: #fff;
+  color: var(--canes-ink);
+  font-weight: 700;
+}
+
+:is(.service-areas-content, .services-content, .about-content) .btn:not(.btn-dark):hover {
+  border-color: var(--canes-ink);
+  background: var(--canes-ink);
+  color: #fff;
+}
+
+:is(.service-areas-content, .services-content, .about-content) :is(h1, h2) .highlight,
+:is(.service-areas-content, .services-content, .about-content) .preheading {
+  color: #fff !important;
+}
+
+/* =====================================================================
+   Mainly white: light versions of the theme's dark sections, easier reading.
+   ===================================================================== */
+:root {
+  --canes-orange-text: #c24a0c; /* darker orange for small text on white */
+}
+
+main p,
+main li {
+  line-height: 1.7;
+}
+
+/* The hero keeps its bold all-caps look. */
+.canes-hero h1 {
+  text-transform: uppercase !important;
+}
+
+/* Two-tone headings: the last words of a heading in orange (added by canes-motion.js). */
+.canes-accent {
+  color: var(--canes-orange);
+}
+
+.cta-1 .canes-accent,
+:is(.service-areas-content, .services-content, .about-content) .canes-accent {
+  color: #fff;
+}
+
+.content-3 {
+  background: #f6f6f6;
+  color: #222;
+}
+
+.content-3 :is(h1, h2, h3, h4, h5) {
+  color: #111;
+}
+
+.content-3 a:not(.btn) {
+  color: var(--canes-orange-text);
+}
+
+.qualities-interior {
+  background: #fff;
+  color: #222;
+}
+
+.qualities-interior > .container > :is(h1, h2, h3, .row > div > h2) {
+  color: #111;
+}
+
+#service .projects,
+.projects.bg-dark {
+  background: #f6f6f6 !important;
+  color: #222 !important;
+}
+
+.projects .text-light {
+  color: #111 !important;
+}
+
+.projects .btn-outline-dark {
+  border-color: #111;
+  color: #111;
+}
+
+/* Photos in an offset orange outline frame (a white shadow cut out of an orange one). */
+.service-image .canes-ba {
+  padding: 0 18px 18px 0;
+}
+
+.service-image .canes-ba .canes-ba__frame {
+  box-shadow:
+    18px 18px 0 -3px #fff,
+    18px 18px 0 0 var(--canes-orange),
+    0 18px 40px rgba(20, 20, 20, .12);
+}
+
+/* =====================================================================
+   The Canes pelican, throughout every page (inserted by canes-motion.js)
+   ===================================================================== */
+
+/* Badge divider: orange band with the pelican badge sitting on it. */
+.canes-mascot-divider {
+  display: flex;
+  height: 14px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 4.5rem 0;
+  background: var(--canes-orange);
+}
+
+.canes-mascot-divider__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .55rem 1.6rem .55rem .7rem;
+  border: 3px solid var(--canes-orange);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+}
+
+.canes-mascot-divider__pelican {
+  width: 5.25rem;
+  height: auto;
+  margin: -2.2rem 0 -.4rem;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .18));
+}
+
+.canes-mascot-divider__badge strong {
+  display: block;
+  color: #111;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.canes-mascot-divider__badge small {
+  display: block;
+  color: var(--canes-orange-text);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.canes-has-pelican {
+  position: relative;
+}
+
+/* Standing beside the orange 15% banner. */
+.canes-cta-pelican {
+  width: clamp(9rem, 15vw, 13rem);
+  height: auto;
+  position: absolute;
+  bottom: -5rem;
+  left: 0;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .25));
+}
+
+/* Peeking over the "Contact Us Today" form header. */
+.form-container .form-header {
+  position: relative;
+}
+
+.canes-form-pelican {
+  width: 6.5rem;
+  height: auto;
+  position: absolute;
+  top: -4.6rem;
+  right: 1.25rem;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .2));
+}
+
+/* Beside the "How we do it" heading. */
+.canes-process-pelican {
+  width: clamp(7rem, 12vw, 10rem);
+  height: auto;
+  position: absolute;
+  top: -1rem;
+  right: 0;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .18));
+}
+
+/* In the commercial inquiry button bar. */
+.canes-inline-pelican {
+  width: 5.5rem;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .2));
+  transform: translateX(-50%);
+}
+
+/* Home quote section and reviews header. */
+.canes-side-pelican {
+  display: block;
+  width: clamp(8rem, 14vw, 11rem);
+  height: auto;
+  margin-top: 1.5rem;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .18));
+}
+
+.canes-reviews-hero .canes-side-pelican {
+  position: absolute;
+  right: 0;
+  bottom: -2.5rem;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .canes-cta-pelican,
+  .canes-inline-pelican {
+    display: none;
+  }
+
+  .canes-process-pelican {
+    width: 6rem;
+    top: -2.5rem;
+  }
+
+  .canes-reviews-hero .canes-side-pelican {
+    width: 6.5rem;
+    bottom: -1.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-mascot-divider {
+    margin: 3.5rem 0;
+  }
+
+  .canes-mascot-divider__pelican {
+    width: 4.25rem;
+  }
+
+  .canes-mascot-divider__badge strong {
+    font-size: 1.25rem;
+  }
+
+  .canes-mascot-divider__badge small {
+    font-size: .8rem;
+  }
+
+  .canes-form-pelican {
+    width: 5rem;
+    top: -3.6rem;
+  }
+}
+
+/* Home page: the results and quote sections go light too. */
+.home-results {
+  background: #fff;
+  color: #1c1c1c;
+}
+
+.home-results h2,
+.home-booking h2 {
+  color: #111;
+}
+
+.home-results .home-section__heading p,
+.home-booking .home-booking__intro > p {
+  color: #3f3f3f;
+}
+
+.home-booking {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(242, 90, 10, .1), transparent 30rem),
+    #f6f6f6;
+  color: #1c1c1c;
+}
+
+.home-kicker--light {
+  color: var(--canes-orange-text) !important;
+}
+
+.home-booking .home-booking__phone,
+.home-booking .home-booking__phone strong {
+  color: #111;
+}
+
+.home-booking .home-booking__phone span {
+  color: #666;
+}
+
+.home-booking .home-booking__phone:hover strong {
+  color: var(--canes-orange-text);
+}
+
+.home-booking .home-booking__form {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .1);
+}
+
+/* Orange headers keep the accent words readable. */
+.form-container .form-header .canes-accent {
+  color: #fff;
+}
+
+.home-result-card {
+  border-color: #e5e5e5;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .06);
+}
+
+.home-result-card figcaption {
+  color: #1c1c1c;
+}
+
+.home-result-card figcaption span {
+  color: #555;
+}
+
+/* FAQ + quote form section: light background instead of the dark photo. */
+.faq {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(242, 90, 10, .08), transparent 30rem),
+    #f6f6f6 !important;
+  color: #1c1c1c !important;
+}
+
+.faq > picture,
+.faq > picture .background-image {
+  display: none !important;
+}
+
+.faq h2 {
+  color: #111;
+}
+
+.faq .faq-item {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
+}
+
+/* Keep the form heading a sensible size; the pelican peeks from the corner. */
+.form-container .form-header h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+}
+
+.canes-form-pelican {
+  top: -5.2rem;
+  right: -.5rem;
+}
+
+/* Make room for the pelican standing at the left of the 15% banner. */
+@media (min-width: 992px) {
+  .cta-1 .container.canes-has-pelican {
+    padding-left: clamp(11rem, 17vw, 15rem);
+  }
+}
+
+/* Home trust strip: three items instead of four. */
+.home-trust__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.home-trust__item i {
+  color: var(--canes-orange);
+}
+
+@media (max-width: 767.98px) {
+  .home-trust__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Bigger, easier-to-read trust strip. */
+.home-trust__item {
+  align-items: center;
+  gap: .9rem;
+  padding-block: 1.2rem;
+}
+
+.home-trust__item i {
+  display: inline-flex;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff1e6;
+  font-size: 1.35rem;
+}
+
+.home-trust__item strong {
+  display: block;
+  color: #111;
+  font-size: 1.1rem;
+}
+
+.home-trust__item span {
+  color: #4a4a4a;
+  font-size: .98rem;
 }

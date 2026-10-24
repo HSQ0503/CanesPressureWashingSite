@@ -1,7 +1,7 @@
 /* Shared quote form: progressively enhanced by canes-quote-form.js. */
 .cn-quote-card {
   padding: clamp(1.25rem, 3vw, 2rem);
-  border: 1px solid #ded9ce;
+  border: 1px solid #e3e3e3;
   border-radius: 1.25rem;
   background: #fff;
   box-shadow: 0 18px 50px rgba(18, 18, 18, 0.14);
@@ -131,7 +131,7 @@
 }
 
 .cn-service-option:hover > span {
-  border-color: #f58307;
+  border-color: #f25a0a;
   transform: translateY(-1px);
 }
 
@@ -213,7 +213,7 @@
 }
 
 .cn-choice:hover > span {
-  border-color: #f58307;
+  border-color: #f25a0a;
 }
 
 .cn-choice input:checked + span {

@@ -414,7 +414,7 @@
 
 // 2026 conversion-first homepage redesign.
 .home-page {
-	background: #f5f2eb;
+	background: #f5f5f5;
 	color: #151515;
 	scroll-padding-top: 8rem;
 
@@ -548,7 +548,7 @@
 	padding: clamp(1.25rem, 4vw, 3.5rem) 0 clamp(4rem, 7vw, 7rem);
 	background:
 		radial-gradient(circle at 8% 12%, rgba(245, 131, 7, .2), transparent 25rem),
-		#f5f2eb;
+		#f5f5f5;
 
 	&__shell {
 		display: grid;
@@ -762,7 +762,7 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		border: 1px solid #ded9ce;
+		border: 1px solid #e3e3e3;
 		border-radius: 1.25rem;
 		background: #fff;
 		box-shadow: 0 16px 40px rgba(22, 22, 22, .08);
@@ -1054,8 +1054,8 @@
 			}
 
 			&:nth-child(4n) {
-				background: #ffe36f;
-				color: #ffe36f;
+				background: #ff8a3d;
+				color: #ff8a3d;
 			}
 		}
 	}
@@ -1110,7 +1110,7 @@
 }
 
 .home-services {
-	background: #f5f2eb;
+	background: #f5f5f5;
 }
 
 .home-service-grid {
@@ -1133,7 +1133,7 @@
 	min-width: 0;
 	overflow: hidden;
 	flex-direction: column;
-	border: 1px solid #ded9ce;
+	border: 1px solid #e3e3e3;
 	border-radius: 1.25rem;
 	background: #fff;
 	color: #181818;
@@ -1189,7 +1189,7 @@
 	}
 
 	&:hover {
-		border-color: #f58307;
+		border-color: #f25a0a;
 		color: #181818;
 		box-shadow: 0 18px 40px rgba(22, 22, 22, .11);
 		transform: translateY(-3px);
@@ -1304,7 +1304,7 @@
 			padding: 1.5rem;
 			border: 1px solid #dfdbd2;
 			border-radius: 1rem;
-			background: #faf8f3;
+			background: #f7f7f7;
 		}
 
 		li > span {
@@ -1359,7 +1359,7 @@
 }
 
 .home-reviews {
-	background: #f5f2eb;
+	background: #f5f5f5;
 }
 
 .home-review-grid {
@@ -1387,7 +1387,7 @@
 		display: flex;
 		gap: .15rem;
 		margin-bottom: 1.5rem;
-		color: #f58307;
+		color: #f25a0a;
 		font-size: .9rem;
 	}
 
@@ -1470,14 +1470,14 @@
 			padding: .45rem .75rem;
 			border: 1px solid #ddd8ce;
 			border-radius: .55rem;
-			background: #f8f5ef;
+			background: #f7f7f7;
 			color: #302e2a;
 			font-size: .78rem;
 			font-weight: 750;
 			text-decoration: none;
 
 			&:hover {
-				border-color: #f58307;
+				border-color: #f25a0a;
 				color: #b84405;
 			}
 		}
@@ -1534,7 +1534,7 @@
 			}
 
 			i {
-				color: #f58307;
+				color: #f25a0a;
 				font-size: 1.2rem;
 			}
 		}
@@ -1555,7 +1555,7 @@
 			align-items: center;
 			justify-content: center;
 			border-radius: 50%;
-			background: #f58307;
+			background: #f25a0a;
 			color: #151515;
 		}
 
@@ -1595,7 +1595,7 @@
 }
 
 .home-faq {
-	background: #f5f2eb;
+	background: #f5f5f5;
 
 	&__list {
 		max-width: 900px;
@@ -1656,7 +1656,7 @@
 		right: 0;
 		grid-template-columns: .72fr .72fr 1.35fr;
 		padding: .45rem max(.45rem, env(safe-area-inset-right)) calc(.45rem + env(safe-area-inset-bottom)) max(.45rem, env(safe-area-inset-left));
-		border-top: 1px solid #ded9ce;
+		border-top: 1px solid #e3e3e3;
 		background: rgba(255, 255, 255, .97);
 		box-shadow: 0 -12px 35px rgba(18, 18, 18, .13);
 		backdrop-filter: blur(12px);

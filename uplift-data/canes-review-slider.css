@@ -1,0 +1,110 @@
+/* Home page: auto-advancing slider of the newest Google reviews. */
+.canes-rslider {
+  position: relative;
+}
+
+.canes-rslider__track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: .5rem .25rem 1.5rem;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.canes-rslider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.canes-rslider__track:focus-visible {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 4px;
+}
+
+.canes-rslide {
+  display: flex;
+  flex: 0 0 calc((100% - 2.5rem) / 3);
+  flex-direction: column;
+  gap: .9rem;
+  margin: 0;
+  padding: 1.6rem;
+  border: 1px solid #e6e6e6;
+  border-top: 4px solid #f25a0a;
+  border-radius: 1.1rem;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .06);
+  scroll-snap-align: start;
+}
+
+.canes-rslide__stars {
+  display: flex;
+  gap: .2rem;
+  color: #f2a007;
+  font-size: 1.1rem;
+}
+
+.canes-rslide blockquote {
+  flex: 1;
+  margin: 0;
+}
+
+.canes-rslide blockquote p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: #222;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+}
+
+.canes-rslide figcaption strong {
+  display: block;
+  color: #111;
+  font-size: 1.05rem;
+}
+
+.canes-rslide figcaption span {
+  color: #666;
+  font-size: .92rem;
+}
+
+.canes-rslider__controls {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+}
+
+.canes-rslider__btn {
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 1.25rem;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.canes-rslider__btn:hover {
+  border-color: #f25a0a;
+  background: #f25a0a;
+  color: #111;
+}
+
+@media (max-width: 991.98px) {
+  .canes-rslide {
+    flex-basis: calc((100% - 1.25rem) / 2);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canes-rslide {
+    flex-basis: 88%;
+  }
+}

@@ -112,7 +112,7 @@
 .canes-bundle__label {
   display: block;
   margin-bottom: .85rem;
-  color: #6b665d;
+  color: #666666;
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .14em;
@@ -144,9 +144,9 @@
   align-items: center;
   gap: .65rem;
   padding: .8rem .85rem;
-  border: 2px solid #e8e2d6;
+  border: 2px solid #e6e6e6;
   border-radius: .9rem;
-  background: #faf8f4;
+  background: #f7f7f7;
   color: var(--bd-ink);
   font-size: .92rem;
   font-weight: 800;
@@ -169,7 +169,7 @@
 
 .canes-bundle__card .canes-bundle__plus {
   margin-left: auto;
-  color: #b3ab9b;
+  color: #aaaaaa;
   font-size: 1.1rem;
   transition: transform .2s ease, color .2s ease;
 }
@@ -302,7 +302,7 @@
 
 .canes-bundle__footer p {
   margin: 0;
-  color: #6b665d;
+  color: #666666;
   font-size: .9rem;
 }
 
@@ -479,9 +479,9 @@
   flex-direction: column;
   gap: .4rem;
   padding: 1.1rem 1rem 1rem;
-  border: 2px solid #e8e2d6;
+  border: 2px solid #e6e6e6;
   border-radius: 1rem;
-  background: #faf8f4;
+  background: #f7f7f7;
   color: var(--bd-ink);
   -webkit-tap-highlight-color: transparent;
   transition: border-color .2s ease, background-color .2s ease, transform .2s ease, box-shadow .2s ease;
@@ -496,7 +496,7 @@
 }
 
 .canes-plan__visits {
-  color: #6b665d;
+  color: #666666;
   font-size: .85rem;
   font-weight: 700;
 }
@@ -642,4 +642,35 @@
   .canes-plan__name {
     font-size: 1.35rem;
   }
+}
+
+/* =====================================================================
+   Light version: white section, orange accents. Overrides the orange background above.
+   ===================================================================== */
+.canes-bundle {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(242, 90, 10, .1), transparent 30rem),
+    #fff;
+  color: #1c1c1c;
+}
+
+.canes-bundle__kicker { color: #c24a0c; }
+.canes-bundle__kicker::before { background: var(--bd-orange); }
+.canes-bundle h2 span { color: var(--bd-orange); }
+.canes-bundle__intro { color: #3a3a3a; font-size: 1.1rem; font-weight: 500; }
+
+.canes-bundle__tier {
+  border-color: rgba(242, 90, 10, .55);
+  background: #fff4ec;
+}
+
+.canes-bundle__tier strong { color: var(--bd-orange); }
+
+.canes-bundle__panel {
+  border: 1px solid #ececec;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .07);
+}
+
+.canes-bundle__card {
+  font-size: 1rem;
 }

@@ -1,8 +1,8 @@
 /* Reviews page: rating header followed by a grid of verbatim customer review cards. */
 .canes-reviews-hero {
   padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2.5rem, 5vw, 3.75rem);
-  border-bottom: 1px solid #e4dccd;
-  background: #efe8db;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f2f2f2;
   color: #151515;
 }
 
@@ -25,7 +25,7 @@
 
 .canes-reviews-crumbs li + li::before {
   content: "\203A";
-  color: #8a8478;
+  color: #888888;
 }
 
 .canes-reviews-crumbs a,
@@ -78,7 +78,7 @@
   align-items: center;
   gap: .65rem;
   padding: .45rem 1rem;
-  border: 1px solid #e4dccd;
+  border: 1px solid #e5e5e5;
   border-radius: 999px;
   background: #fff;
   font-size: .88rem;
@@ -106,7 +106,7 @@
 }
 
 .canes-reviews-pill > span:not(.canes-reviews-pill__stars) {
-  color: #6b665d;
+  color: #666666;
 }
 
 .canes-reviews-pill__google {
@@ -150,7 +150,7 @@
   flex-direction: column;
   margin: 0;
   padding: 1.6rem 1.6rem 1.4rem;
-  border: 1px solid #e8e2d6;
+  border: 1px solid #e6e6e6;
   border-radius: 1.1rem;
   background: #fff;
   box-shadow: 0 8px 24px rgba(27, 23, 17, .06);
@@ -180,7 +180,7 @@
 }
 
 .canes-review-card figcaption span {
-  color: #6b665d;
+  color: #666666;
   font-weight: 600;
 }
 
@@ -238,4 +238,12 @@
   .canes-reviews__cta-btn {
     justify-content: center;
   }
+}
+
+.canes-review-card figcaption time {
+  display: block;
+  margin-top: .2rem;
+  color: #777;
+  font-size: .85rem;
+  font-weight: 600;
 }
