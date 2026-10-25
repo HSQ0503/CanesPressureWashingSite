@@ -288,11 +288,6 @@
   }
 }
 
-/* Crew photo as the hero background: frame on the Canes shirt and the paver being cleaned. */
-.canes-hero__bg--crew {
-  object-position: center 22%;
-}
-
 /* Review count beside the stars, like a Google rating badge. */
 .canes-hero__count {
   color: #fff;
