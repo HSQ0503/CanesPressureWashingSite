@@ -165,14 +165,6 @@
         if (input && !input.checked) input.click();
       });
 
-      // A plan picked on the window page carries into the form's window plan question.
-      var picked = checkedFrequency();
-      var windowsBox = window.canesFindServiceInput && window.canesFindServiceInput(form, "Window Cleaning");
-      if (picked && windowsBox && windowsBox.checked) {
-        var planRadio = form.querySelector('input[name="windowPlan"][value="' + picked.value + '"]');
-        if (planRadio && !planRadio.checked) planRadio.click();
-      }
-
       if (section.dataset.propertyType) {
         var type = form.querySelector('input[name="propertyType"][value="' + section.dataset.propertyType + '"]');
         if (type && !type.checked) type.click();

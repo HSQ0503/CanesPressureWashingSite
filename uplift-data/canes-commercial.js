@@ -1,10 +1,10 @@
-// Commercial inquiry button: ticks the Commercial property type in the existing quote form (the same
-// click a visitor would make), then the link scrolls to the form.
+// Commercial inquiry button: picks the Commercial estimate type in the quote form (the same click a
+// visitor would make), then the link scrolls to the form.
 (function () {
   function prefill() {
     var form = document.querySelector("form.cn-quote-form");
     if (!form) return;
-    var type = form.querySelector('input[name="propertyType"][value="Commercial"]');
+    var type = form.querySelector('input[name="estimateType"][value="commercial"]');
     if (type && !type.checked) type.click();
   }
 

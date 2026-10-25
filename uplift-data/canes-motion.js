@@ -22,9 +22,11 @@
     "House Washing",
     "Driveway Cleaning",
     "Back Patios & Pool Decks",
+    "Screen Enclosure Cleaning",
     "Exterior Window Washing",
     "Gutter Cleaning",
     "Paver Sealing",
+    "Dock Cleaning",
   ];
 
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -148,6 +150,7 @@
     // 3. Peeking over the "Contact Us Today" form.
     document.querySelectorAll(".form-container .form-header").forEach(function (head) {
       head.appendChild(pelicanImg("canes-form-pelican"));
+      head.closest(".form-container").classList.add("canes-has-form-pelican");
     });
 
     // 4. Beside the "How we do it" steps and the commercial inquiry button.

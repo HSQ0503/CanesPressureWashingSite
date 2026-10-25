@@ -9,8 +9,17 @@
   text-align: left;
 }
 
-#quote {
-  scroll-margin-top: 9.5rem;
+/* "Get my free quote" lands with the form just under the sticky header. */
+#quote,
+#get-quote {
+  scroll-margin-top: 6.5rem !important;
+}
+
+@media (max-width: 991.98px) {
+  #quote,
+  #get-quote {
+    scroll-margin-top: 6rem !important;
+  }
 }
 
 .banner .cn-quote-card {
@@ -559,43 +568,11 @@
 }
 
 /* Recurring window plan: appears once windows are picked. */
-.cn-window-plan {
-  margin: 1rem 0 0;
-  padding: 1rem;
-  border: 2px solid #111;
-  border-radius: 1rem;
-  background: #fff;
-  animation: cn-perk-in 0.3s ease-out;
-}
 
-.cn-window-plan[hidden] {
-  display: none;
-}
 
-.cn-window-plan legend {
-  float: left;
-  width: 100%;
-  margin: 0 0 0.4rem;
-  color: #171717;
-  font-size: 0.95rem;
-  font-weight: 900;
-}
 
-.cn-window-plan legend i {
-  color: #f25a0a;
-}
 
-.cn-window-plan__pitch {
-  clear: both;
-  margin: 0 0 0.8rem;
-  color: #4d4943;
-  font-size: 0.78rem;
-  line-height: 1.5;
-}
 
-.cn-window-plan__pitch strong {
-  color: #c24a0c;
-}
 
 .cn-plan-choice > span {
   position: relative;
@@ -615,23 +592,9 @@
   color: inherit;
 }
 
-.cn-plan-ribbon {
-  position: absolute;
-  top: -0.6rem;
-  left: 50%;
-  padding: 0.1rem 0.5rem;
-  border-radius: 999px;
-  background: #f25a0a;
-  color: #fff;
-  font-size: 0.6rem;
-  font-style: normal;
-  font-weight: 900;
-  white-space: nowrap;
-  transform: translateX(-50%);
-}
 
 /* Odd number of services: the last card spans the full row. */
-.cn-service-option:last-child:nth-child(odd) {
+.cn-service-option:last-of-type:nth-of-type(odd) {
   grid-column: 1 / -1;
 }
 
@@ -902,12 +865,290 @@
 }
 
 @container (max-width: 360px) {
-  .cn-service-grid,
-  .cn-window-plan .cn-choice-grid--two {
-    grid-template-columns: 1fr;
-  }
 
   .cn-service-option > span {
     min-height: 0;
+  }
+}
+
+/* ---------- Commercial quote form ---------- */
+.cn-bundle-flag--dark {
+  background: #111;
+  color: #ffd23f;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cn-fieldset--spaced {
+  margin-top: 1.1rem;
+}
+
+.cn-quote-form--commercial .cn-service-option > span {
+  min-height: 72px;
+  justify-content: center;
+}
+
+/* ---------- Step 1: estimate type picker ---------- */
+.cn-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.cn-type-option {
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+}
+
+.cn-type-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cn-type-option > span {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 0.6rem;
+  border: 2px solid #dcd8d0;
+  border-radius: 0.9rem;
+  background: #fff;
+  color: #302e2a;
+  text-align: center;
+  transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+
+.cn-type-option i {
+  color: #f25a0a;
+  font-size: 1.6rem;
+}
+
+.cn-type-option strong {
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.cn-type-option small {
+  color: #716c64;
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+.cn-type-option:hover > span {
+  border-color: #f25a0a;
+  transform: translateY(-1px);
+}
+
+.cn-type-option input:checked + span {
+  border-color: #e85a0c;
+  background: #f25a0a;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(201, 70, 0, 0.25);
+}
+
+.cn-type-option input:checked + span i,
+.cn-type-option input:checked + span small {
+  color: #fff;
+}
+
+.cn-type-option input:focus-visible + span {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 2px;
+}
+
+.cn-variant {
+  display: grid;
+  gap: 1rem;
+}
+
+.cn-variant:empty {
+  display: none;
+}
+
+@container (max-width: 480px) {
+  .cn-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cn-type-option > span {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 0.6rem;
+    text-align: left;
+  }
+
+  .cn-type-option small {
+    flex-basis: 100%;
+    padding-left: 2.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-type-option > span {
+    transition: none;
+  }
+
+  .cn-type-option:hover > span {
+    transform: none;
+  }
+}
+
+/* =====================================================================
+   Compact residential form: smaller cards, quiet prices, bundle push up top.
+   ===================================================================== */
+.cn-service-grid {
+  gap: 0.5rem;
+}
+
+.cn-service-option > span {
+  min-height: 0;
+  gap: 0.1rem;
+  padding: 0.65rem 0.5rem 0.6rem;
+  border-radius: 0.7rem;
+}
+
+.cn-service-option i {
+  font-size: 1.05rem;
+}
+
+.cn-service-option strong {
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+/* Prices stay in the background: small and grey. */
+.cn-service-price {
+  color: #8a847b;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.cn-service-option.is-selected .cn-service-price {
+  color: #b84405;
+}
+
+.cn-service-detail {
+  color: #8a847b;
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+.cn-price-note {
+  margin-top: 0.5rem;
+  font-size: 0.66rem;
+  text-align: center;
+}
+
+/* Bundle meter: a slim strip above the services. */
+.cn-form-section--services .cn-savings {
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.cn-form-section--services .cn-savings__mascot,
+.cn-form-section--services .cn-savings__pelican {
+  flex-basis: 2.9rem;
+  width: 2.9rem;
+}
+
+.cn-form-section--services .cn-savings__bubble {
+  margin-bottom: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.74rem;
+}
+
+.cn-form-section--services .cn-savings__bubble strong {
+  display: inline;
+  margin-right: 0.3rem;
+  font-size: 0.82rem;
+}
+
+.cn-form-section--services .cn-savings__steps {
+  margin-bottom: 0.3rem;
+}
+
+.cn-form-section--services .cn-savings__steps li {
+  padding: 0.15rem 0.3rem;
+  font-size: 0.62rem;
+}
+
+.cn-form-section--services .cn-savings__steps b {
+  font-size: 0.72rem;
+}
+
+.cn-form-section--services .cn-savings__bar {
+  height: 0.35rem;
+}
+
+/* Window plan: opens across the row right under the window card. */
+
+
+
+
+.cn-plan-choice > span {
+  min-height: 0;
+  padding: 0.55rem 0.3rem 0.4rem;
+}
+
+.cn-plan-choice strong {
+  font-size: 0.74rem;
+}
+
+.cn-plan-choice small {
+  font-size: 0.62rem;
+}
+
+
+/* "How soon" choices and the small referral dropdown. */
+.cn-timing-grid .cn-plan-choice > span {
+  padding: 0.6rem 0.4rem;
+}
+
+.cn-timing-date[hidden] {
+  display: none;
+}
+
+.cn-field--small > span {
+  font-size: 0.72rem;
+}
+
+.cn-field--small select {
+  min-height: 40px;
+  font-size: 0.82rem;
+}
+
+@container (max-width: 480px) {
+
+  .cn-timing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (max-width: 360px) {
+  .cn-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Wide forms (desktop): three service cards per row, so the list is short. */
+@container (min-width: 600px) {
+  .cn-service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cn-service-option:last-of-type:nth-of-type(odd) {
+    grid-column: auto;
+  }
+
+  .cn-quote-form--commercial .cn-service-option:last-of-type:nth-of-type(3n + 1) {
+    grid-column: 1 / -1;
   }
 }

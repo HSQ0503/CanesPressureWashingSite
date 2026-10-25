@@ -1,32 +1,27 @@
 // Progressively upgrades the native quote form and submits it to the Canes intake API.
 (function () {
-  // The services on the form, with their starting prices. `also` lists older names that other scripts
+  // The services on the form. `also` lists older names that other scripts
   // (the service pages' bundle picker) may still use to tick a box. Keep the names in step with the
   // orange ticker in canes-motion.js.
   var serviceOptions = [
-    { name: "Roof Soft Washing", icon: "bi-house-up", price: "From $750", also: ["Roof Cleaning"] },
-    { name: "House Washing", icon: "bi-house", price: "From $275", also: [] },
-    {
-      name: "Driveway Cleaning",
-      icon: "bi-car-front",
-      price: "From $200",
-      detail: "Sidewalk, front porch & walkway included",
-      also: ["Paver Cleaning"],
-    },
-    { name: "Back Patio / Pool Deck", icon: "bi-sun", price: "From $150 a visit", also: ["Patio / Lanai"] },
-    { name: "Exterior Window Washing", icon: "bi-stars", price: "From $220", detail: "Recurring plans available", also: ["Window Cleaning"] },
-    { name: "Gutter Cleaning", icon: "bi-water", price: "From $200", also: [] },
-    { name: "Paver Sealing", icon: "bi-layers", price: "From $1.75 / sq ft", also: [] },
+    { name: "Roof Soft Washing", icon: "bi-house-up", also: ["Roof Cleaning"] },
+    { name: "House Washing", icon: "bi-house", also: [] },
+    { name: "Driveway Cleaning", icon: "bi-car-front", detail: "+ sidewalk, porch & walkway", also: ["Paver Cleaning"] },
+    { name: "Back Patio / Pool Deck", icon: "bi-sun", also: ["Patio / Lanai"] },
+    { name: "Screen Enclosure Cleaning", icon: "bi-grid-3x3", also: [] },
+    { name: "Exterior Window Washing", icon: "bi-stars", also: ["Window Cleaning"] },
+    { name: "Gutter Cleaning", icon: "bi-water", also: [] },
+    { name: "Paver Sealing", icon: "bi-layers", also: [] },
+    { name: "Dock Cleaning", icon: "bi-water", also: [] },
   ];
-  var WINDOWS = "Exterior Window Washing";
 
-  // Same plans as the window cleaning page's plan picker.
-  var windowPlans = [
-    ["One-time", "Just this once", ""],
-    ["Quarterly plan", "4 cleans a year · biggest savings + free screen cleaning", "Most popular"],
-    ["Tri-annual plan", "3 cleans a year · great savings", ""],
-    ["Bi-annual plan", "2 cleans a year · save more", ""],
+  // "How soon?" options on the residential form.
+  var timingOptions = [
+    ["ASAP", "1–3 days · rush fee may apply"],
+    ["Next available", "Our first open spot"],
+    ["Pick a date", "Choose your day"],
   ];
+  var referralSources = ["Google Search", "Facebook / Instagram", "Neighbor / Word of Mouth", "Yard Sign", "Door Hanger", "Other"];
 
   // Bundle discount tiers: number of services picked -> percent off.
   var TIERS = [
@@ -43,19 +38,16 @@
     "concrete-cleaning": "Driveway Cleaning",
     "paver-sealing": "Paver Sealing",
     "patio-cleaning": "Back Patio / Pool Deck",
-    "window-cleaning": WINDOWS,
+    "window-cleaning": "Exterior Window Washing",
     "gutter-cleaning": "Gutter Cleaning",
   };
 
-  var commercialPages = [
-    "commercial-pressure-washing",
-    "building-washing",
-    "storefront-washing",
-    "graffiti-cleaning",
-    "dumpster-pad-cleaning",
-    "concrete-cleaning",
+  // Step 1 of every quote form: the visitor picks one, then the rest of the form is built for it.
+  var estimateTypes = [
+    { key: "residential", label: "Residential", sub: "My home", icon: "bi-house-heart", propertyType: "Residential" },
+    { key: "commercial", label: "Commercial", sub: "Businesses & commercial properties", icon: "bi-buildings", propertyType: "Commercial" },
+    { key: "hoa", label: "HOA / Community", sub: "Boards, communities & property managers", icon: "bi-houses", propertyType: "HOA / Community" },
   ];
-
   function pageSlug() {
     var slug = window.location.pathname.split("/").filter(Boolean).pop() || "";
     return slug.replace(/\.html$/, "");
@@ -87,45 +79,14 @@
         var checked = selectedServices.indexOf(option.name) !== -1;
         return (
           '<label class="cn-service-option">' +
-          '<input type="checkbox" value="' +
-          escapeAttr(option.name) +
-          '" data-also="' +
-          escapeAttr(option.also.join("|")) +
-          '"' +
-          (checked ? " checked" : "") +
-          ">" +
-          '<span><i class="bi ' +
-          option.icon +
-          '" aria-hidden="true"></i><strong>' +
-          option.name.replace(/&/g, "&amp;") +
-          "</strong>" +
-          '<b class="cn-service-price">' + option.price + "</b>" +
+          '<input type="checkbox" value="' + escapeAttr(option.name) + '" data-also="' + escapeAttr(option.also.join("|")) + '"' +
+          (checked ? " checked" : "") + ">" +
+          '<span><i class="bi ' + option.icon + '" aria-hidden="true"></i><strong>' + option.name.replace(/&/g, "&amp;") + "</strong>" +
           (option.detail ? '<small class="cn-service-detail">' + option.detail.replace(/&/g, "&amp;") + "</small>" : "") +
-          '<small class="cn-service-bundle">Bundle pricing available</small>' +
-          '<em class="cn-service-perk" aria-hidden="true"></em></span></label>'
+          "</span></label>"
         );
       })
       .join("");
-  }
-
-  // Shown once windows are picked: Florida build-up pitch plus the recurring plan choice.
-  function windowPlanPanel() {
-    return (
-      '<fieldset class="cn-window-plan" hidden>' +
-      '<legend><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Interested in a recurring window plan?</legend>' +
-      '<p class="cn-window-plan__pitch"><strong>Florida is tough on glass.</strong> Humidity, salt air, pollen, and afternoon storms leave spots and film on windows within weeks. That is why so many homeowners lock in a recurring plan and save: their windows stay spotless all year for less than booking one-off cleans.</p>' +
-      '<div class="cn-choice-grid cn-choice-grid--two">' +
-      windowPlans
-        .map(function (plan) {
-          return (
-            '<label class="cn-choice cn-plan-choice"><input type="radio" name="windowPlan" value="' + plan[0] + '">' +
-            "<span>" + (plan[2] ? '<em class="cn-plan-ribbon">' + plan[2] + "</em>" : "") +
-            "<strong>" + plan[0].replace(" plan", "") + "</strong><small>" + plan[1] + "</small></span></label>"
-          );
-        })
-        .join("") +
-      "</div></fieldset>"
-    );
   }
 
   // Finds a service box by its current name or an older one. Other scripts use this to tick boxes.
@@ -134,7 +95,10 @@
       return input.value === name || (input.dataset.also || "").split("|").indexOf(name) !== -1;
     })[0];
   }
-  window.canesFindServiceInput = findServiceInput;
+  window.canesFindServiceInput = function (form, name) {
+    if (form.cnQuote && !form.cnQuote.type) setType(form, "residential", form.cnQuote.initialServices);
+    return findServiceInput(form, name);
+  };
 
   function choiceButtons(name, values, selected) {
     return values
@@ -177,67 +141,112 @@
       '<li data-step="2"><b>2</b><small>10% off</small></li>' +
       '<li data-step="3"><b>3+</b><small>20% off</small></li>' +
       "</ol>" +
-      '<div class="cn-savings__bar" aria-hidden="true"><span></span></div>' +
       "</div></div>"
     );
   }
 
-  function renderForm(form, initialServices) {
+  // Address with search suggestions; city and ZIP are filled in from the chosen suggestion.
+  function addressField(label, required) {
+    return (
+      '<label class="cn-field cn-address-field"><span>' + label + (required ? "" : " <em>(optional)</em>") + "</span>" +
+      '<div class="cn-address-input"><i class="bi bi-search" aria-hidden="true"></i><input type="text" name="address" maxlength="240" autocomplete="street-address" placeholder="Start typing the address" aria-autocomplete="list" aria-controls="cn-address-results"' + (required ? " required" : "") + "></div>" +
+      '<ul class="cn-address-results" id="cn-address-results" role="listbox" hidden></ul><small class="cn-address-status" aria-live="polite"></small></label>' +
+      '<input type="hidden" name="city"><input type="hidden" name="postalCode"><input type="hidden" name="latitude"><input type="hidden" name="longitude">'
+    );
+  }
+
+  function formFooter(label) {
+    return (
+      '<div class="cn-form-footer"><div class="cn-hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>' +
+      '<label class="cn-consent"><input type="checkbox" name="consent" value="yes"><span>I agree to receive text messages from Canes Pressure Washing about my service request, including replies, quotes, and appointment confirmations. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</span></label>' +
+      '<p class="cn-quote-error" hidden>Something went wrong. Please call or text us at <a href="tel:+15615375674">(561) 537-5674</a>.</p>' +
+      '<div class="cn-submit-row">' + pelican("cn-submit-pelican") +
+      '<button type="submit" class="btn cn-quote-submit"><span class="cn-submit-label">' + label + '</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div></div>'
+    );
+  }
+
+  function renderShell(form) {
     form.classList.add("cn-quote-form--enhanced");
     form.noValidate = true;
     form.innerHTML =
+      '<section class="cn-form-section cn-type-section">' +
+      sectionHeader("1", "What kind of estimate do you need?", "Pick one to start. The form adjusts to fit your property.") +
+      '<div class="cn-type-grid" role="radiogroup" aria-label="Estimate type">' +
+      estimateTypes
+        .map(function (type) {
+          return (
+            '<label class="cn-type-option"><input type="radio" name="estimateType" value="' + type.key + '">' +
+            '<span><i class="bi ' + type.icon + '" aria-hidden="true"></i><strong>' + type.label + "</strong><small>" +
+            type.sub.replace(/&/g, "&amp;") + "</small></span></label>"
+          );
+        })
+        .join("") +
+      "</div>" +
+      '<p class="cn-field-error cn-type-error" hidden>Please choose Residential, Commercial, or HOA to start your estimate.</p>' +
+      "</section>" +
+      '<div class="cn-variant"></div>';
+  }
+
+  function residentialSections(initialServices) {
+    return (
       '<section class="cn-form-section cn-form-section--services" aria-labelledby="cn-services-title">' +
-      pelican("cn-peek-pelican") +
-      '<span class="cn-bundle-flag"><i class="bi bi-tag-fill" aria-hidden="true"></i> Bundle &amp; save up to 20%</span>' +
-      sectionHeader("1", "Select Your Service(s)", "Pick 2 services and save 10%. Pick 3 or more and save 20%.") +
+      sectionHeader("2", "Select Your Service(s)", "Tap everything you need. The more you bundle, the more you save.") +
       '<h3 id="cn-services-title" class="visually-hidden">Select your services</h3>' +
+      savingsMeter() +
       '<div class="cn-service-grid">' +
       serviceButtons(initialServices) +
       "</div>" +
-      '<p class="cn-price-note">Starting prices shown. Your final quote depends on property size and condition, and bundled services are quoted at a reduced rate.</p>' +
-      windowPlanPanel() +
-      savingsMeter() +
+      '<p class="cn-price-note">$300 minimum per visit. Bundled services are quoted at a reduced rate.</p>' +
       '<input type="hidden" name="service" value="">' +
       '<input type="hidden" name="bundleDiscount" value="">' +
       '<p class="cn-field-error cn-service-error" hidden>Please select at least one service.</p>' +
       "</section>" +
       '<section class="cn-form-section">' +
-      sectionHeader("2", "Property Details", "Help us understand the property so we can prepare an accurate quote.") +
-      '<fieldset class="cn-fieldset"><legend>Property type</legend><div class="cn-choice-grid cn-choice-grid--three">' +
-      choiceButtons("propertyType", ["Residential", "Commercial", "HOA / Community"], "Residential") +
-      "</div></fieldset>" +
-      '<label class="cn-field cn-address-field"><span><i class="bi bi-geo-alt" aria-hidden="true"></i> Street address <em>(optional)</em></span>' +
-      '<div class="cn-address-input"><i class="bi bi-search" aria-hidden="true"></i><input type="text" name="address" maxlength="240" autocomplete="street-address" placeholder="Start typing the property address" aria-autocomplete="list" aria-controls="cn-address-results"></div>' +
-      '<ul class="cn-address-results" id="cn-address-results" role="listbox" hidden></ul><small class="cn-address-status" aria-live="polite"></small></label>' +
-      '<div class="cn-field-row"><label class="cn-field"><span>City</span><input type="text" name="city" maxlength="100" autocomplete="address-level2" placeholder="City"></label>' +
-      '<label class="cn-field"><span>ZIP code</span><input type="text" name="postalCode" maxlength="10" autocomplete="postal-code" inputmode="numeric" placeholder="ZIP code"></label></div>' +
-      '<input type="hidden" name="latitude"><input type="hidden" name="longitude">' +
+      sectionHeader("3", "Your Info", "So we can send your quote.") +
+      '<label class="cn-field"><span>Full name</span><input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Your name"></label>' +
+      '<div class="cn-field-row"><label class="cn-field"><span>Phone number</span><input type="tel" name="phone" required maxlength="40" autocomplete="tel" inputmode="tel" placeholder="(561) 555-0123"></label>' +
+      '<label class="cn-field"><span>Email <em>(optional)</em></span><input type="email" name="email" maxlength="160" autocomplete="email" placeholder="name@example.com"></label></div>' +
+      addressField("Address", false) +
       "</section>" +
       '<section class="cn-form-section">' +
-      sectionHeader("3", "Your Contact Info", "We’ll use this to send your confirmation and follow up with a quote.") +
-      '<label class="cn-field"><span><i class="bi bi-person" aria-hidden="true"></i> Full name</span><input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Your name"></label>' +
-      '<div class="cn-field-row"><label class="cn-field"><span><i class="bi bi-envelope" aria-hidden="true"></i> Email <em>(optional)</em></span><input type="email" name="email" maxlength="160" autocomplete="email" placeholder="name@example.com"></label>' +
-      '<label class="cn-field"><span><i class="bi bi-telephone" aria-hidden="true"></i> Phone number</span><input type="tel" name="phone" required maxlength="40" autocomplete="tel" inputmode="tel" placeholder="(561) 555-0123"></label></div>' +
-      "</section>" +
-      '<section class="cn-form-section">' +
-      sectionHeader("4", "Scheduling Preference", "Tell us what works best—we’ll confirm availability with you.") +
-      '<label class="cn-field"><span><i class="bi bi-calendar3" aria-hidden="true"></i> Preferred start date <em>(optional)</em></span><input type="date" name="preferredDate"></label>' +
-      '<fieldset class="cn-fieldset"><legend>Preferred time of day</legend><div class="cn-choice-grid cn-choice-grid--two">' +
-      choiceButtons("preferredTime", ["Morning (7am–11am)", "Afternoon (11am–3pm)", "Late afternoon (3pm–6pm)", "Flexible"], "Flexible") +
+      sectionHeader("4", "Additional Details", "Optional, but it helps us quote accurately.") +
+      '<label class="cn-field"><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" maxlength="1000" placeholder="Heavy staining, gate code, pets, access notes..."></textarea></label>' +
+      '<fieldset class="cn-fieldset"><legend>How soon do you need us?</legend><div class="cn-choice-grid cn-choice-grid--three cn-timing-grid">' +
+      timingOptions
+        .map(function (option) {
+          return (
+            '<label class="cn-choice cn-plan-choice"><input type="radio" name="timing" value="' + option[0] + '">' +
+            "<span><strong>" + option[0] + "</strong><small>" + option[1] + "</small></span></label>"
+          );
+        })
+        .join("") +
       "</div></fieldset>" +
+      '<label class="cn-field cn-timing-date" hidden><span>Preferred date</span><input type="date" name="preferredDate"></label>' +
+      '<label class="cn-field cn-field--small"><span>How did you hear about us? <em>(optional)</em></span><select name="referralSource"><option value="">Choose one</option>' +
+      referralSources.map(function (source) { return "<option>" + source + "</option>"; }).join("") +
+      "</select></label>" +
       "</section>" +
-      '<section class="cn-form-section">' +
-      sectionHeader("5", "Additional Details", "Anything else helps us prepare a more accurate quote.") +
-      '<label class="cn-field"><span><i class="bi bi-chat-left-text" aria-hidden="true"></i> Project notes <em>(optional)</em></span><textarea name="message" rows="4" maxlength="1000" placeholder="Property size, heavy staining, access notes, timing, or anything else..."></textarea></label>' +
-      '<fieldset class="cn-fieldset"><legend>How did you hear about us? <span>(optional)</span></legend><div class="cn-choice-grid cn-choice-grid--two">' +
-      choiceButtons("referralSource", ["Google Search", "Facebook / Instagram", "Neighbor / Word of Mouth", "Yard Sign", "Door Hanger", "Other"], "") +
-      "</div></fieldset>" +
+      formFooter("Get My Free Quote")
+    );
+  }
+
+  // Commercial and HOA: just the essentials, so property managers can send it in seconds.
+  function quickSections(type) {
+    var hoa = type === "hoa";
+    return (
+      '<section class="cn-form-section cn-form-section--services">' +
+      '<span class="cn-bundle-flag cn-bundle-flag--dark"><i class="bi ' + (hoa ? "bi-houses" : "bi-buildings") + '" aria-hidden="true"></i> ' +
+      (hoa ? "HOA &amp; community quote" : "Commercial quote") + "</span>" +
+      sectionHeader("2", "Your Info", "That is all we need. We will reach out to set up a walkthrough.") +
+      '<label class="cn-field"><span>Full name</span><input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Your name"></label>' +
+      '<label class="cn-field"><span>Mobile number</span><input type="tel" name="phone" required maxlength="40" autocomplete="tel" inputmode="tel" placeholder="(561) 555-0123"></label>' +
+      addressField(hoa ? "Community address" : "Property address", true) +
+      '<label class="cn-field"><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" maxlength="1000" placeholder="' +
+      (hoa ? "Community name, common areas, number of homes, timeline..." : "Business name, what needs cleaning, size, timeline...") +
+      '"></textarea></label>' +
       "</section>" +
-      '<div class="cn-form-footer"><div class="cn-hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>' +
-      '<label class="cn-consent"><input type="checkbox" name="consent" value="yes"><span>I agree to receive text messages from Canes Pressure Washing about my service request, including replies, quotes, and appointment confirmations. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</span></label>' +
-      '<p class="cn-quote-error" hidden>Something went wrong. Please call or text us at <a href="tel:+15615375674">(561) 537-5674</a>.</p>' +
-      '<div class="cn-submit-row">' + pelican("cn-submit-pelican") +
-      '<button type="submit" class="btn cn-quote-submit"><span class="cn-submit-label">Submit Quote Request</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div></div>';
+      formFooter(hoa ? "Request My HOA Quote" : "Request My Commercial Quote")
+    );
   }
 
   function bindSelections(form) {
@@ -247,10 +256,8 @@
     var meter = form.querySelector(".cn-savings");
     var bubbleTitle = meter.querySelector(".cn-savings__bubble strong");
     var bubbleText = meter.querySelector(".cn-savings__bubble span");
-    var bar = meter.querySelector(".cn-savings__bar span");
     var steps = Array.from(meter.querySelectorAll(".cn-savings__steps li"));
     var submitLabel = form.querySelector(".cn-submit-label");
-    var windowPanel = form.querySelector(".cn-window-plan");
     var serviceCheckboxes = Array.from(
       form.querySelectorAll(".cn-service-option input"),
     );
@@ -258,9 +265,9 @@
 
     // What the pelican says at each step of the bundle.
     var pitch = [
-      ["Bundle & save!", "Pick 2 services and get 10% off. Pick 3 and get 20% off."],
-      ["Nice pick!", "Select one more service and get 10% off."],
-      ["10% off unlocked!", "Come on, just one more and you get 20% off."],
+      ["Bundle & save.", "2 services = 10% off, 3+ = 20% off."],
+      ["Nice pick!", "Add one more for 10% off."],
+      ["10% off unlocked!", "One more and it's 20% off."],
       ["20% off unlocked!", "Max savings. Bang it all out!"],
     ];
 
@@ -274,29 +281,22 @@
         });
       var count = selected.length;
       var percent = discountFor(count);
-      var nextPercent = discountFor(count + 1);
 
       serviceInput.value = selected.join(", ");
       discountInput.value = percent ? String(percent) : "";
       serviceCheckboxes.forEach(function (checkbox) {
-        var option = checkbox.closest(".cn-service-option");
-        option.classList.toggle("is-selected", checkbox.checked);
-        // Unpicked cards advertise what picking them unlocks.
-        var perk = option.querySelector(".cn-service-perk");
-        perk.textContent = !checkbox.checked && nextPercent > percent ? nextPercent + "% off" : "";
+        checkbox.closest(".cn-service-option").classList.toggle("is-selected", checkbox.checked);
       });
       if (count) serviceError.hidden = true;
-      windowPanel.hidden = selected.indexOf(WINDOWS) === -1;
 
       var line = pitch[Math.min(count, 3)];
       bubbleTitle.textContent = line[0];
       bubbleText.textContent = line[1];
       meter.dataset.tier = String(Math.min(count, 3));
-      bar.style.width = Math.min(100, (count / 3) * 100) + "%";
       steps.forEach(function (step) {
         step.classList.toggle("is-reached", count >= Number(step.dataset.step));
       });
-      submitLabel.textContent = percent ? "Claim My " + percent + "% Off Quote" : "Submit Quote Request";
+      submitLabel.textContent = percent ? "Claim My " + percent + "% Off Quote" : "Get My Free Quote";
 
       if (lastPercent !== null && percent > lastPercent) celebrate();
       lastPercent = percent;
@@ -476,26 +476,73 @@
     });
   }
 
+  // Builds the chosen version of the form under the type picker. Contact and address answers carry over.
+  function setType(form, key, initialServices) {
+    var state = form.cnQuote;
+    if (state.type === key) return;
+    var carry = {};
+    ["name", "email", "phone", "address", "city", "postalCode", "latitude", "longitude"].forEach(function (name) {
+      var field = form.elements[name];
+      if (field && field.value) carry[name] = field.value;
+    });
+
+    var variant = form.querySelector(".cn-variant");
+    if (key === "residential") variant.innerHTML = residentialSections(initialServices);
+    else variant.innerHTML = quickSections(key);
+    form.classList.toggle("cn-quote-form--commercial", key !== "residential");
+
+    Object.keys(carry).forEach(function (name) {
+      if (form.elements[name]) form.elements[name].value = carry[name];
+    });
+
+    if (key === "residential") {
+      state.validate = bindSelections(form);
+      var dateField = form.querySelector(".cn-timing-date");
+      form.querySelectorAll('input[name="timing"]').forEach(function (radio) {
+        radio.addEventListener("change", function () {
+          dateField.hidden = radio.value !== "Pick a date";
+        });
+      });
+      var dateInput = form.querySelector('input[name="preferredDate"]');
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().slice(0, 10);
+    } else {
+      state.validate = function () { return true; };
+    }
+    bindAddressSearch(form);
+
+    var radio = form.querySelector('input[name="estimateType"][value="' + key + '"]');
+    if (radio) radio.checked = true;
+    form.querySelector(".cn-type-error").hidden = true;
+    state.type = key;
+  }
+
   function bind(form, initialServices) {
     if (form.dataset.cnQuoteBound === "true") return;
     form.dataset.cnQuoteBound = "true";
-    renderForm(form, initialServices);
-    var validateServices = bindSelections(form);
-    bindAddressSearch(form);
+    form.cnQuote = { type: "", validate: null, initialServices: initialServices };
+    renderShell(form);
 
-    if (commercialPages.indexOf(pageSlug()) !== -1) {
-      var commercial = form.querySelector('input[name="propertyType"][value="Commercial"]');
-      if (commercial) commercial.checked = true;
-    }
-
-    var dateInput = form.querySelector('input[name="preferredDate"]');
-    var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    dateInput.min = tomorrow.toISOString().slice(0, 10);
+    form.querySelectorAll('input[name="estimateType"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        setType(form, radio.value, initialServices);
+      });
+    });
+    // A link can open a version directly (?type=hoa); commercial pages open on the commercial version.
+    var wanted = new URLSearchParams(window.location.search).get("type") || form.dataset.mode;
+    if (estimateTypes.some(function (t) { return t.key === wanted; })) setType(form, wanted, initialServices);
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
-      if (!validateServices() || !form.reportValidity()) return;
+      var state = form.cnQuote;
+      if (!state.type) {
+        form.querySelector(".cn-type-error").hidden = false;
+        form.querySelector('input[name="estimateType"]').focus();
+        return;
+      }
+      if (!state.validate() || !form.reportValidity()) return;
+      var type = estimateTypes.filter(function (t) { return t.key === state.type; })[0];
 
       var errorEl = form.querySelector(".cn-quote-error");
       var button = form.querySelector(".cn-quote-submit");
@@ -506,8 +553,10 @@
 
       try {
         var data = Object.fromEntries(new FormData(form).entries());
+        delete data.estimateType;
         data.consent = form.querySelector('input[name="consent"]').checked;
         data.sourcePage = window.location.href;
+        data.propertyType = type.propertyType;
         var addressParts = [data.address].filter(Boolean);
         if (data.city && !String(data.address || "").includes(String(data.city))) {
           addressParts.push(data.city);
@@ -516,23 +565,31 @@
           addressParts.push(data.postalCode);
         }
         data.address = addressParts.join(", ");
-        var bundleDiscount = data.bundleDiscount;
-        // Neither is an intake field; both travel in the message below.
-        var windowPlan = data.service.indexOf(WINDOWS) !== -1 ? data.windowPlan : "";
-        delete data.bundleDiscount;
-        delete data.windowPlan;
-        data.message = [
-          "Selected services: " + data.service,
-          bundleDiscount
-            ? "Bundle discount: " + bundleDiscount + "% off (" + data.service.split(", ").length + " services)"
-            : "",
-          windowPlan ? "Window plan: " + windowPlan : "",
-          data.propertyType ? "Property type: " + data.propertyType : "",
-          data.preferredDate ? "Preferred date: " + data.preferredDate : "",
-          data.preferredTime ? "Preferred time: " + data.preferredTime : "",
-          data.referralSource ? "Referral source: " + data.referralSource : "",
-          data.message ? "Project notes: " + data.message : "",
-        ].filter(Boolean).join("\n").slice(0, 1000);
+        if (type.key === "residential") {
+          var bundleDiscount = data.bundleDiscount;
+          // Not intake fields; they travel in the message below.
+          var timing = data.timing;
+          delete data.bundleDiscount;
+          delete data.timing;
+          data.message = [
+            "Estimate type: Residential",
+            "Selected services: " + data.service,
+            bundleDiscount
+              ? "Bundle discount: " + bundleDiscount + "% off (" + data.service.split(", ").length + " services)"
+              : "",
+            timing === "ASAP" ? "Timing: ASAP (within 1-3 days, rush fee may apply)" : "",
+            timing === "Next available" ? "Timing: Next available" : "",
+            timing === "Pick a date" ? "Timing: Requested date " + (data.preferredDate || "(no date chosen)") : "",
+            data.referralSource ? "Referral source: " + data.referralSource : "",
+            data.message ? "Project notes: " + data.message : "",
+          ].filter(Boolean).join("\n").slice(0, 1000);
+        } else {
+          data.service = type.key === "hoa" ? "HOA / Community" : "Commercial";
+          data.message = [
+            "Estimate type: " + type.propertyType,
+            data.message ? "Project notes: " + data.message : "",
+          ].filter(Boolean).join("\n").slice(0, 1000);
+        }
         var response = await fetch(form.action, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -557,6 +614,15 @@
     var initialServices = getInitialServices();
     document.querySelectorAll("form.cn-quote-form").forEach(function (form) {
       bind(form, initialServices);
+    });
+
+    // Links like the homepage's screen enclosure card tick their service before jumping to the form.
+    document.querySelectorAll("a[data-quote-service]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var form = document.querySelector("form.cn-quote-form");
+        var input = form && window.canesFindServiceInput(form, link.dataset.quoteService);
+        if (input && !input.checked) input.click();
+      });
     });
   }
 

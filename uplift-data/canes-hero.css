@@ -87,6 +87,13 @@
   text-shadow: 0 4px 22px rgba(0, 0, 0, .45);
 }
 
+.canes-hero__kicker {
+  margin-bottom: .35rem;
+  color: #ffc21a;
+  font-size: clamp(1.5rem, 3.6vw, 2.6rem);
+  letter-spacing: .08em;
+}
+
 .canes-hero__title {
   font-size: clamp(2.9rem, 8vw, 6.4rem);
 }
@@ -104,6 +111,25 @@
   font-size: clamp(.9rem, 1.7vw, 1.35rem);
   font-weight: 700;
   letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Minimum per visit: a small pill right under the tagline. */
+.canes-hero__tagline:has(+ .canes-hero__minimum) {
+  margin-bottom: .75rem;
+}
+
+.canes-hero__minimum {
+  display: inline-block;
+  margin: 0 auto 1.75rem;
+  padding: .3rem .9rem;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .35);
+  color: #ffc21a;
+  font-size: clamp(.8rem, 1.2vw, .95rem);
+  font-weight: 800;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 
@@ -260,4 +286,22 @@
   .canes-hero__btn {
     transition: none;
   }
+}
+
+/* Crew photo as the hero background: frame on the Canes shirt and the paver being cleaned. */
+.canes-hero__bg--crew {
+  object-position: center 22%;
+}
+
+/* Review count beside the stars, like a Google rating badge. */
+.canes-hero__count {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.canes-hero__google {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
 }

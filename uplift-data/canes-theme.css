@@ -111,6 +111,11 @@ h2 {
   transform: none;
 }
 
+/* Screen enclosure card reuses the pool photo, framed on the clean screen cage. */
+.home-service-card--screen > img {
+  object-position: 85% 0;
+}
+
 /* ---------- Alive: hover lift on cards ---------- */
 .home-service-card,
 .canes-process__step,
@@ -449,6 +454,18 @@ main li {
   transform: translateX(-50%);
 }
 
+/* The home quote intro keeps the theme's own positioning (pinned while the form scrolls on desktop,
+   normal flow on smaller screens); its pelican sits in the normal flow, so it needs no offset parent. */
+.home-booking__intro.canes-has-pelican {
+  position: sticky;
+}
+
+@media (max-width: 991.98px) {
+  .home-booking__intro.canes-has-pelican {
+    position: static;
+  }
+}
+
 /* Home quote section and reviews header. */
 .canes-side-pelican {
   display: block;
@@ -649,4 +666,363 @@ main li {
 .home-trust__item span {
   color: #4a4a4a;
   font-size: .98rem;
+}
+
+/* "Get a Commercial Quote" stands out in the Commercial menu. */
+.navigation-link-2 a.nav-commercial-quote {
+  color: var(--canes-orange) !important;
+  font-weight: 800;
+}
+
+/* Commercial quote page: why-us panel beside the form. */
+.cn-commercial-why {
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: #111;
+  color: #fff;
+}
+
+.cn-commercial-why h2 {
+  margin: 0 0 .75rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 850;
+}
+
+.cn-commercial-why ul {
+  display: grid;
+  gap: .5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cn-commercial-why li {
+  display: flex;
+  gap: .5rem;
+  color: rgba(255, 255, 255, .88);
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.cn-commercial-why li i {
+  color: #ffd23f;
+}
+
+.cn-commercial-why__proof {
+  margin: 0 0 .85rem;
+  padding: .75rem .85rem;
+  border-left: 3px solid var(--canes-orange);
+  border-radius: .4rem;
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .85);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+.cn-commercial-why__proof strong {
+  color: #fff;
+}
+
+.cn-commercial-why a {
+  color: var(--canes-orange-light);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+
+/* =====================================================================
+   Pelican placement: it only ever stands in open space, never over text or buttons.
+   ===================================================================== */
+
+/* Hero: stand on the bottom edge instead of dipping into the services ticker below. */
+.canes-hero__mascot img {
+  margin-bottom: 0;
+}
+
+/* "How we do it": keep the heading and intro clear of the pelican in the top corner. */
+.canes-process .container.canes-has-pelican > .canes-process__kicker,
+.canes-process .container.canes-has-pelican > h2,
+.canes-process .container.canes-has-pelican > .canes-process__intro {
+  padding-right: clamp(8rem, 13vw, 11rem);
+}
+
+@media (max-width: 991.98px) {
+  .canes-process .container.canes-has-pelican > .canes-process__kicker,
+  .canes-process .container.canes-has-pelican > h2,
+  .canes-process .container.canes-has-pelican > .canes-process__intro {
+    padding-right: 7rem;
+  }
+}
+
+/* Contact form: when the form sits under the FAQ, leave room above it for the peeking pelican. */
+@media (max-width: 991.98px) {
+  .form-container.canes-has-form-pelican {
+    margin-top: 5.5rem;
+  }
+}
+
+/* Reviews header: below the rating on smaller screens, instead of on top of it. */
+@media (max-width: 991.98px) {
+  .canes-reviews-hero .canes-side-pelican {
+    position: static;
+    margin: 1.25rem 0 0 auto;
+  }
+}
+
+/* Commercial inquiry bar: its own spot between the text and the button, standing on the bar's edge. */
+.canes-commercial__cta .canes-inline-pelican {
+  position: static;
+  order: 1;
+  align-self: flex-end;
+  margin-bottom: calc(-1 * clamp(1.25rem, 3vw, 1.75rem));
+  transform: none;
+}
+
+.canes-commercial__cta > div {
+  order: 0;
+}
+
+.canes-commercial__cta .canes-commercial__btn {
+  order: 2;
+}
+
+/* Contact form header: the heading wraps before the pelican's corner. */
+.form-container.canes-has-form-pelican .form-header h2 {
+  padding-right: 6rem;
+}
+
+@media (max-width: 575.98px) {
+  .form-container.canes-has-form-pelican .form-header h2 {
+    padding-right: 4.5rem;
+  }
+}
+
+/* =====================================================================
+   Phones: compact services and reviews so the homepage is a shorter scroll.
+   ===================================================================== */
+@media (max-width: 575.98px) {
+  .home-services,
+  .home-reviews {
+    padding-block: 3rem;
+  }
+
+  .home-services .home-section__heading,
+  .home-reviews .home-section__heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .home-services h2,
+  .home-reviews h2 {
+    font-size: 1.7rem;
+  }
+
+  /* Services: two per row, shorter photos, name and link only. */
+  .home-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .65rem !important;
+  }
+
+  .home-service-card {
+    border-radius: .9rem;
+  }
+
+  .home-service-card > img,
+  .home-service-card .canes-ba--card .canes-ba__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .home-service-card > div {
+    padding: .7rem .75rem .8rem;
+  }
+
+  .home-service-card__number,
+  .home-service-card p {
+    display: none;
+  }
+
+  .home-service-card h3 {
+    margin-bottom: .3rem;
+    padding-right: 0;
+    font-size: .98rem;
+    line-height: 1.2;
+  }
+
+  /* Name and an arrow on one line; the whole card stays tappable. */
+  .home-service-card > div {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+
+  .home-service-card > div h3 {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .home-service-card__link {
+    font-size: 0;
+  }
+
+  .home-service-card__link i {
+    font-size: .95rem;
+  }
+
+  .home-service-card .canes-ba__label {
+    top: .4rem;
+    padding: .15rem .45rem;
+    font-size: .62rem;
+  }
+
+  .home-service-card .canes-ba__handle {
+    width: 1.9rem;
+    height: 1.9rem;
+    font-size: .85rem;
+  }
+
+  /* Reviews: shorter cards; the full text lives on the reviews page. */
+  .home-reviews .canes-rslide {
+    gap: .55rem;
+    padding: 1.1rem;
+  }
+
+  .home-reviews .canes-rslide__stars {
+    font-size: .95rem;
+  }
+
+  .home-reviews .canes-rslide blockquote p {
+    font-size: .95rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 4;
+  }
+
+  .home-reviews .canes-rslide figcaption strong {
+    font-size: .95rem;
+  }
+
+  .home-reviews .canes-rslide figcaption span {
+    font-size: .8rem;
+  }
+
+  .home-reviews .canes-rslider__track {
+    padding-bottom: .9rem;
+  }
+
+  .home-reviews .canes-rslider__btn {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1rem;
+  }
+}
+
+/* =====================================================================
+   Palm Beach County service areas: every city as compact chips.
+   Cities with their own page are links; the rest are plain labels.
+   ===================================================================== */
+.service-areas-content .service-areas-list,
+.canes-area-list {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: .4rem !important;
+}
+
+.service-areas-content .service-areas-list .btn,
+.canes-area-list .btn {
+  width: auto;
+  padding: .3rem .65rem;
+  font-size: .78rem;
+}
+
+.canes-area-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .65rem;
+  border: 1px solid #ddd8ce;
+  border-radius: .45rem;
+  background: #fff;
+  color: #302e2a;
+  font-size: .78rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.canes-area-all {
+  font-weight: 800 !important;
+}
+
+.canes-area-group {
+  margin: 1.25rem 0 .6rem;
+  font-size: 1.35rem;
+}
+
+.home-local__areas {
+  gap: .4rem;
+}
+
+.home-local__areas a,
+.home-local__areas .canes-area-chip {
+  min-height: 0;
+  padding: .3rem .6rem;
+  font-size: .74rem;
+}
+
+.home-local__areas .canes-area-chip {
+  background: #f7f7f7;
+}
+
+/* =====================================================================
+   Desktop/tablet home quote: the form runs the full width; the intro is one row above it.
+   ===================================================================== */
+@media (min-width: 768px) {
+  .home-booking__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.75rem !important;
+  }
+
+  .home-booking__intro,
+  .home-booking__intro.canes-has-pelican {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+    column-gap: 2.5rem;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .home-booking__intro > .home-kicker { grid-column: 1; grid-row: 1; }
+  .home-booking__intro > h2 { grid-column: 1; grid-row: 2; margin-bottom: .4rem; }
+  .home-booking__intro > p { grid-column: 1; grid-row: 3; margin-bottom: 0; }
+
+  .home-booking__intro > ul {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    margin: 0 0 .6rem;
+  }
+
+  .home-booking__intro > .home-booking__phone {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .home-booking__intro > .canes-side-pelican {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    width: 8.5rem;
+    margin: 0;
+  }
+}
+
+/* Crew photos are tall; frame them on the crew member, not the ground. */
+.home-service-card > img.home-service-card__crew {
+  object-position: center 28%;
+}
+
+.service-image img.canes-crew-photo {
+  width: 100%;
+  max-height: 560px;
+  border-radius: 1rem;
+  object-fit: cover;
+  object-position: center 30%;
 }
