@@ -97,6 +97,7 @@
   }
   window.canesFindServiceInput = function (form, name) {
     if (form.cnQuote && !form.cnQuote.type) setType(form, "residential", form.cnQuote.initialServices);
+    if (form.cnQuote && form.cnQuote.type === "residential" && form.cnQuote.step === 0) goToStep(form, 1, false);
     return findServiceInput(form, name);
   };
 
@@ -160,7 +161,7 @@
       '<div class="cn-form-footer"><div class="cn-hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>' +
       '<label class="cn-consent"><input type="checkbox" name="consent" value="yes"><span>I agree to receive text messages from Canes Pressure Washing about my service request, including replies, quotes, and appointment confirmations. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</span></label>' +
       '<p class="cn-quote-error" hidden>Something went wrong. Please call or text us at <a href="tel:+15615375674">(561) 537-5674</a>.</p>' +
-      '<div class="cn-submit-row">' + pelican("cn-submit-pelican") +
+      '<div class="cn-submit-row"><button type="button" class="cn-back"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back</button>' + pelican("cn-submit-pelican") +
       '<button type="submit" class="btn cn-quote-submit"><span class="cn-submit-label">' + label + '</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div></div>'
     );
   }
@@ -169,6 +170,7 @@
     form.classList.add("cn-quote-form--enhanced");
     form.noValidate = true;
     form.innerHTML =
+      '<div class="cn-progress" aria-live="polite"><span class="cn-progress__label">Step 1</span><div class="cn-progress__bar"><span></span></div></div>' +
       '<section class="cn-form-section cn-type-section">' +
       sectionHeader("1", "What kind of estimate do you need?", "Pick one to start. The form adjusts to fit your property.") +
       '<div class="cn-type-grid" role="radiogroup" aria-label="Estimate type">' +
@@ -476,6 +478,60 @@
     });
   }
 
+  // ---------- One step at a time ----------
+  // Steps are the type picker plus each section of the chosen version; the submit footer belongs to the last step.
+  function steps(form) {
+    return Array.prototype.slice.call(form.querySelectorAll(":scope > .cn-form-section, :scope > .cn-variant > .cn-form-section"));
+  }
+
+  function addStepNav(form) {
+    var list = steps(form);
+    list.forEach(function (section, i) {
+      if (i === 0 || i === list.length - 1 || section.querySelector(".cn-step-nav")) return;
+      section.insertAdjacentHTML("beforeend",
+        '<div class="cn-step-nav"><button type="button" class="cn-back"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back</button>' +
+        '<button type="button" class="cn-next">Next <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>');
+    });
+  }
+
+  function scrollToForm(form) {
+    var header = document.querySelector(".canes-header");
+    var offset = (header ? Math.max(0, header.getBoundingClientRect().bottom) : 0) + 16;
+    var top = form.getBoundingClientRect().top + window.scrollY - offset;
+    var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (Math.abs(window.scrollY - top) > 4) window.scrollTo({ top: top, behavior: calm ? "auto" : "smooth" });
+  }
+
+  function goToStep(form, index, scroll) {
+    var list = steps(form);
+    index = Math.max(0, Math.min(index, list.length - 1));
+    list.forEach(function (section, i) {
+      section.hidden = i !== index;
+    });
+    var footer = form.querySelector(".cn-form-footer");
+    if (footer) footer.hidden = index !== list.length - 1 || !form.cnQuote.type;
+    form.cnQuote.step = index;
+    var label = form.querySelector(".cn-progress__label");
+    var bar = form.querySelector(".cn-progress__bar span");
+    var total = form.cnQuote.type ? list.length : 0;
+    label.textContent = total ? "Step " + (index + 1) + " of " + total : "Step 1";
+    bar.style.width = total ? ((index + 1) / total) * 100 + "%" : "8%";
+    if (scroll) scrollToForm(form);
+  }
+
+  // Checks the fields on one step; shows the browser's message on the first problem.
+  function stepIsValid(form, section) {
+    if (section.classList.contains("cn-form-section--services") && section.querySelector(".cn-service-grid") && !form.cnQuote.validate()) return false;
+    var fields = section.querySelectorAll("input, select, textarea");
+    for (var i = 0; i < fields.length; i++) {
+      if (!fields[i].checkValidity()) {
+        fields[i].reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
   // Builds the chosen version of the form under the type picker. Contact and address answers carry over.
   function setType(form, key, initialServices) {
     var state = form.cnQuote;
@@ -511,6 +567,7 @@
       state.validate = function () { return true; };
     }
     bindAddressSearch(form);
+    addStepNav(form);
 
     var radio = form.querySelector('input[name="estimateType"][value="' + key + '"]');
     if (radio) radio.checked = true;
@@ -521,27 +578,51 @@
   function bind(form, initialServices) {
     if (form.dataset.cnQuoteBound === "true") return;
     form.dataset.cnQuoteBound = "true";
-    form.cnQuote = { type: "", validate: null, initialServices: initialServices };
+    form.cnQuote = { type: "", validate: null, initialServices: initialServices, step: 0 };
     renderShell(form);
 
+    // Picking a type moves straight on to its first question (click also fires when re-picking the same one).
     form.querySelectorAll('input[name="estimateType"]').forEach(function (radio) {
-      radio.addEventListener("change", function () {
+      radio.addEventListener("click", function () {
         setType(form, radio.value, initialServices);
+        goToStep(form, 1, true);
       });
     });
+    form.addEventListener("click", function (event) {
+      var back = event.target.closest(".cn-back");
+      var next = event.target.closest(".cn-next");
+      if (back) goToStep(form, form.cnQuote.step - 1, true);
+      if (next && stepIsValid(form, steps(form)[form.cnQuote.step])) goToStep(form, form.cnQuote.step + 1, true);
+    });
+
     // A link can open a version directly (?type=hoa); commercial pages open on the commercial version.
     var wanted = new URLSearchParams(window.location.search).get("type") || form.dataset.mode;
-    if (estimateTypes.some(function (t) { return t.key === wanted; })) setType(form, wanted, initialServices);
+    if (estimateTypes.some(function (t) { return t.key === wanted; })) {
+      setType(form, wanted, initialServices);
+      goToStep(form, 1, false);
+    } else {
+      goToStep(form, 0, false);
+    }
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
       var state = form.cnQuote;
       if (!state.type) {
+        goToStep(form, 0, true);
         form.querySelector(".cn-type-error").hidden = false;
-        form.querySelector('input[name="estimateType"]').focus();
         return;
       }
-      if (!state.validate() || !form.reportValidity()) return;
+      // Every step must be complete; jump back to the first one that is not.
+      var list = steps(form);
+      for (var i = 1; i < list.length; i++) {
+        if (!stepIsValid(form, list[i])) {
+          if (i !== state.step) {
+            goToStep(form, i, true);
+            stepIsValid(form, list[i]);
+          }
+          return;
+        }
+      }
       var type = estimateTypes.filter(function (t) { return t.key === state.type; })[0];
 
       var errorEl = form.querySelector(".cn-quote-error");
