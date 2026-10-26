@@ -12,6 +12,61 @@
       ],
       "destination": "https://www.canespressurewashing.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/near-me/bay-hill-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/clermont-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/dr-phillips-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/horizon-west-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/lake-buena-vista-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/metro-west-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/ocoee-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/orlando-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/windermere-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/near-me/winter-garden-fl-pressure-washing",
+      "destination": "/near-me",
+      "permanent": true
+    },
+    {
+      "source": "/projects/roof-cleaning-in-windermere-fl",
+      "destination": "/projects/roof-soft-washing-blackened-roof",
+      "permanent": true
     }
   ],
   "headers": [

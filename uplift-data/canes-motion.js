@@ -141,7 +141,7 @@
       if (el && el.parentNode) el.parentNode.insertBefore(mascotDivider(), el);
     });
 
-    // 2. Standing beside the orange "15% off" banner.
+    // 2. Standing beside the orange call-or-text banner.
     document.querySelectorAll(".cta-1 .container").forEach(function (box) {
       box.classList.add("canes-has-pelican");
       box.appendChild(pelicanImg("canes-cta-pelican"));

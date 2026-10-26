@@ -300,3 +300,22 @@
   height: 1.35rem;
   flex: 0 0 auto;
 }
+
+/* "Rather talk?" line under the hero buttons. */
+.canes-hero__talk {
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, .85);
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.canes-hero__talk a {
+  color: #ffc21a;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.canes-nowrap {
+  white-space: nowrap;
+}

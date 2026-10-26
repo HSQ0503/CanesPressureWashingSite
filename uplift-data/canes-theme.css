@@ -1,6 +1,6 @@
 /*
  * Site-wide Canes look: bold condensed uppercase headings with orange accents, and the
- * "15% first-time customer" banner as solid bright orange. Body text keeps the theme font.
+ * call-or-text banner as solid bright orange. Body text keeps the theme font.
  */
 :root {
   --canes-orange: #f25a0a;
@@ -42,7 +42,7 @@ h2 {
   color: var(--canes-orange);
 }
 
-/* "Don't miss your 15%" banner: solid bright orange, no background photo. */
+/* "Rather talk? Call or text" banner: solid bright orange, no background photo. */
 .cta-1 {
   background: var(--canes-orange) !important;
   color: var(--canes-ink) !important;
@@ -409,7 +409,7 @@ main li {
   position: relative;
 }
 
-/* Standing beside the orange 15% banner. */
+/* Standing beside the orange call-or-text banner. */
 .canes-cta-pelican {
   width: clamp(9rem, 15vw, 13rem);
   height: auto;
@@ -616,7 +616,7 @@ main li {
   right: -.5rem;
 }
 
-/* Make room for the pelican standing at the left of the 15% banner. */
+/* Make room for the pelican standing at the left of the call-or-text banner. */
 @media (min-width: 992px) {
   .cta-1 .container.canes-has-pelican {
     padding-left: clamp(11rem, 17vw, 15rem);
@@ -1025,4 +1025,363 @@ main li {
   border-radius: 1rem;
   object-fit: cover;
   object-position: center 30%;
+}
+
+/* City pages: links to every other Palm Beach County town. */
+.canes-nearby {
+  padding: 3rem 0;
+}
+
+.canes-nearby h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+/* Homepage: "Rather talk to a person?" band after the FAQ. */
+.home-talk {
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  background: #111;
+  color: #fff;
+}
+
+.home-talk__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.5rem 3rem;
+  align-items: center;
+}
+
+.home-talk h2 {
+  margin: .3rem 0 .5rem;
+  color: #fff;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-talk p {
+  margin: 0;
+  color: rgba(255, 255, 255, .8);
+}
+
+.home-talk__actions {
+  display: grid;
+  gap: .65rem;
+  text-align: center;
+}
+
+.home-talk__btn {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  border: 2px solid var(--canes-orange);
+  border-radius: .8rem;
+  background: var(--canes-orange);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.home-talk__btn:hover,
+.home-talk__btn:focus-visible {
+  background: #c94700;
+  border-color: #c94700;
+  color: #fff;
+}
+
+.home-talk__btn--outline {
+  background: transparent;
+}
+
+.home-talk__actions small {
+  color: rgba(255, 255, 255, .65);
+}
+
+@media (max-width: 767.98px) {
+  .home-talk__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Homepage FAQ: the theme draws its own orange +, so hide the duplicate icon. */
+.home-faq .faq-title > i.bi {
+  display: none;
+}
+
+/* =====================================================================
+   Homepage sections in the Simmons-style order.
+   ===================================================================== */
+.home-section__heading--split > div > p {
+  max-width: 640px;
+  margin: .5rem 0 0;
+  color: #555;
+}
+
+/* Core services: compact cards, five per row on desktop. */
+.home-service-grid--compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: .9rem !important;
+}
+
+@media (min-width: 1100px) {
+  .home-service-grid--compact {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+.home-service-grid--compact .home-service-card > img,
+.home-service-grid--compact .canes-ba--card .canes-ba__frame {
+  aspect-ratio: 4 / 3;
+}
+
+.home-service-grid--compact .home-service-card > div {
+  padding: .85rem .9rem 1rem;
+}
+
+.home-service-grid--compact .home-service-card h3 {
+  margin-bottom: .3rem;
+  padding-right: 0;
+  font-size: 1.02rem;
+}
+
+.home-service-grid--compact .home-service-card p {
+  min-height: 0;
+  margin-bottom: .6rem;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.home-service-grid--compact .home-service-card__link {
+  font-size: .78rem;
+}
+
+.home-service-card--crew > img {
+  object-position: center 28%;
+}
+
+/* Five steps. */
+.home-steps {
+  background: #fff;
+}
+
+.home-steps__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-steps__list li {
+  padding: 1.25rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  background: #fafafa;
+}
+
+.home-steps__num {
+  display: inline-grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: .75rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--canes-orange);
+  color: #fff;
+  font-weight: 900;
+}
+
+.home-steps__list h3 {
+  margin-bottom: .35rem;
+  font-size: 1.02rem;
+}
+
+.home-steps__list p {
+  margin: 0;
+  color: #555;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 991.98px) {
+  .home-steps__list {
+    grid-template-columns: 1fr;
+    gap: .6rem;
+  }
+
+  .home-steps__list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .9rem;
+    padding: .9rem 1rem;
+  }
+
+  .home-steps__num {
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+}
+
+/* Why Canes. */
+.home-why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.home-why__list {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-why__list li {
+  display: flex;
+  gap: .9rem;
+}
+
+.home-why__list i {
+  display: inline-grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff1e6;
+  color: var(--canes-orange);
+  font-size: 1.15rem;
+}
+
+.home-why__list h3 {
+  margin: .15rem 0 .2rem;
+  font-size: 1.05rem;
+}
+
+.home-why__list p {
+  margin: 0;
+  color: #555;
+  font-size: .92rem;
+}
+
+.home-why__photo img {
+  width: 100%;
+  max-height: 560px;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  object-position: center 30%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
+}
+
+/* Before and after. */
+.home-ba {
+  background: #fff;
+}
+
+.home-ba__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.home-ba__grid p {
+  margin: .5rem 0 1rem;
+  color: #555;
+}
+
+.home-ba__grid .canes-ba {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767.98px) {
+  .home-why__grid,
+  .home-ba__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-why__photo {
+    order: -1;
+  }
+
+  .home-why__photo img {
+    max-height: 320px;
+  }
+}
+
+/* Where we work. */
+.home-where__towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.home-where__towns a {
+  padding: .4rem .75rem;
+  border: 1px solid #ddd8ce;
+  border-radius: .55rem;
+  background: #fff;
+  color: #302e2a;
+  font-size: .82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-where__towns a:hover {
+  border-color: var(--canes-orange);
+  color: #b84405;
+}
+
+.home-where__towns .home-where__all {
+  border-color: var(--canes-orange);
+  background: var(--canes-orange);
+  color: #fff;
+}
+
+/* Phones: tighter spacing for the new sections. */
+@media (max-width: 575.98px) {
+  .home-steps,
+  .home-why,
+  .home-ba,
+  .home-where {
+    padding-block: 3rem;
+  }
+
+  .home-steps h2,
+  .home-why h2,
+  .home-ba h2,
+  .home-where h2 {
+    font-size: 1.7rem;
+  }
+
+  .home-where__towns a {
+    padding: .3rem .55rem;
+    font-size: .74rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Phones: name and arrow on one line; the whole card stays tappable. */
+  .home-service-grid--compact .home-service-card__link {
+    font-size: 0;
+  }
+
+  .home-service-grid--compact .home-service-card > div {
+    padding: .7rem .75rem .8rem;
+  }
+
+  .home-service-grid--compact .home-service-card h3 {
+    font-size: .98rem;
+  }
 }
